@@ -15,7 +15,15 @@ class TestMouseHook(BaseCombatTask, TriggerTask):
         self.name = "测试鼠标按键"
         self.description = "测试鼠标Hook"
         self.connected = False
-    
+
+    def disable(self):
+        """禁用任务时，断开信号连接。"""
+        if self.connected:
+            logger.debug("disconnect on_global_click")
+            og.my_app.clicked.disconnect(self.on_global_click)
+            self.connected = False
+        return super().disable()
+
     def run(self):
         if not self.connected:
             self.connected = True

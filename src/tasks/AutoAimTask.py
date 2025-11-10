@@ -41,6 +41,14 @@ class AutoAimTask(BaseCombatTask, TriggerTask):
         self.is_down = False
         self.connected = False
 
+    def disable(self):
+        """禁用任务时，断开信号连接。"""
+        if self.connected:
+            logger.debug("disconnect on_global_click")
+            og.my_app.clicked.disconnect(self.on_global_click)
+            self.connected = False
+        return super().disable()
+
     def reset(self):
         self.manual_activate = False
         self.signal = False

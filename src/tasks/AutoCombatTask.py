@@ -24,6 +24,14 @@ class AutoCombatTask(BaseCombatTask, TriggerTask):
         })
         self.connected = False
 
+    def disable(self):
+        """禁用任务时，断开信号连接。"""
+        if self.connected:
+            logger.debug("disconnect on_global_click")
+            og.my_app.clicked.disconnect(self.on_global_click)
+            self.connected = False
+        return super().disable()
+
     def run(self):
         if not self.connected:
             self.connected = True

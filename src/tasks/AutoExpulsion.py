@@ -15,7 +15,9 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask):
         self.icon = FluentIcon.FLAG
         self.description = "全自动(存在特定开始位置无法全自动)"
         self.default_config.update({
-            '开局向前走': 0,
+            '开局向前走': 0.0,
+            '开局是否跳跃': False,
+            '开局是否奔跑': False,
             '任务超时时间': 120,
             '刷几次': 999,
         })
@@ -72,5 +74,23 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask):
             self.sleep(0.2)
 
     def move_on_begin(self):
+        jump = self.config.get("开局是否跳跃", False)
+        shift = self.config.get("开局是否奔跑", False)
         if (walk_sec := self.config.get("开局向前走", 0)) > 0:
-            self.send_key("w", down_time=walk_sec)
+            self.send_key_down("w")
+            self.sleep(0.03)
+            if shift:
+                self.send_key_down("lshift")
+                self.sleep(0.03)
+            if jump:
+                start = time.time()
+                while time.time() - start < walk_sec:
+                    self.send_key("space", after_sleep=0.25)
+            else:
+                self.sleep(walk_sec)
+            self.send_key_up("w")
+            if shift:
+                self.sleep(0.03)
+                self.send_key_up("lshift")
+            self.sleep(1)
+
