@@ -78,17 +78,14 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             _status = self.handle_mission_interface()
             if _status == Mission.START:
                 self.wait_until(self.in_team, time_out=30)
+                if _count >= self.config.get("刷几次", 999):
+                    self.sleep(1)
+                    self.open_in_mission_menu()
+                    self.log_info_notify("任务终止")
+                    self.soundBeep()
+                    return
+                self.log_info("任务开始")
                 self.sleep(2.5)
-                if self.external_movement() == False:
-                    if _count >= self.config.get("刷几次", 999):
-                        self.sleep(1)
-                        self.open_in_mission_menu()
-                        self.log_info_notify("任务终止")
-                        self.soundBeep()
-                        return
-                    self.log_info_notify("任务开始")
-                else:
-                    self.log_info("任务开始")
                 _start_time = 0
             self.sleep(0.2)
 
