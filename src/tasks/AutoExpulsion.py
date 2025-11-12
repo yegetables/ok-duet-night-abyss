@@ -48,6 +48,7 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def run(self):
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position()
+        self.set_check_monthly_card()
         try:
             return self.do_run()
         except TaskDisabledException as e:
@@ -85,7 +86,7 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     self.soundBeep()
                     return
                 self.log_info("任务开始")
-                self.sleep(2.5)
+                self.sleep(2)
                 _start_time = 0
             self.sleep(0.2)
 

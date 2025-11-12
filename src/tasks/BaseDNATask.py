@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 import winsound
 import win32api, win32con
+from datetime import datetime, timedelta
 
 from ok import BaseTask, Box, Logger, PostMessageInteraction
 
@@ -13,8 +14,10 @@ class BaseDNATask(BaseTask):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.key_config = self.get_global_config('Game Hotkey Config')  # 游戏热键配置
+        self.monthly_card_config = self.get_global_config('Monthly Card Config')
         self.afk_config = self.get_global_config('挂机设置')
         self.old_mouse_pos = None
+        self.next_monthly_card_start = 0
 
     def in_team(self) -> bool:
         if self.find_one('lv_text', threshold=0.8):
@@ -77,6 +80,56 @@ class BaseDNATask(BaseTask):
             self.sleep(0.02)
             win32api.SetCursorPos(self.old_mouse_pos)
             self.old_mouse_pos = None
+
+    # def sleep(self, timeout):
+    #     return super().sleep(timeout - self.check_for_monthly_card())
+
+    def check_for_monthly_card(self):
+        if self.should_check_monthly_card():
+            start = time.time()
+            logger.info(f'check_for_monthly_card start check')
+            # if self.in_combat():
+            #     logger.info(f'check_for_monthly_card in combat return')
+            #     return time.time() - start
+            if self.in_team():
+                logger.info(f'check_for_monthly_card in team send sleep until monthly card popup')
+                monthly_card = self.wait_until(self.handle_monthly_card, time_out=120, raise_if_not_found=False)
+                logger.info(f'wait monthly card end {monthly_card}')
+                cost = time.time() - start
+                return cost
+        return 0
+    
+    def should_check_monthly_card(self):
+        if self.next_monthly_card_start > 0:
+            if 0 < time.time() - self.next_monthly_card_start < 120:
+                return True
+        return False
+
+    def set_check_monthly_card(self, next_day=False):
+        if self.monthly_card_config.get('Check Monthly Card'):
+            now = datetime.now()
+            hour = self.monthly_card_config.get('Monthly Card Time')
+            # Calculate the next 5 o'clock in the morning
+            next_four_am = now.replace(hour=hour, minute=0, second=0, microsecond=0)
+            if now >= next_four_am or next_day:
+                next_four_am += timedelta(days=1)
+            next_monthly_card_start_date_time = next_four_am - timedelta(seconds=30)
+            # Subtract 1 minute from the next 5 o'clock in the morning
+            self.next_monthly_card_start = next_monthly_card_start_date_time.timestamp()
+            logger.info('set next monthly card start time to {}'.format(next_monthly_card_start_date_time))
+        else:
+            self.next_monthly_card_start = 0
+
+    def handle_monthly_card(self):
+        monthly_card = self.find_one('monthly_card', threshold=0.8)
+        # self.screenshot('monthly_card1')
+        ret = monthly_card is not None
+        if ret:
+            self.wait_until(self.in_team, time_out=10,
+                            post_action=lambda: self.click_relative(0.50, 0.89, after_sleep=1))
+            self.set_check_monthly_card(next_day=True)
+        logger.debug(f'check_monthly_card {monthly_card}')
+        return ret
 
 
 lower_white = np.array([244, 244, 244], dtype=np.uint8)

@@ -42,6 +42,7 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         """主运行方法"""
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position()
+        self.set_check_monthly_card()
         try:
             return self.do_run()
         except TaskDisabledException:

@@ -43,6 +43,7 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def run(self):
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position()
+        self.set_check_monthly_card()
         try:
             return self.do_run()
         except TaskDisabledException as e:
