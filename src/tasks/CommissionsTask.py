@@ -362,11 +362,14 @@ class CommissionsTask(BaseDNATask):
             ),
             time_out=4,
         )
-        self.wait_until(
+        if not self.wait_until(
             condition=self.in_team,
             post_action=self.click(0.59, 0.56, after_sleep=0.5),
             time_out=2,
-        )
+        ):
+            self.wait_until(self.in_team, post_action=self.send_key("esc", after_sleep=1), time_out=10)
+            return False
+        return True
 
 
 class QuickMoveTask:
