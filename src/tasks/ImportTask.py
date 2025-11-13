@@ -135,8 +135,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     self.log_info('任务完成')
                 self.wait_until(self.in_team, time_out=30)                  
                 self.sleep(2)
-                if not self.walk_to_aim():
-                    self.open_in_mission_menu()
+                self.walk_to_aim()
                 _wave_start = time.time()
                 _delay_task_start = _wave_start + 1
                 self.current_wave = -1 

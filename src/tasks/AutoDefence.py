@@ -91,14 +91,20 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             if _status == Mission.START:
                 self.wait_until(self.in_team, time_out=30)
                 self.sleep(2)
+                self.init_param()
                 if self.external_movement is not _default_movement:
                     self.log_info("任务开始")
-                    if not self.external_movement():
+                    self.external_movement()
+                    time_out = 10
+                    self.log_info(f"外部移动执行完毕，等待战斗开始，{time_out}秒后超时")
+                    if not self.wait_until(lambda: self.current_wave != -1, post_action=self.get_wave_info, time_out=time_out):
+                        self.log_info(f"超时重开")
                         self.open_in_mission_menu()
+                    else:
+                        self.log_info(f"战斗开始")
                 else:
                     self.log_info_notify("任务开始")
                     self.soundBeep()
-                self.init_param()
             elif _status == Mission.STOP:
                 self.quit_mission()
                 self.init_param()
@@ -111,7 +117,6 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.sleep(0.2)
 
     def init_param(self):
-        self.stop_mission = False
         self.current_round = -1
         self.current_wave = -1
 
