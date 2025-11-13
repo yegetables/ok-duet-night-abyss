@@ -218,15 +218,15 @@ class CommissionsTask(BaseDNATask):
 
     def choose_letter_reward_zero (self):
         self.wait_until(
-            condition=lambda: self.find_next_hint(0.60, 0.64, 0.67, 0.67, r'持有数'),
+            condition=lambda: self.find_next_hint(0.60, 0.64, 0.67, 0.67, r'[:：]'),
             time_out=2)
-        if self.find_next_hint(0.33, 0.64, 0.40, 0.67, r'持有数：0'):
+        if self.find_next_hint(0.33, 0.64, 0.40, 0.67, r'[:：]0'):
             self.log_info("选择第一个奖励", True)
             self.click(0.36, 0.66, after_sleep=0.5)
-        elif self.find_next_hint(0.47, 0.64, 0.53, 0.67, r'持有数：0'):
+        elif self.find_next_hint(0.47, 0.64, 0.53, 0.67, r'[:：]0'):
             self.log_info("选择第二个奖励", True)
             self.click(0.50, 0.66, after_sleep=0.5)            
-        elif self.find_next_hint(0.60, 0.64, 0.67, 0.67, r'持有数：0'):
+        elif self.find_next_hint(0.60, 0.64, 0.67, 0.67, r'[:：]0'):
             self.log_info("选择第三个奖励", True)
             self.click(0.63, 0.66, after_sleep=0.5)
         else:
@@ -245,6 +245,7 @@ class CommissionsTask(BaseDNATask):
                 time_out=action_timeout,
                 raise_if_not_found=True,
             )
+            self.sleep(3)
         else:
             self.log_info_notify("需自行选择密函奖励")
             self.soundBeep()
@@ -392,7 +393,7 @@ class CommissionsTask(BaseDNATask):
             post_action=self.click(0.59, 0.56, after_sleep=0.5),
             time_out=4,
         ):
-            self.wait_until(self.in_team, post_action=self.send_key("esc", after_sleep=1), time_out=10)
+            self.wait_until(self.in_team, post_action=lambda: self.send_key("esc", after_sleep=1), time_out=10)
             return False
         return True
 
