@@ -7,6 +7,7 @@ from ok import Logger
 
 logger = Logger.get_logger(__name__)
 
+
 class NotInCombatException(Exception):
     """未处于战斗状态异常。"""
     pass
@@ -15,6 +16,7 @@ class NotInCombatException(Exception):
 class CharDeadException(NotInCombatException):
     """角色死亡异常。"""
     pass
+
 
 class BaseCombatTask(CombatCheck):
     def __init__(self, *args, **kwargs):
@@ -50,7 +52,7 @@ class BaseCombatTask(CombatCheck):
             str: 战技的按键字符串。
         """
         return self.key_config['Combat Key']
-    
+
     def raise_not_in_combat(self, message, exception_type=None):
         """抛出未在战斗状态的异常。
 
@@ -69,7 +71,7 @@ class BaseCombatTask(CombatCheck):
         """加载角色信息。"""
         name = None
         self.char = BaseChar(self, char_name=name)
-    
+
     def combat_end(self):
         """战斗结束后的处理。"""
         self.log_info("Combat ended")
@@ -88,7 +90,7 @@ class BaseCombatTask(CombatCheck):
         if raise_exception and not self.in_team():
             self.raise_not_in_combat('not in_team, can not find current char!!')
         return None
-    
+
     def sleep_check_combat(self, timeout, check_combat=True):
         """休眠指定时间, 并在休眠前后检查战斗状态。
 

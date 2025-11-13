@@ -4,10 +4,9 @@ import time
 from ok import Logger, TaskDisabledException, Box
 from src.tasks.DNAOneTimeTask import DNAOneTimeTask
 from src.tasks.BaseCombatTask import BaseCombatTask
-from src.tasks.CommissionsTask import CommissionsTask, Mission, QuickMoveTask
+from src.tasks.CommissionsTask import CommissionsTask, Mission, QuickMoveTask, _default_movement
 
 logger = Logger.get_logger(__name__)
-_default_movement = lambda: False
 
 
 class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
@@ -23,9 +22,9 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.default_config.update({
             '轮次': 3,
         })
-        
+
         self.setup_commission_config()
-        
+
         self.config_description.update({
             "轮次": "打几个轮次",
             "超时时间": "波次超时后将发出提示",
@@ -69,7 +68,7 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.init_param()
         self.load_char()
         _wave = -1
-        _wait_next_wave = False       
+        _wait_next_wave = False
         _wave_start = 0
         if self.external_movement is not _default_movement and self.in_team():
             self.open_in_mission_menu()
@@ -107,7 +106,8 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     self.external_movement()
                     time_out = 10
                     self.log_info(f"外部移动执行完毕，等待战斗开始，{time_out}秒后超时")
-                    if not self.wait_until(lambda: self.current_wave != -1, post_action=self.get_wave_info, time_out=time_out):
+                    if not self.wait_until(lambda: self.current_wave != -1, post_action=self.get_wave_info,
+                                           time_out=time_out):
                         self.log_info(f"超时重开")
                         self.open_in_mission_menu()
                     else:

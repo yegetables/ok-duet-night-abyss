@@ -22,7 +22,7 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.description = "全自动"
         self.group_name = "全自动"
         self.group_icon = FluentIcon.CAFE
-        
+
         self.default_config.update({
             "刷几次": 999,
         })
@@ -35,7 +35,7 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.config_description.update({
             "刷几次": "总共刷多少次副本",
         })
-        
+
         self.action_timeout = 10
 
     def run(self):
@@ -109,7 +109,7 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
                 # 重置计时器
                 _start_time = time.time()
-                
+
                 # 走到目标位置
                 try:
                     self.walk_to_aim()
@@ -137,7 +137,7 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
             # 0.52s: 开始向前移动
             self.send_key_down("lalt")
-            
+
             self.sleep(2)
             self.send_key_down("w")
 
@@ -217,7 +217,7 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
             elapsed = time.time() - move_start
             logger.info(f"移动完成，用时 {elapsed:.1f}秒")
-        
+
         except TaskDisabledException:
             raise TaskDisabledException
         except Exception as e:

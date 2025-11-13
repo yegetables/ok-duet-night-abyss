@@ -31,9 +31,9 @@ class AutoSkill(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             '主画面侦测': '如果不在可操控角色的画面则结束任务',
             '超时时间': '超时后将发出提示',
         })
-        
+
         self.action_timeout = 10
-        
+
     def run(self):
         DNAOneTimeTask.run(self)
         try:

@@ -121,9 +121,7 @@ class AutoAimTask(BaseListenerTask, BaseCombatTask, TriggerTask):
             if button == btn:
                 self.signal = True
             # 运行中按下右键或左键 - 打断
-            elif self.manual_activate and (
-                button == mouse.Button.right or button == mouse.Button.left
-            ):
+            elif self.manual_activate and (button == mouse.Button.right or button == mouse.Button.left):
                 self.signal_interrupt = True
 
     def on_global_press(self, key):

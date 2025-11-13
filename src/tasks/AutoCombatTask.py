@@ -30,7 +30,7 @@ class AutoCombatTask(BaseListenerTask, BaseCombatTask, TriggerTask):
         self.try_connect_listener()
 
         ret = False
-        _mouse_down= False
+        _mouse_down = False
         while self.in_combat():
             if not ret:
                 n = self.config.get("释放间隔", 0.1)
@@ -50,7 +50,7 @@ class AutoCombatTask(BaseListenerTask, BaseCombatTask, TriggerTask):
                     char.click()
                 self.sleep(interval)
             except CharDeadException:
-                self.log_error(f"Characters dead", notify=True)
+                self.log_error("Characters dead", notify=True)
                 break
             except NotInCombatException as e:
                 logger.info(f"auto_combat_task_out_of_combat {e}")

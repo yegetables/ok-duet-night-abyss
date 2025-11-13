@@ -2,12 +2,11 @@ from qfluentwidgets import FluentIcon
 import time
 
 from ok import Logger, TaskDisabledException
-from src.tasks.CommissionsTask import CommissionsTask, QuickMoveTask, Mission
+from src.tasks.CommissionsTask import CommissionsTask, QuickMoveTask, Mission, _default_movement
 from src.tasks.BaseCombatTask import BaseCombatTask
 from src.tasks.DNAOneTimeTask import DNAOneTimeTask
 
 logger = Logger.get_logger(__name__)
-_default_movement = lambda: False
 
 
 class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
@@ -30,7 +29,7 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             '轮次': '打几个轮次',
             '超时时间': '超时后将发出提示',
         })
-        
+
         self.action_timeout = 10
         self.quick_move_task = QuickMoveTask(self)
         self.external_movement = _default_movement
@@ -44,14 +43,14 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             if self.external_config is None:
                 self.external_config = super().config.copy()
             return self.external_config
-        
+
     def config_external_movement(self, func: callable, config: dict):
         if callable(func):
             self.external_movement = func
         else:
             self.external_movement = _default_movement
         self.config.update(config)
-        
+
     def run(self):
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position()
@@ -68,7 +67,7 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def do_run(self):
         self.init_param()
         self.load_char()
-        _wait_next_round = False        
+        _wait_next_round = False
         _start_time = 0
         if self.external_movement is not _default_movement and self.in_team():
             self.open_in_mission_menu()
@@ -103,10 +102,10 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     time_out = 10
                     self.log_info(f"外部移动执行完毕，等待战斗开始，{time_out}秒后超时")
                     if not self.wait_until(self.find_serum, time_out=time_out):
-                        self.log_info(f"超时重开")
+                        self.log_info("超时重开")
                         self.open_in_mission_menu()
                     else:
-                        self.log_info(f"战斗开始")
+                        self.log_info("战斗开始")
                 else:
                     self.log_info_notify("任务开始")
                     self.soundBeep()

@@ -102,7 +102,7 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             # 复位方案
             self.reset_and_transport()
             # 防卡墙
-            self.send_key("w",down_time=0.5)
+            self.send_key("w", down_time=0.5)
         elif self.config.get("挂机模式") == "开局向前走":
             if (walk_sec := self.config.get("开局向前走", 0)) > 0:
                 self.send_key("w", down_time=walk_sec)

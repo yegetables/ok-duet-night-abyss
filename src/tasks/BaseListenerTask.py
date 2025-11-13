@@ -3,6 +3,7 @@ from pynput import mouse, keyboard
 
 logger = Logger.get_logger(__name__)
 
+
 class BaseListenerTask:
 
     def __init__(self, *args, **kwargs):
@@ -21,14 +22,14 @@ class BaseListenerTask:
         self.config_description.update({
             '激活键': '鼠标键或键盘按键',
         })
-    
+
     def try_disconnect_listener(self):
         if self.connected:
             logger.debug("disconnect listener")
             og.my_app.clicked.disconnect(self.on_global_click)
             og.my_app.pressed.disconnect(self.on_global_press)
             self.connected = False
-    
+
     def try_connect_listener(self):
         if not self.connected:
             logger.debug("connect listener")
@@ -38,10 +39,10 @@ class BaseListenerTask:
 
     def on_global_click(self, x, y, button, pressed):
         pass
-    
+
     def on_global_press(self, key):
         pass
-    
+
     def normalize_hotkey(self, name: str):
         name = name.lower()
         if hasattr(keyboard.Key, name):

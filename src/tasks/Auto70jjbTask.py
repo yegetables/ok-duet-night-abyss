@@ -23,7 +23,7 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.description = "全自动"
         self.group_name = "全自动"
         self.group_icon = FluentIcon.CAFE
-        
+
         self.default_config.update({
             '轮次': 1,
         })
@@ -36,10 +36,10 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.config_description.update({
             '轮次': '打几个轮次',
         })
-        
+
         self.action_timeout = 10
         self.quick_move_task = QuickMoveTask(self)
-        
+
     def run(self):
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position()
@@ -74,8 +74,8 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                         self.log_info('任务超时')
                         self.open_in_mission_menu()
                         self.sleep(0.5)
-                        _wait_next_wave = True                       
-            
+                        _wait_next_wave = True
+
             _status = self.handle_mission_interface(stop_func=self.stop_func)
             if _status == Mission.START or _status == Mission.STOP:
                 if _status == Mission.STOP:
@@ -85,22 +85,22 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     continue
                 else:
                     self.log_info('任务完成')
-                self.wait_until(self.in_team, time_out=30)                
+                self.wait_until(self.in_team, time_out=30)
                 self.init_param()
                 self.send_key_down("lalt")
                 self.sleep(2)
                 self.walk_to_aim()
                 self.send_key_up("lalt")
                 _wave_start = time.time()
-                
+
                 self.current_wave = -1
                 while self.current_wave == -1 and time.time() - _wave_start < 2:
                     self.get_wave_info()
-                    self.sleep(0.2) 
+                    self.sleep(0.2)
                 if self.current_wave == -1:
                     self.log_info('未正确到达任务地点')
                     self.open_in_mission_menu()
-                    self.sleep(0.5)   
+                    self.sleep(0.5)
             elif _status == Mission.CONTINUE:
                 self.log_info('任务继续')
                 self.wait_until(self.in_team, time_out=30)
@@ -112,7 +112,7 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.current_round = -1
         self.current_wave = -1
         self.skill_time = 0
-        
+
     def stop_func(self):
         self.get_round_info()
         n = self.config.get('轮次', 3)
@@ -127,22 +127,22 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         if fps_text:
             return True
         return False
-        
+
     def find_and_click(self, x1, y1, x2, y2, s):
         if self.find_next_hint(x1, y1, x2, y2, s):
-            self.click((x1+x2)/2, (y1+y2)/2, after_sleep=0.5)
+            self.click((x1 + x2) / 2, (y1 + y2) / 2, after_sleep=0.5)
             return True
         return False
-    
+
     def wait_hint(self, x1, y1, x2, y2, hint, timeout=2):
         if self.wait_until(lambda: self.find_next_hint(x1, y1, x2, y2, hint), time_out=timeout):
             self.sleep(0.2)
             return True
         return False
-        
-    def walk_to_aim(self):   
-        if self.find_next_hint(0.18,0.52,0.23,0.55,r'保护目标'):
-            #无电梯
+
+    def walk_to_aim(self):
+        if self.find_next_hint(0.18, 0.52, 0.23, 0.55, r'保护目标'):
+            # 无电梯
             self.send_key_down('w')
             self.sleep(8.5)
             self.send_key_up('w')
@@ -158,45 +158,45 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.sleep(23)
             self.send_key_up('w')
             self.sleep(0.2)
-            #分支1直接到达，未到达则进入分支2继续往前走
+            # 分支1直接到达，未到达则进入分支2继续往前走
             start = time.time()
             self.current_wave = -1
             while self.current_wave == -1 and time.time() - start < 2:
                 self.get_wave_info()
-                self.sleep(0.2) 
+                self.sleep(0.2)
             if self.current_wave == -1:
                 self.send_key_down('w')
                 self.sleep(6)
                 self.send_key('space', down_time=0.2, after_sleep=2.7)
                 self.send_key_up('w')
-            return             
+            return
         self.send_key('w', down_time=12.1, after_sleep=0.2)
-        if self.find_next_hint(0.77,0.34,0.83,0.38,r'保护目标'):
-            #电梯右
+        if self.find_next_hint(0.77, 0.34, 0.83, 0.38, r'保护目标'):
+            # 电梯右
             self.sleep(0.5)
-            self.send_key('space',down_time=0.2,after_sleep=0.2)
-            self.send_key('w', down_time=0.8,after_sleep=0.2)
-            self.send_key('d', down_time=0.2,after_sleep=0.2)
+            self.send_key('space', down_time=0.2, after_sleep=0.2)
+            self.send_key('w', down_time=0.8, after_sleep=0.2)
+            self.send_key('d', down_time=0.2, after_sleep=0.2)
             self.middle_click(after_sleep=0.5)
-            self.send_key('w', down_time=3.4,after_sleep=0.2)
+            self.send_key('w', down_time=3.4, after_sleep=0.2)
             self.send_key_down('a')
             self.sleep(3.4)
             self.send_key_down('w')
             self.sleep(2.6)
             self.send_key_up('a')
             self.sleep(2.1)
-            self.send_key('a', down_time=0.4,after_sleep=6.4)
+            self.send_key('a', down_time=0.4, after_sleep=6.4)
             self.send_key_up('w')
             self.sleep(0.2)
-            self.send_key('a', down_time=6.1,after_sleep=0.2)
-            self.send_key('w', down_time=8,after_sleep=0.2)
-            #两种地图均可复位到达
+            self.send_key('a', down_time=6.1, after_sleep=0.2)
+            self.send_key('w', down_time=8, after_sleep=0.2)
+            # 两种地图均可复位到达
             self.reset_and_transport()
-            return            
-        if self.find_next_hint(0.17,0.39,0.23,0.43,r'保护目标'):
-            #电梯左
+            return
+        if self.find_next_hint(0.17, 0.39, 0.23, 0.43, r'保护目标'):
+            # 电梯左
             self.sleep(0.5)
-            self.send_key('space',down_time=0.2,after_sleep=0.2)
+            self.send_key('space', down_time=0.2, after_sleep=0.2)
             self.send_key_down('w')
             self.sleep(3.8)
             self.send_key('d', down_time=0.4, after_sleep=3)
@@ -213,12 +213,12 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.send_key('d', down_time=0.4, after_sleep=0.5)
             self.send_key('d', down_time=0.4, after_sleep=4.5)
             self.send_key_up('w')
-            #两种地图均可复位到达
+            # 两种地图均可复位到达
             self.reset_and_transport()
-            return            
-        #电梯中
+            return
+            # 电梯中
         self.sleep(0.5)
-        self.send_key('space',down_time=0.2,after_sleep=0.2)
+        self.send_key('space', down_time=0.2, after_sleep=0.2)
         self.send_key_down('w')
         self.sleep(4.8)
         self.send_key('d', down_time=1.8, after_sleep=9.6)
@@ -227,7 +227,7 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.sleep(0.2)
         self.send_key('a', down_time=1.9, after_sleep=0.2)
         self.send_key('w', down_time=6, after_sleep=0.2)
-        #两种地图均可复位到达
+        # 两种地图均可复位到达
         self.reset_and_transport()
-        #finish
-        return          
+        # finish
+        return

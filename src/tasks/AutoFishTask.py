@@ -84,7 +84,9 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
         fish_box = self.box_of_screen_scaled(
             3840, 2160, 3147, 1566, 3383, 1797, name="fish_bite"
         )
-        box = self.find_one("fish_cast", box=fish_box, threshold=CAST_THRESHOLD) or self.find_one("fish_ease", box=fish_box, threshold=CAST_THRESHOLD)
+        box = self.find_one("fish_cast", box=fish_box, threshold=CAST_THRESHOLD) or self.find_one("fish_ease",
+                                                                                                  box=fish_box,
+                                                                                                  threshold=CAST_THRESHOLD)
         if box:
             return True, (box.x + box.width // 2, box.y + box.height // 2)
         return False, (0, 0)
@@ -156,8 +158,8 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
 
             # 按面积降序排列
             blobs.sort(key=lambda b: b["area"], reverse=True)
-            
-            #Debug only
+
+            # Debug only
             # output_img = roi_img.copy()
             # colors = [
             #     (0, 0, 255),     # 红
@@ -171,7 +173,7 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
             # for i, blob in enumerate(blobs):
             #     color = colors[i % len(colors)]  # 超过列表长度循环使用
             #     cv2.drawContours(output_img, [blob["contour"]], -1, color, 2)
-            #Debug only
+            # Debug only
 
             has_bar = has_icon = False
             bar_center = bar_rect = icon_center = icon_rect = None
@@ -216,14 +218,15 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
 
             if has_bar:
                 zone_ratio = bar_area / box.area()
-                if self.CONTROL_ZONE_RATIO <= 0 or abs(zone_ratio - self.CONTROL_ZONE_RATIO) / self.CONTROL_ZONE_RATIO > 0.1:
+                if self.CONTROL_ZONE_RATIO <= 0 or abs(
+                        zone_ratio - self.CONTROL_ZONE_RATIO) / self.CONTROL_ZONE_RATIO > 0.1:
                     self.CONTROL_ZONE_RATIO = zone_ratio
                     self.log_info(f"set CONTROL_ZONE_RATIO {self.CONTROL_ZONE_RATIO}")
 
-            #Debug only
+            # Debug only
             # cv2.imshow("Contours", output_img)
             # cv2.waitKey(1)
-            #Debug only
+            # Debug only
 
             # 更新统计信息
             self.stats.update(
@@ -301,7 +304,8 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
         # 等待 fish_bite 消失（鱼咬钩了）
         logger.info("等待鱼咬钩...")
         bite_gone_stable_time = 0.5  # 咬钩消失稳定时间
-        ret = self.wait_until(lambda: not self.find_fish_bite()[0], time_out=start_deadline, settle_time=bite_gone_stable_time)
+        ret = self.wait_until(lambda: not self.find_fish_bite()[0], time_out=start_deadline,
+                              settle_time=bite_gone_stable_time)
         self.stats["last_bite_icon_found"] = not ret
         if not ret:
             logger.info("等待fish_bite消失超时")
@@ -345,8 +349,6 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
 
     def phase_fight(self) -> bool:
         cfg = self.config
-        FIGHT_LOOP_HZ = 60.0  # 溜鱼循环频率
-        tick = 1.0 / FIGHT_LOOP_HZ
         self.stats["current_phase"] = "溜鱼"
         self.info_set("当前阶段", "溜鱼")
         logger.info("进入溜鱼阶段...")

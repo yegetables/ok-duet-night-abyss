@@ -1,5 +1,3 @@
-
-
 class DNAOneTimeTask:
 
     def run(self):
