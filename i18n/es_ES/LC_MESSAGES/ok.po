@@ -10,70 +10,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 msgid "200%"
-msgstr ""
+msgstr "200%"
 
 msgid "2000%"
-msgstr ""
+msgstr "2000%"
 
 msgid "800%"
-msgstr ""
+msgstr "800%"
 
 msgid "BAR_MIN_AREA"
-msgstr ""
+msgstr "ÁREA_MÍNIMA_BARRA"
 
 msgid "CONTROL_ZONE_RATIO"
-msgstr ""
+msgstr "RATIO_ZONA_CONTROL"
 
 msgid "Combat Key"
-msgstr ""
+msgstr "Tecla de Combate"
 
 msgid "END_WAIT_SPACE"
-msgstr ""
+msgstr "ESPACIO_ESPERA_FINAL"
 
 msgid "Game Hotkey Config"
-msgstr ""
+msgstr "Configuración de Teclas Rápidas del Juego"
 
 msgid "Geniemon Key"
-msgstr ""
+msgstr "Tecla Geniemon"
 
 msgid "ICON_MAX_AREA"
-msgstr ""
+msgstr "ÁREA_MÁXIMA_ICONO"
 
 msgid "ICON_MIN_AREA"
-msgstr ""
+msgstr "ÁREA_MÍNIMA_ICONO"
 
 msgid "In Game Hotkey for Skills"
-msgstr ""
+msgstr "Teclas Rápidas de Habilidades en el Juego"
 
 msgid "MAX_END_SEC"
-msgstr ""
+msgstr "MÁX_SEG_FINAL"
 
 msgid "MAX_FIGHT_SEC"
-msgstr ""
+msgstr "MÁX_SEG_LUCHA"
 
 msgid "MAX_ROUNDS"
-msgstr ""
+msgstr "MÁX_RONDAS"
 
 msgid "MAX_START_SEC"
-msgstr ""
+msgstr "MÁX_SEG_INICIO"
 
 msgid "Ultimate Key"
-msgstr ""
+msgstr "Tecla de Habilidad Definitiva"
 
 msgid "right"
-msgstr ""
+msgstr "derecha"
 
 msgid "v2.996版本 10 30火 60 70皎皎币 70调停 花生"
-msgstr ""
+msgstr "v2.996 Versión 10 30 Fuego 60 70 Monedas Shell 70 Mediación Cacahuete"
 
 msgid "x1"
-msgstr ""
+msgstr "x1"
 
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 msgid "不使用"
 msgstr "No usar"
@@ -331,61 +331,100 @@ msgid "鼠标键或键盘按键"
 msgstr "Botón del ratón o tecla del teclado"
 
 msgid "Check Monthly Card"
-msgstr ""
+msgstr "Comprobar Tarjeta Mensual"
 
 msgid "Check for monthly card to avoid interruption of tasks"
-msgstr ""
+msgstr "Comprobar la tarjeta mensual para evitar la interrupción de tareas"
 
 msgid "Monthly Card Config"
-msgstr ""
+msgstr "Configuración de Tarjeta Mensual"
 
 msgid "Monthly Card Time"
-msgstr ""
+msgstr "Hora de Tarjeta Mensual"
 
 msgid "OK-角色经验本50-巧手(主控猪妹,ai水母280范围,超时时间可设置10秒内保证跑错重开)"
-msgstr ""
+msgstr "OK-Mazmorra de EXP de Personaje 50-Habilidad (Control principal: Piggy, IA Medusa 280 de alcance, tiempo de espera configurable en 10 segundos para asegurar reinicio si hay error de ruta)"
 
 msgid "OK-角色经验本60-兼容无巧手(主控成年女磐石,ai水母280范围)"
-msgstr ""
+msgstr "OK-Mazmorra de EXP de Personaje 60-Compatible sin Habilidad (Control principal: Adulto Femenino de Roca, IA Medusa 280 de alcance)"
 
 msgid "Turn on to avoid interruption by monthly card when executing tasks"
-msgstr ""
+msgstr "Activar para evitar la interrupción por tarjeta mensual al ejecutar tareas"
 
 msgid "Your computer's local time when the monthly card will popup, hour in (1-24)"
-msgstr ""
+msgstr "Hora local de su ordenador cuando aparecerá la tarjeta mensual, hora en (1-24)"
 
 msgid "ok-50MOD"
-msgstr ""
+msgstr "ok-50MOD"
 
 msgid "ok-55,70MOD(主控水母280范围)"
-msgstr ""
+msgstr "ok-55,70MOD (Control principal: Medusa 280 de alcance)"
 
 msgid "ok-60MOD"
-msgstr ""
+msgstr "ok-60MOD"
 
 msgid "ok-80MOD(主控水母高范围)"
-msgstr ""
+msgstr "ok-80MOD (Control principal: Medusa de alto alcance)"
 
 msgid "ok-武器突破材料70-巧手(水母磐石280范围)"
-msgstr ""
+msgstr "ok-Material de Ascensión de Arma 70-Habilidad (Medusa Roca 280 de alcance)"
 
 msgid "ok-武器突破材料70-巧手稳定版(水母磐石280范围)"
-msgstr ""
+msgstr "ok-Material de Ascensión de Arma 70-Habilidad Versión Estable (Medusa Roca 280 de alcance)"
 
 msgid "ok-武器经验本70(水母磐石280范围)"
-msgstr ""
+msgstr "ok-Mazmorra de EXP de Arma 70 (Medusa Roca 280 de alcance)"
 
 msgid "ok-武器经验本80(水母磐石280范围)"
-msgstr ""
+msgstr "ok-Mazmorra de EXP de Arma 80 (Medusa Roca 280 de alcance)"
 
 msgid "ok-火巧10-巧手(磐石)"
-msgstr ""
+msgstr "ok-Fuego Habilidad 10-Habilidad (Roca)"
 
 msgid "ok-火巧30,60-巧手(磐石30-14轮,60-8轮)"
-msgstr ""
+msgstr "ok-Fuego Habilidad 30,60-Habilidad (Roca 30-14 rondas, 60-8 rondas)"
 
 msgid "ok-火巧角色突破材料70-巧手(磐石,火10通用)"
-msgstr ""
+msgstr "ok-Material de Ascensión de Personaje de Fuego Habilidad 70-Habilidad (Roca, Fuego 10 universal)"
 
 msgid "ok-皎皎币60"
-msgstr ""
+msgstr "ok-Monedas Shell 60"
+
+msgid "60角色经验本"
+msgstr "Mazmorra de EXP de Personaje 60"
+
+msgid "Auto Pick"
+msgstr "Recogida Automática"
+
+msgid "Auto Pick in Game World"
+msgstr "Recogida Automática en el Mundo del Juego"
+
+msgid "优先选择持有数为0的密函奖励"
+msgstr "Priorizar recompensas de cofres con 0 unidades poseídas"
+
+msgid "刷武器密函时推荐同时开启下一选项"
+msgstr "Se recomienda activar la siguiente opción al farmear cofres de armas"
+
+msgid "在上一选项启用时生效，多个目标时选择靠左的"
+msgstr "Activo cuando la opción anterior está habilitada, si hay múltiples objetivos, selecciona el de la izquierda"
+
+msgid "完成时播放提示音"
+msgstr "Reproducir sonido de alerta al finalizar"
+
+msgid "开局向前走"
+msgstr "Avanzar al inicio"
+
+msgid "开局向前走几秒"
+msgstr "Avanzar unos segundos al inicio"
+
+msgid "开局重置角色位置"
+msgstr "Reiniciar posición del personaje al inicio"
+
+msgid "挂机模式"
+msgstr "Modo AFK"
+
+msgid "无悠闲全自动钓鱼 (原作者: B站无敌大蜜瓜)"
+msgstr "Pesca Automática Relajada (Autor Original: Bilibili 无敌大蜜瓜)"
+
+msgid "自动避险"
+msgstr "Evitación Automática de Peligros"

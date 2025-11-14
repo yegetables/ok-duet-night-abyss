@@ -10,70 +10,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 msgid "200%"
-msgstr ""
+msgstr "200%"
 
 msgid "2000%"
-msgstr ""
+msgstr "2000%"
 
 msgid "800%"
-msgstr ""
+msgstr "800%"
 
 msgid "BAR_MIN_AREA"
-msgstr ""
+msgstr "BAR_MIN_AREA"
 
 msgid "CONTROL_ZONE_RATIO"
-msgstr ""
+msgstr "CONTROL_ZONE_RATIO"
 
 msgid "Combat Key"
-msgstr ""
+msgstr "Combat Key"
 
 msgid "END_WAIT_SPACE"
-msgstr ""
+msgstr "END_WAIT_SPACE"
 
 msgid "Game Hotkey Config"
-msgstr ""
+msgstr "Game Hotkey Config"
 
 msgid "Geniemon Key"
-msgstr ""
+msgstr "Geniemon Key"
 
 msgid "ICON_MAX_AREA"
-msgstr ""
+msgstr "ICON_MAX_AREA"
 
 msgid "ICON_MIN_AREA"
-msgstr ""
+msgstr "ICON_MIN_AREA"
 
 msgid "In Game Hotkey for Skills"
-msgstr ""
+msgstr "In Game Hotkey for Skills"
 
 msgid "MAX_END_SEC"
-msgstr ""
+msgstr "MAX_END_SEC"
 
 msgid "MAX_FIGHT_SEC"
-msgstr ""
+msgstr "MAX_FIGHT_SEC"
 
 msgid "MAX_ROUNDS"
-msgstr ""
+msgstr "MAX_ROUNDS"
 
 msgid "MAX_START_SEC"
-msgstr ""
+msgstr "MAX_START_SEC"
 
 msgid "Ultimate Key"
-msgstr ""
+msgstr "Ultimate Key"
 
 msgid "right"
-msgstr ""
+msgstr "right"
 
 msgid "v2.996版本 10 30火 60 70皎皎币 70调停 花生"
-msgstr ""
+msgstr "v2.996 Version 10 30 Fire 60 70 Shell Credits 70 Mediation Peanut"
 
 msgid "x1"
-msgstr ""
+msgstr "x1"
 
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 msgid "不使用"
 msgstr "Not Used"
@@ -331,61 +331,100 @@ msgid "鼠标键或键盘按键"
 msgstr "Mouse button or keyboard key"
 
 msgid "Check Monthly Card"
-msgstr ""
+msgstr "Check Monthly Card"
 
 msgid "Check for monthly card to avoid interruption of tasks"
-msgstr ""
+msgstr "Check for monthly card to avoid interruption of tasks"
 
 msgid "Monthly Card Config"
-msgstr ""
+msgstr "Monthly Card Config"
 
 msgid "Monthly Card Time"
-msgstr ""
+msgstr "Monthly Card Time"
 
 msgid "OK-角色经验本50-巧手(主控猪妹,ai水母280范围,超时时间可设置10秒内保证跑错重开)"
-msgstr ""
+msgstr "OK-Character EXP Dungeon 50-Skillful (Main control Piggy, AI Jellyfish 280 range, timeout can be set within 10 seconds to ensure restart if path is wrong)"
 
 msgid "OK-角色经验本60-兼容无巧手(主控成年女磐石,ai水母280范围)"
-msgstr ""
+msgstr "OK-Character EXP Dungeon 60-Compatible without Skillful (Main control Adult Female Rock, AI Jellyfish 280 range)"
 
 msgid "Turn on to avoid interruption by monthly card when executing tasks"
-msgstr ""
+msgstr "Turn on to avoid interruption by monthly card when executing tasks"
 
 msgid "Your computer's local time when the monthly card will popup, hour in (1-24)"
-msgstr ""
+msgstr "Your computer's local time when the monthly card will popup, hour in (1-24)"
 
 msgid "ok-50MOD"
-msgstr ""
+msgstr "ok-50MOD"
 
 msgid "ok-55,70MOD(主控水母280范围)"
-msgstr ""
+msgstr "ok-55,70MOD (Main control Jellyfish 280 range)"
 
 msgid "ok-60MOD"
-msgstr ""
+msgstr "ok-60MOD"
 
 msgid "ok-80MOD(主控水母高范围)"
-msgstr ""
+msgstr "ok-80MOD (Main control Jellyfish high range)"
 
 msgid "ok-武器突破材料70-巧手(水母磐石280范围)"
-msgstr ""
+msgstr "ok-Weapon Breakthrough Material 70-Skillful (Jellyfish Rock 280 range)"
 
 msgid "ok-武器突破材料70-巧手稳定版(水母磐石280范围)"
-msgstr ""
+msgstr "ok-Weapon Breakthrough Material 70-Skillful Stable Version (Jellyfish Rock 280 range)"
 
 msgid "ok-武器经验本70(水母磐石280范围)"
-msgstr ""
+msgstr "ok-Weapon EXP Dungeon 70 (Jellyfish Rock 280 range)"
 
 msgid "ok-武器经验本80(水母磐石280范围)"
-msgstr ""
+msgstr "ok-Weapon EXP Dungeon 80 (Jellyfish Rock 280 range)"
 
 msgid "ok-火巧10-巧手(磐石)"
-msgstr ""
+msgstr "ok-Fire Skillful 10-Skillful (Rock)"
 
 msgid "ok-火巧30,60-巧手(磐石30-14轮,60-8轮)"
-msgstr ""
+msgstr "ok-Fire Skillful 30,60-Skillful (Rock 30-14 rounds, 60-8 rounds)"
 
 msgid "ok-火巧角色突破材料70-巧手(磐石,火10通用)"
-msgstr ""
+msgstr "ok-Fire Skillful Character Breakthrough Material 70-Skillful (Rock, Fire 10 universal)"
 
 msgid "ok-皎皎币60"
-msgstr ""
+msgstr "ok-Shell Credits 60"
+
+msgid "60角色经验本"
+msgstr "60 Character EXP Dungeon"
+
+msgid "Auto Pick"
+msgstr "Auto Pick"
+
+msgid "Auto Pick in Game World"
+msgstr "Auto Pick in Game World"
+
+msgid "优先选择持有数为0的密函奖励"
+msgstr "Prioritize casket rewards with 0 owned"
+
+msgid "刷武器密函时推荐同时开启下一选项"
+msgstr "Recommended to enable the next option when farming weapon caskets"
+
+msgid "在上一选项启用时生效，多个目标时选择靠左的"
+msgstr "Effective when the previous option is enabled, choose the leftmost if multiple targets"
+
+msgid "完成时播放提示音"
+msgstr "Play alert sound upon completion"
+
+msgid "开局向前走"
+msgstr "Walk forward at start"
+
+msgid "开局向前走几秒"
+msgstr "Walk forward for a few seconds at start"
+
+msgid "开局重置角色位置"
+msgstr "Reset character position at start"
+
+msgid "挂机模式"
+msgstr "AFK Mode"
+
+msgid "无悠闲全自动钓鱼 (原作者: B站无敌大蜜瓜)"
+msgstr "Leisurely Auto-Fishing (Original Author: Bilibili 无敌大蜜瓜)"
+
+msgid "自动避险"
+msgstr "Auto Hazard Avoidance"

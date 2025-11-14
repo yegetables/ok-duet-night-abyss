@@ -10,70 +10,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 msgid "200%"
-msgstr ""
+msgstr "200%"
 
 msgid "2000%"
-msgstr ""
+msgstr "2000%"
 
 msgid "800%"
-msgstr ""
+msgstr "800%"
 
 msgid "BAR_MIN_AREA"
-msgstr ""
+msgstr "バー最小面積"
 
 msgid "CONTROL_ZONE_RATIO"
-msgstr ""
+msgstr "コントロールゾーン比率"
 
 msgid "Combat Key"
-msgstr ""
+msgstr "戦闘キー"
 
 msgid "END_WAIT_SPACE"
-msgstr ""
+msgstr "終了待機スペース"
 
 msgid "Game Hotkey Config"
-msgstr ""
+msgstr "ゲームホットキー設定"
 
 msgid "Geniemon Key"
-msgstr ""
+msgstr "ゲニモンキー"
 
 msgid "ICON_MAX_AREA"
-msgstr ""
+msgstr "アイコン最大面積"
 
 msgid "ICON_MIN_AREA"
-msgstr ""
+msgstr "アイコン最小面積"
 
 msgid "In Game Hotkey for Skills"
-msgstr ""
+msgstr "ゲーム内スキルホットキー"
 
 msgid "MAX_END_SEC"
-msgstr ""
+msgstr "最大終了秒数"
 
 msgid "MAX_FIGHT_SEC"
-msgstr ""
+msgstr "最大戦闘秒数"
 
 msgid "MAX_ROUNDS"
-msgstr ""
+msgstr "最大ラウンド数"
 
 msgid "MAX_START_SEC"
-msgstr ""
+msgstr "最大開始秒数"
 
 msgid "Ultimate Key"
-msgstr ""
+msgstr "究極スキルキー"
 
 msgid "right"
-msgstr ""
+msgstr "右"
 
 msgid "v2.996版本 10 30火 60 70皎皎币 70调停 花生"
-msgstr ""
+msgstr "v2.996バージョン 10 30火 60 70皎皎コイン 70調停 ピーナッツ"
 
 msgid "x1"
-msgstr ""
+msgstr "x1"
 
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 msgid "不使用"
 msgstr "使用しない"
@@ -331,61 +331,100 @@ msgid "鼠标键或键盘按键"
 msgstr "マウスボタンまたはキーボードキー"
 
 msgid "Check Monthly Card"
-msgstr ""
+msgstr "月間カードを確認"
 
 msgid "Check for monthly card to avoid interruption of tasks"
-msgstr ""
+msgstr "タスクの中断を避けるために月間カードを確認"
 
 msgid "Monthly Card Config"
-msgstr ""
+msgstr "月間カード設定"
 
 msgid "Monthly Card Time"
-msgstr ""
+msgstr "月間カード時間"
 
 msgid "OK-角色经验本50-巧手(主控猪妹,ai水母280范围,超时时间可设置10秒内保证跑错重开)"
-msgstr ""
+msgstr "OK-キャラクター経験値ダンジョン50-器用さ(メイン操作: 豚娘, AIクラゲ280範囲, タイムアウト時間は10秒以内に設定可能で、ルート間違い時の再開を保証)"
 
 msgid "OK-角色经验本60-兼容无巧手(主控成年女磐石,ai水母280范围)"
-msgstr ""
+msgstr "OK-キャラクター経験値ダンジョン60-器用さなし互換(メイン操作: 成人女性岩石, AIクラゲ280範囲)"
 
 msgid "Turn on to avoid interruption by monthly card when executing tasks"
-msgstr ""
+msgstr "タスク実行中に月間カードによる中断を避けるためにオンにする"
 
 msgid "Your computer's local time when the monthly card will popup, hour in (1-24)"
-msgstr ""
+msgstr "月間カードがポップアップする際のコンピューターの現地時間、時間(1-24)"
 
 msgid "ok-50MOD"
-msgstr ""
+msgstr "ok-50MOD"
 
 msgid "ok-55,70MOD(主控水母280范围)"
-msgstr ""
+msgstr "ok-55,70MOD(メイン操作: クラゲ280範囲)"
 
 msgid "ok-60MOD"
-msgstr ""
+msgstr "ok-60MOD"
 
 msgid "ok-80MOD(主控水母高范围)"
-msgstr ""
+msgstr "ok-80MOD(メイン操作: クラゲ高範囲)"
 
 msgid "ok-武器突破材料70-巧手(水母磐石280范围)"
-msgstr ""
+msgstr "ok-武器突破素材70-器用さ(クラゲ岩石280範囲)"
 
 msgid "ok-武器突破材料70-巧手稳定版(水母磐石280范围)"
-msgstr ""
+msgstr "ok-武器突破素材70-器用さ安定版(クラゲ岩石280範囲)"
 
 msgid "ok-武器经验本70(水母磐石280范围)"
-msgstr ""
+msgstr "ok-武器経験値ダンジョン70(クラゲ岩石280範囲)"
 
 msgid "ok-武器经验本80(水母磐石280范围)"
-msgstr ""
+msgstr "ok-武器経験値ダンジョン80(クラゲ岩石280範囲)"
 
 msgid "ok-火巧10-巧手(磐石)"
-msgstr ""
+msgstr "ok-火器用さ10-器用さ(岩石)"
 
 msgid "ok-火巧30,60-巧手(磐石30-14轮,60-8轮)"
-msgstr ""
+msgstr "ok-火器用さ30,60-器用さ(岩石30-14ラウンド,60-8ラウンド)"
 
 msgid "ok-火巧角色突破材料70-巧手(磐石,火10通用)"
-msgstr ""
+msgstr "ok-火器用さキャラクター突破素材70-器用さ(岩石,火10共通)"
 
 msgid "ok-皎皎币60"
-msgstr ""
+msgstr "ok-皎皎コイン60"
+
+msgid "60角色经验本"
+msgstr "60キャラクター経験値ダンジョン"
+
+msgid "Auto Pick"
+msgstr "自動ピックアップ"
+
+msgid "Auto Pick in Game World"
+msgstr "ゲームワールドでの自動ピックアップ"
+
+msgid "优先选择持有数为0的密函奖励"
+msgstr "所持数0の密函報酬を優先的に選択"
+
+msgid "刷武器密函时推荐同时开启下一选项"
+msgstr "武器密函を周回する際は、次のオプションも同時に有効にすることをお勧めします"
+
+msgid "在上一选项启用时生效，多个目标时选择靠左的"
+msgstr "前のオプションが有効な場合に適用され、複数のターゲットがある場合は左側のものを選択"
+
+msgid "完成时播放提示音"
+msgstr "完了時に通知音を再生"
+
+msgid "开局向前走"
+msgstr "開始時に前進"
+
+msgid "开局向前走几秒"
+msgstr "開始時に数秒前進"
+
+msgid "开局重置角色位置"
+msgstr "開始時にキャラクター位置をリセット"
+
+msgid "挂机模式"
+msgstr "放置モード"
+
+msgid "无悠闲全自动钓鱼 (原作者: B站无敌大蜜瓜)"
+msgstr "のんびり全自動釣り (原作者: Bilibili 無敵大蜜瓜)"
+
+msgid "自动避险"
+msgstr "自動危険回避"

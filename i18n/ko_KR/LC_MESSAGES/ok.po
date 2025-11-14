@@ -10,70 +10,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 msgid "200%"
-msgstr ""
+msgstr "200%"
 
 msgid "2000%"
-msgstr ""
+msgstr "2000%"
 
 msgid "800%"
-msgstr ""
+msgstr "800%"
 
 msgid "BAR_MIN_AREA"
-msgstr ""
+msgstr "바_최소_영역"
 
 msgid "CONTROL_ZONE_RATIO"
-msgstr ""
+msgstr "제어_영역_비율"
 
 msgid "Combat Key"
-msgstr ""
+msgstr "전투 키"
 
 msgid "END_WAIT_SPACE"
-msgstr ""
+msgstr "종료_대기_공간"
 
 msgid "Game Hotkey Config"
-msgstr ""
+msgstr "게임 단축키 설정"
 
 msgid "Geniemon Key"
-msgstr ""
+msgstr "게니몬 키"
 
 msgid "ICON_MAX_AREA"
-msgstr ""
+msgstr "아이콘_최대_영역"
 
 msgid "ICON_MIN_AREA"
-msgstr ""
+msgstr "아이콘_최소_영역"
 
 msgid "In Game Hotkey for Skills"
-msgstr ""
+msgstr "게임 내 스킬 단축키"
 
 msgid "MAX_END_SEC"
-msgstr ""
+msgstr "최대_종료_초"
 
 msgid "MAX_FIGHT_SEC"
-msgstr ""
+msgstr "최대_전투_초"
 
 msgid "MAX_ROUNDS"
-msgstr ""
+msgstr "최대_라운드"
 
 msgid "MAX_START_SEC"
-msgstr ""
+msgstr "최대_시작_초"
 
 msgid "Ultimate Key"
-msgstr ""
+msgstr "궁극기 키"
 
 msgid "right"
-msgstr ""
+msgstr "오른쪽"
 
 msgid "v2.996版本 10 30火 60 70皎皎币 70调停 花生"
-msgstr ""
+msgstr "v2.996 버전 10 30 불 60 70 조개 화폐 70 중재 땅콩"
 
 msgid "x1"
-msgstr ""
+msgstr "x1"
 
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 msgid "不使用"
 msgstr "사용 안 함"
@@ -331,61 +331,100 @@ msgid "鼠标键或键盘按键"
 msgstr "마우스 버튼 또는 키보드 키"
 
 msgid "Check Monthly Card"
-msgstr ""
+msgstr "월간 카드 확인"
 
 msgid "Check for monthly card to avoid interruption of tasks"
-msgstr ""
+msgstr "작업 중단 방지를 위해 월간 카드 확인"
 
 msgid "Monthly Card Config"
-msgstr ""
+msgstr "월간 카드 설정"
 
 msgid "Monthly Card Time"
-msgstr ""
+msgstr "월간 카드 시간"
 
 msgid "OK-角色经验本50-巧手(主控猪妹,ai水母280范围,超时时间可设置10秒内保证跑错重开)"
-msgstr ""
+msgstr "OK-캐릭터 경험치 던전 50-능숙 (주 제어: 돼지 소녀, AI 해파리 280 범위, 시간 초과는 10초 이내로 설정하여 경로 오류 시 재시작 보장)"
 
 msgid "OK-角色经验本60-兼容无巧手(主控成年女磐石,ai水母280范围)"
-msgstr ""
+msgstr "OK-캐릭터 경험치 던전 60-능숙 없음 호환 (주 제어: 성인 여성 바위, AI 해파리 280 범위)"
 
 msgid "Turn on to avoid interruption by monthly card when executing tasks"
-msgstr ""
+msgstr "작업 실행 시 월간 카드에 의한 중단을 피하기 위해 켜기"
 
 msgid "Your computer's local time when the monthly card will popup, hour in (1-24)"
-msgstr ""
+msgstr "월간 카드가 팝업될 컴퓨터의 현지 시간, 시간 (1-24)"
 
 msgid "ok-50MOD"
-msgstr ""
+msgstr "ok-50MOD"
 
 msgid "ok-55,70MOD(主控水母280范围)"
-msgstr ""
+msgstr "ok-55,70MOD (주 제어: 해파리 280 범위)"
 
 msgid "ok-60MOD"
-msgstr ""
+msgstr "ok-60MOD"
 
 msgid "ok-80MOD(主控水母高范围)"
-msgstr ""
+msgstr "ok-80MOD (주 제어: 해파리 고범위)"
 
 msgid "ok-武器突破材料70-巧手(水母磐石280范围)"
-msgstr ""
+msgstr "ok-무기 돌파 재료 70-능숙 (해파리 바위 280 범위)"
 
 msgid "ok-武器突破材料70-巧手稳定版(水母磐石280范围)"
-msgstr ""
+msgstr "ok-무기 돌파 재료 70-능숙 안정 버전 (해파리 바위 280 범위)"
 
 msgid "ok-武器经验本70(水母磐石280范围)"
-msgstr ""
+msgstr "ok-무기 경험치 던전 70 (해파리 바위 280 범위)"
 
 msgid "ok-武器经验本80(水母磐石280范围)"
-msgstr ""
+msgstr "ok-무기 경험치 던전 80 (해파리 바위 280 범위)"
 
 msgid "ok-火巧10-巧手(磐石)"
-msgstr ""
+msgstr "ok-불 능숙 10-능숙 (바위)"
 
 msgid "ok-火巧30,60-巧手(磐石30-14轮,60-8轮)"
-msgstr ""
+msgstr "ok-불 능숙 30,60-능숙 (바위 30-14 라운드, 60-8 라운드)"
 
 msgid "ok-火巧角色突破材料70-巧手(磐石,火10通用)"
-msgstr ""
+msgstr "ok-불 능숙 캐릭터 돌파 재료 70-능숙 (바위, 불 10 공용)"
 
 msgid "ok-皎皎币60"
-msgstr ""
+msgstr "ok-조개 화폐 60"
+
+msgid "60角色经验本"
+msgstr "60 캐릭터 경험치 던전"
+
+msgid "Auto Pick"
+msgstr "자동 줍기"
+
+msgid "Auto Pick in Game World"
+msgstr "게임 월드 자동 줍기"
+
+msgid "优先选择持有数为0的密函奖励"
+msgstr "보유 수 0인 밀함 보상 우선 선택"
+
+msgid "刷武器密函时推荐同时开启下一选项"
+msgstr "무기 밀함 파밍 시 다음 옵션도 함께 활성화하는 것을 권장합니다"
+
+msgid "在上一选项启用时生效，多个目标时选择靠左的"
+msgstr "이전 옵션 활성화 시 적용되며, 여러 대상이 있을 경우 왼쪽을 선택"
+
+msgid "完成时播放提示音"
+msgstr "완료 시 알림음 재생"
+
+msgid "开局向前走"
+msgstr "시작 시 앞으로 이동"
+
+msgid "开局向前走几秒"
+msgstr "시작 시 몇 초간 앞으로 이동"
+
+msgid "开局重置角色位置"
+msgstr "시작 시 캐릭터 위치 초기화"
+
+msgid "挂机模式"
+msgstr "AFK 모드"
+
+msgid "无悠闲全自动钓鱼 (原作者: B站无敌大蜜瓜)"
+msgstr "느긋한 자동 낚시 (원작자: Bilibili 無敵大蜜瓜)"
+
+msgid "自动避险"
+msgstr "자동 위험 회피"

@@ -10,28 +10,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 msgid "200%"
-msgstr ""
+msgstr "200%"
 
 msgid "2000%"
-msgstr ""
+msgstr "2000%"
 
 msgid "800%"
-msgstr ""
+msgstr "800%"
 
 msgid "BAR_MIN_AREA"
-msgstr ""
+msgstr "魚條最小面積"
 
 msgid "CONTROL_ZONE_RATIO"
-msgstr ""
+msgstr "魚標按空格區域佔比"
 
 msgid "Combat Key"
 msgstr "戰技"
 
 msgid "END_WAIT_SPACE"
-msgstr ""
+msgstr "每輪結束等待時間"
 
 msgid "Game Hotkey Config"
 msgstr "遊戲快捷鍵設置"
@@ -40,40 +40,40 @@ msgid "Geniemon Key"
 msgstr "魔靈支援"
 
 msgid "ICON_MAX_AREA"
-msgstr ""
+msgstr "魚標最大面積"
 
 msgid "ICON_MIN_AREA"
-msgstr ""
+msgstr "魚標最小面積"
 
 msgid "In Game Hotkey for Skills"
 msgstr "遊戲內技能快捷鍵"
 
 msgid "MAX_END_SEC"
-msgstr ""
+msgstr "結束階段超時"
 
 msgid "MAX_FIGHT_SEC"
-msgstr ""
+msgstr "溜魚階段超時"
 
 msgid "MAX_ROUNDS"
-msgstr ""
+msgstr "最大輪數"
 
 msgid "MAX_START_SEC"
-msgstr ""
+msgstr "開始階段超時"
 
 msgid "Ultimate Key"
 msgstr "終結技"
 
 msgid "right"
-msgstr ""
+msgstr "右鍵"
 
 msgid "v2.996版本 10 30火 60 70皎皎币 70调停 花生"
-msgstr ""
+msgstr "v2.996版本 10 30火 60 70皎皎幣 70調停 花生"
 
 msgid "x1"
-msgstr ""
+msgstr "x1"
 
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 msgid "不使用"
 msgstr "不使用"
@@ -355,37 +355,76 @@ msgid "Your computer's local time when the monthly card will popup, hour in (1-2
 msgstr "幾點會彈出月卡提示, 本地計算機時間(1-24)"
 
 msgid "ok-50MOD"
-msgstr ""
+msgstr "ok-50MOD"
 
 msgid "ok-55,70MOD(主控水母280范围)"
-msgstr ""
+msgstr "ok-55,70MOD(主控水母280範圍)"
 
 msgid "ok-60MOD"
-msgstr ""
+msgstr "ok-60MOD"
 
 msgid "ok-80MOD(主控水母高范围)"
-msgstr ""
+msgstr "ok-80MOD(主控水母高範圍)"
 
 msgid "ok-武器突破材料70-巧手(水母磐石280范围)"
-msgstr ""
+msgstr "ok-武器突破材料70-巧手(水母磐石280範圍)"
 
 msgid "ok-武器突破材料70-巧手稳定版(水母磐石280范围)"
-msgstr ""
+msgstr "ok-武器突破材料70-巧手穩定版(水母磐石280範圍)"
 
 msgid "ok-武器经验本70(水母磐石280范围)"
-msgstr ""
+msgstr "ok-武器經驗本70(水母磐石280範圍)"
 
 msgid "ok-武器经验本80(水母磐石280范围)"
-msgstr ""
+msgstr "ok-武器經驗本80(水母磐石280範圍)"
 
 msgid "ok-火巧10-巧手(磐石)"
-msgstr ""
+msgstr "ok-火巧10-巧手(磐石)"
 
 msgid "ok-火巧30,60-巧手(磐石30-14轮,60-8轮)"
-msgstr ""
+msgstr "ok-火巧30,60-巧手(磐石30-14輪,60-8輪)"
 
 msgid "ok-火巧角色突破材料70-巧手(磐石,火10通用)"
-msgstr ""
+msgstr "ok-火巧角色突破材料70-巧手(磐石,火10通用)"
 
 msgid "ok-皎皎币60"
-msgstr ""
+msgstr "ok-皎皎幣60"
+
+msgid "60角色经验本"
+msgstr "60角色經驗本"
+
+msgid "Auto Pick"
+msgstr "自動拾取"
+
+msgid "Auto Pick in Game World"
+msgstr "大世界自動拾取"
+
+msgid "优先选择持有数为0的密函奖励"
+msgstr "優先選擇持有數為0的密函獎勵"
+
+msgid "刷武器密函时推荐同时开启下一选项"
+msgstr "刷武器密函時推薦同時開啟下一選項"
+
+msgid "在上一选项启用时生效，多个目标时选择靠左的"
+msgstr "在上一選項啟用時生效，多個目標時選擇靠左的"
+
+msgid "完成时播放提示音"
+msgstr "完成時播放提示音"
+
+msgid "开局向前走"
+msgstr "開局向前走"
+
+msgid "开局向前走几秒"
+msgstr "開局向前走幾秒"
+
+msgid "开局重置角色位置"
+msgstr "開局重置角色位置"
+
+msgid "挂机模式"
+msgstr "掛機模式"
+
+msgid "无悠闲全自动钓鱼 (原作者: B站无敌大蜜瓜)"
+msgstr "無悠閒全自動釣魚 (原作者: B站無敵大蜜瓜)"
+
+msgid "自动避险"
+msgstr "自動避險"
