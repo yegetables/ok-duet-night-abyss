@@ -73,6 +73,7 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             elif _status == Mission.STOP:
                 pass
             elif _status == Mission.CONTINUE:
+                self.sleep(5)
                 pass
 
             self.sleep(0.1)
