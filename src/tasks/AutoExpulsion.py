@@ -86,6 +86,7 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
     def init_runtime_state(self):
         self.runtime_state = {"start_time": 0, "skill_time": 0, "random_walk_time": 0}
+        self.runtime_state["skill_time"] = -self.config.get("技能释放频率", 5)
 
     def handle_in_mission(self):
         if self.runtime_state["start_time"] == 0:
