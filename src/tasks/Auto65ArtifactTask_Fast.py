@@ -211,7 +211,8 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
             self.send_key_up("lalt")
             # 19.97s: 复位并传送到目标位置
-            self.reset_and_transport()
+            if not self.reset_and_transport():
+                raise Exception("复位失败")
 
             # ===== 路径编写结束 =====
 
