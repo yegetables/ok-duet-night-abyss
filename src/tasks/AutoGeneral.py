@@ -9,6 +9,7 @@ from src.tasks.CommissionsTask import CommissionsTask, QuickMoveTask, Mission, _
 from src.tasks.BaseCombatTask import BaseCombatTask
 from src.tasks.DNAOneTimeTask import DNAOneTimeTask
 from src.tasks.trigger.AutoPuzzleTask import AutoPuzzleTask
+from src.tasks.trigger.AutoWheelTask import AutoWheelTask
 
 logger = Logger.get_logger(__name__)
 
@@ -27,7 +28,8 @@ class AutoGeneral(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
         self.default_config.update({
             '轮次': 3,
-            "启动迷宫解迷": True
+            "启动迷宫解迷": True,
+            "启动转盘解迷": True
         })
 
         self.setup_commission_config()
@@ -36,9 +38,9 @@ class AutoGeneral(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         for key in keys_to_remove:
             self.default_config.pop(key, None)
 
-        items = list(self.default_config.items())
-        items[1], items[2] = items[2], items[1]
-        self.default_config = dict(items)
+        # items = list(self.default_config.items())
+        # items[1], items[2] = items[2], items[1]
+        # self.default_config = dict(items)
 
         # self.config_description.update({
         #     '超时时间': '超时后将发出提示',
@@ -47,6 +49,7 @@ class AutoGeneral(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.action_timeout = DEFAULT_ACTION_TIMEOUT
         self.quick_move_task = QuickMoveTask(self)
         self.puzzle_task = self.get_task_by_class(AutoPuzzleTask)
+        self.wheel_task = self.get_task_by_class(AutoWheelTask)
         self.external_movement = _default_movement
         self.external_movement_evac = _default_movement
         self._external_config = None
@@ -99,6 +102,8 @@ class AutoGeneral(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             else:
                 if self.config.get("启动迷宫解迷", False):
                     self.puzzle_task.run()
+                if self.config.get("启动转盘解迷", False):
+                    self.wheel_task.run()
 
             _status = self.handle_mission_interface(stop_func=self.stop_func)
             if _status == Mission.START:
