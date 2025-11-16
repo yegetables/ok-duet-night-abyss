@@ -88,8 +88,6 @@ class AutoEscortTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             return {}
 
     def run(self):
-        self.wait_for_puzzle_completion()
-        return
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position(save_current_pos=False)
         self.set_check_monthly_card()
