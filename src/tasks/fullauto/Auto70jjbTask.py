@@ -93,7 +93,7 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.send_key_up("lalt")
                 _wave_start = time.time()
 
-                self.current_wave = -1
+                self.reset_wave_info()
                 while self.current_wave == -1 and time.time() - _wave_start < 2:
                     self.get_wave_info()
                     self.sleep(0.2)
@@ -104,13 +104,13 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             elif _status == Mission.CONTINUE:
                 self.log_info('任务继续')
                 self.wait_until(self.in_team, time_out=30)
-                self.current_wave = -1
+                self.reset_wave_info()
             self.sleep(0.2)
 
     def init_param(self):
         self.stop_mission = False
         self.current_round = -1
-        self.current_wave = -1
+        self.reset_wave_info()
         self.skill_time = 0
 
     def stop_func(self):
@@ -165,7 +165,7 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.send_key_up("a")
             #分支1直接到达，未到达则进入分支2继续往前走
             start = time.time()
-            self.current_wave = -1
+            self.reset_wave_info()
             while self.current_wave == -1 and time.time() - start < 2:
                 self.get_wave_info()
                 self.sleep(0.2) 

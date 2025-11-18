@@ -140,11 +140,11 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.walk_to_aim()
                 _wave_start = time.time()
                 _delay_task_start = _wave_start + 1
-                self.current_wave = -1
+                self.reset_wave_info()
             elif _status == Mission.CONTINUE:
                 self.log_info('任务继续')
                 self.wait_until(self.in_team, time_out=30)
-                self.current_wave = -1
+                self.reset_wave_info()
                 _wave_start = time.time()
             self.sleep(0.2)
 
@@ -152,7 +152,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.delay_index = None
         self.stop_mission = False
         self.current_round = -1
-        self.current_wave = -1
+        self.reset_wave_info()
         self.skill_time = 0
 
     def stop_func(self):
