@@ -81,6 +81,8 @@ class AutoPuzzleTask(BaseDNATask, TriggerTask):
 
         # 确保游戏窗口在前台，解密需要游戏窗口在前台（鼠标拖拽操作无法后台执行）
         if not hwnd_window.is_foreground():
+            win32api.keybd_event(win32con.VK_MENU, 0, 0, 0)
+            win32api.keybd_event(win32con.VK_MENU, 0, win32con.KEYEVENTF_KEYUP, 0)
             hwnd_window.bring_to_front()
 
         puzzle_data = self.puzzle_paths[puzzle_name]
