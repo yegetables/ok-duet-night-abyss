@@ -301,17 +301,34 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
         for name, template_gray in self.img.items():
             # --- 过滤逻辑 ---
-            # 逻辑 1: 起始状态(index is None)，跳过以字母结尾的图（假设字母结尾是后续步骤）
+            # 逻辑 1: 起始状态 (index is None)
             if index is None and not pattern.search(name):
                 continue
 
             if index is not None:
-                # 逻辑 2: 如果有前置节点，只匹配包含前置节点名且长度差异不大的图 (寻找子节点/后继节点)
-                # 例如：former="Map1", current check="Map1_A" (Len diff 2) -> OK
-                if index not in name or (len(name) - len(index) > 4):
-                    continue
-                # 逻辑 3: 不匹配自己
+                # 逻辑 2: 不匹配自己 (先判断这个效率最高)
                 if index == name:
+                    continue
+
+                # 逻辑 3: 严格的前缀匹配
+                
+                # 1. 必须是以 index 开头
+                if not name.startswith(index):
+                    continue
+                
+                # 2. 获取去掉 index 后的剩余部分
+                # 例如: index="A-1", name="A-1-1" -> suffix="-1"
+                # 例如: index="A-1", name="A-10"  -> suffix="0"
+                suffix = name[len(index):]
+
+                # 3. 检查分隔符：如果不是以 '-' 开头，说明不是层级递进，而是数字扩展 (如 1 -> 10)
+                # 这一步阻止了 "60角色-A-1-1" 匹配到 "60角色-A-1-10"
+                if not suffix.startswith('-'):
+                    continue
+
+                # 4. 长度限制 (防止跳太远，保持原有的逻辑)
+                # 这里的 len(suffix) 等同于 len(name) - len(index)
+                if len(suffix) > 4: 
                     continue
 
             count += 1
