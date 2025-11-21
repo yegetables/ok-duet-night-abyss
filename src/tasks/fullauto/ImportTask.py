@@ -17,8 +17,8 @@ from src.tasks.DNAOneTimeTask import DNAOneTimeTask
 from src.tasks.CommissionsTask import CommissionsTask, Mission, QuickMoveTask
 from src.tasks.BaseCombatTask import BaseCombatTask
 
-from src.tasks.trigger.AutoPuzzleTask import AutoPuzzleTask
-from src.tasks.trigger.AutoWheelTask import AutoWheelTask
+from src.tasks.trigger.AutoMazeTask import AutoMazeTask
+from src.tasks.trigger.AutoRouletteTask import AutoRouletteTask
 
 from src.tasks.AutoDefence import AutoDefence
 from src.tasks.AutoExpulsion import AutoExpulsion
@@ -46,7 +46,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             '轮次': 10,
             '外部文件夹': "",
             '副本类型': "默认",
-            # '使用内建解密': False,
+            # '使用内建机关解锁': False,
         })
         self.config_type['外部文件夹'] = {
             "type": "drop_down",
@@ -71,23 +71,15 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.action_timeout = 10
         self.quick_move_task = QuickMoveTask(self)
 
-    def load_direct_folder(self, path):
-        folders = []
-        for item in os.listdir(path):
-            item_path = os.path.join(path, item)
-            if os.path.isdir(item_path) and item != 'builtin':
-                folders.append(item)
-        return folders
-
     def run(self):
-        path = Path.cwd()
-        self.script = self.process_json_files(f'{path}\mod\{self.config.get("外部文件夹")}\scripts')
-        self.img = self.load_png_files(f'{path}\mod\{self.config.get("外部文件夹")}\map')
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position(save_current_pos=False)
         self.set_check_monthly_card()
-        _to_do_task = self
         try:
+            path = Path.cwd()
+            self.script = self.process_json_files(f'{path}\mod\{self.config.get("外部文件夹")}\scripts')
+            self.img = self.load_png_files(f'{path}\mod\{self.config.get("外部文件夹")}\map')
+            _to_do_task = self
             if self.config.get('副本类型') == '扼守无尽':
                 _to_do_task = self.get_task_by_class(AutoDefence)
                 _to_do_task.config_external_movement(self.walk_to_aim, self.config)
@@ -164,6 +156,14 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         if self.current_round >= n:
             return True
 
+    def load_direct_folder(self, path):
+        folders = []
+        for item in os.listdir(path):
+            item_path = os.path.join(path, item)
+            if os.path.isdir(item_path) and item != 'builtin':
+                folders.append(item)
+        return folders
+
     def process_json_files(self, folder_path):
         json_files = {}
         for filename in os.listdir(folder_path):
@@ -217,8 +217,8 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         # 预编译正则，提高多次调用的效率
         # 假设逻辑是：如果没有前置点，跳过以字母结尾的名字（通常是 start 点之后的步骤）
         end_with_letter_pattern = re.compile(r'[a-zA-Z]$')
-        # puzzle_task = self.get_task_by_class(AutoPuzzleTask)
-        # wheel_task = self.get_task_by_class(AutoWheelTask)
+        maze_task = self.get_task_by_class(AutoMazeTask)
+        roulette_task = self.get_task_by_class(AutoRouletteTask)
 
         while True:
             start_time = time.perf_counter()
@@ -226,12 +226,10 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
             # 尝试在 5 秒内找到匹配的地图
             while map_index is None and time.perf_counter() - start_time < 5:
-                # if self.config.get('使用内建解密', False):
-                #     puzzle_task.run()
-                #     wheel_task.run()
-                #     if puzzle_task.puzzle_solved or wheel_task.puzzle_solved:
-                #         if not self.wait_until(self.in_team, time_out=2):
-                #             continue
+                # if self.config.get('使用内建机关解锁', False):
+                #     maze_task.run()
+                #     roulette_task.run()
+                #     if maze_task.unlocked or roulette_task.unlocked:
 
                 #         def find_next_child(parent_name):
                 #             parent_name += "-"
@@ -272,6 +270,8 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 except MacroFailedException:
                     logger.warning(f"宏执行失败: {map_index}")
                     return False
+                except TaskDisabledException:
+                    raise
                 except Exception as e:
                     logger.error("ImportTask critical error", e)
                     raise
