@@ -223,7 +223,7 @@ class CommissionsTask(BaseDNATask):
                 self.move_mouse_to_safe_position(box=box)
                 self.click(0.56, 0.5, down_time=0.02)
                 self.move_back_from_safe_position()
-                self.sleep(0.1)
+                self.sleep(1)
                 self.wait_until(
                     condition=lambda: not self.find_letter_interface(),
                     post_action=lambda: (
