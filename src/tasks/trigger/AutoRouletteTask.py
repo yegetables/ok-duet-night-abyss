@@ -329,9 +329,13 @@ class AutoRouletteTask(BaseDNATask, TriggerTask):
         
         if not self.ocr(box=self.box_of_screen_scaled(2560, 1440, 1878, 736, 1963, 769, name="space_text", hcenter=True),
                     match=re.compile("space", re.IGNORECASE)):
-            return
-        else:
-            self.sleep(0.1)
+            if not self.wait_ocr(box=self.box_of_screen_scaled(2560, 1440, 1878, 736, 1963, 769, name="space_text", hcenter=True),
+                    match=re.compile("space", re.IGNORECASE), time_out=3):
+                self.log_info("重试后仍未找到轮盘，跳过解锁轮盘")
+                return
+            else:
+                self.log_info("重试之后检查到轮盘，继续解锁流程")
+        self.sleep(0.1)
         f_search_box = self.box_of_screen_scaled(2560, 1440, 2275, 1235, 2365, 1315, name="f_search", hcenter=True)
         f = self.find_best_match_in_box(f_search_box, ["pick_up_f"], threshold=0.8)
         if f :
