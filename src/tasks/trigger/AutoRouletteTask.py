@@ -327,8 +327,8 @@ class AutoRouletteTask(BaseDNATask, TriggerTask):
         if self.scene.in_team(self.in_team_and_world):
             return
         
-        if not self.ocr(box=self.box_of_screen_scaled(2560, 1440, 1878, 736, 1963, 769, name="space_text", hcenter=True),
-                    match=re.compile("space", re.IGNORECASE)):
+        if not self.wait_ocr(box=self.box_of_screen_scaled(2560, 1440, 1878, 736, 1963, 769, name="space_text", hcenter=True),
+                    match=re.compile("space", re.IGNORECASE), time_out=1):
             return
         else:
             self.sleep(0.1)
