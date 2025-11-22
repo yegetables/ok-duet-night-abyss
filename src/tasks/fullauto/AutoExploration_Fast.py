@@ -49,6 +49,8 @@ class AutoExploration_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             _to_do_task = self.get_task_by_class(AutoExploration)
             _to_do_task.config_external_movement(self.walk_to_aim, self.config)
             return _to_do_task.do_run()
+        except GeneratorExit:
+            return self.run()
         except TaskDisabledException:
             pass
         except Exception as e:
@@ -95,6 +97,7 @@ class AutoExploration_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             return True
 
         if self.find_track_point(0.29,0.54,0.34,0.62):
+            raise GeneratorExit
             #40探险-高台
             self.send_key_down("lalt")
             self.sleep(0.05)
