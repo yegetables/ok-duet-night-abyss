@@ -326,9 +326,10 @@ class AutoRouletteTask(BaseDNATask, TriggerTask):
         self._unlocked = False
         if self.scene.in_team(self.in_team_and_world):
             return
-        
-        if not self.ocr(box=self.box_of_screen_scaled(2560, 1440, 1878, 736, 1963, 769, name="space_text", hcenter=True),
-                    match=re.compile("space", re.IGNORECASE)):
+
+        if not self.wait_ocr(box=self.box_of_screen_scaled(2560, 1440, 1878, 736, 1963, 769, name="space_text", hcenter=True),
+                    match=re.compile("space", re.IGNORECASE), time_out=1):
+            self.log_debug("未检测到轮盘提示，跳过解锁")
             return
         else:
             self.sleep(0.1)
