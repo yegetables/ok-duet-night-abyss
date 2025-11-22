@@ -452,6 +452,9 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.reset_and_transport()
             return
 
+        if key == 'middle_click':
+            if action_type == "key_down":
+                self.middle_click()
         # 3. 统一应用动态按键映射
         if key == 'lshift':
             key = self.get_dodge_key()
