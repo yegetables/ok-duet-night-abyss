@@ -44,11 +44,19 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.last_f_time = 0
         self.last_f_was_interact = False
 
+        self.maze_task = self.get_task_by_class(AutoMazeTask)
+        self.roulette_task = self.get_task_by_class(AutoRouletteTask)
+        # 新增：双击F键序列状态
+        self.first_f_time = 0 # 记录第一次F键按下的时间
+        self.f_key_count = 0 # 记录时间窗口内F键按下次数
+        self.double_f_timeout = 3.0  # 双击F键时间窗口，单位秒
+        self.wait_solve_timeout = 8.0  # 解密等待超时，单位秒
+
         self.default_config.update({
             '轮次': 10,
             '外部文件夹': "",
             '副本类型': "默认",
-            # '使用内建机关解锁': False,
+            '使用内建机关解锁': False,
         })
         self.config_type['外部文件夹'] = {
             "type": "drop_down",
@@ -67,13 +75,30 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.config_description.update({
             '轮次': '如果是无尽关卡，选择打几个轮次',
             '外部文件夹': '选择mod目录下的外部逻辑',
-            # '使用内建解密': '使用ok内建解密功能',
+            '使用内建机关解锁': '使用ok内建解密功能',
         })
 
         self.skill_tick = self.create_skill_ticker()
         self.action_timeout = 10
         self.quick_move_task = QuickMoveTask(self)
 
+    def reset_f_sequence(self):
+        """
+        重置F键序列状态
+        """
+        self.first_f_time = 0
+        self.f_key_count = 0
+
+    def try_to_solve_tasks(self):
+                self.maze_task.run()
+                self.roulette_task.run()
+                if self.wait_until(self.in_team, time_out=self.wait_solve_timeout):
+                    logger.debug("解密成功")
+                    return True 
+                logger.debug("未成功处理解密，等待重开")
+                self.open_in_mission_menu()
+                # self.soundBeep()
+                return False     
     def run(self):
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position(save_current_pos=False)
@@ -222,8 +247,6 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         # 预编译正则，提高多次调用的效率
         # 假设逻辑是：如果没有前置点，跳过以字母结尾的名字（通常是 start 点之后的步骤）
         end_with_letter_pattern = re.compile(r'[a-zA-Z]$')
-        # maze_task = self.get_task_by_class(AutoMazeTask)
-        # roulette_task = self.get_task_by_class(AutoRouletteTask)
 
         while True:
             start_time = time.perf_counter()
@@ -391,13 +414,21 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
             # 等待直到达到动作指定的时间戳
             while True:
-                current_offset = time.perf_counter() - start_time
+                current_time = time.perf_counter()
+                current_offset = current_time - start_time
                 if current_offset >= target_time:
                     break
 
                 # 检查中断条件
                 if self.check_for_monthly_card()[0]:
                     raise MacroFailedException
+                # 检查F键序列是否超时
+                if self.first_f_time > 0:
+                    elapsed = current_time - self.first_f_time
+                    if elapsed > self.double_f_timeout:
+                        # 超时重置状态
+                        logger.debug(f"F键序列超时，重置状态,{elapsed:.3f}>{self.double_f_timeout}")
+                        self.reset_f_sequence()
 
                 # 这里的 next_frame 最好包含微小的 sleep，防止 CPU 100% 空转
                 self.next_frame()
@@ -407,6 +438,36 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             else:
                 self.delay_index = None
                 self.execute_action(action)
+            
+                # 处理按键抬起事件
+                if action['type'] == "key_up" and action['key'] == "f":
+                    current_time = time.perf_counter()
+                    
+                    if self.first_f_time == 0:
+                        # 第一次按下F键，记录时间
+                        logger.debug("第一次F键按下，开始计时")
+                        self.first_f_time = current_time
+                        self.f_key_count = 1
+                    else:
+                        # 第二次按下F键，检查时间间隔
+                        time_interval = current_time - self.first_f_time
+                        self.f_key_count += 1
+                        
+                        if time_interval <= self.double_f_timeout and self.config.get('使用内建机关解锁', True):
+                            # 在double_f_timeout秒内按了第二次F键，触发解密任务
+                            logger.debug(f"{self.double_f_timeout}秒内按了第{self.f_key_count}次F键，间隔{time_interval:.3f}秒，触发解密任务")
+                            time_reset = time.perf_counter() 
+                            self.try_to_solve_tasks()
+                            start_time += time.perf_counter() - time_reset
+                            
+                            # 触发后重置状态，需要重新触发两次F键
+                            self.reset_f_sequence()
+                            logger.debug("解密任务完成，已重置F键序列状态")
+                        else:
+                            # 超过double_f_timeout 秒，重新开始计数
+                            logger.debug(f"F键间隔{time_interval:.3f}秒超过{self.double_f_timeout}秒，重新开始计数")
+                            self.first_f_time = current_time
+                            self.f_key_count = 1
 
         self.sleep(2)
 
