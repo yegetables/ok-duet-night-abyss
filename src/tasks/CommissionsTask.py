@@ -113,6 +113,8 @@ class CommissionsTask(BaseDNATask):
         start_time = time.time()
         while time.time() - start_time < action_timeout:
             if btn := self.find_retry_btn() or self.find_bottom_start_btn() or self.find_big_bottom_start_btn():
+                if btn == self.find_retry_btn():
+                    self.sleep(1.5)
                 self.move_mouse_to_safe_position(box=box)
                 self.click_box(btn, after_sleep=0)
                 self.move_back_from_safe_position()
