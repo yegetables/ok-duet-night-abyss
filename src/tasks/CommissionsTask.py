@@ -116,8 +116,6 @@ class CommissionsTask(BaseDNATask):
         start_time = time.time()
         while time.time() - start_time < action_timeout:
             if (btn := self.find_retry_btn() or self.find_bottom_start_btn() or self.find_big_bottom_start_btn()):
-                if btn == self.find_retry_btn():
-                    self.sleep(4)
                 self.click_box_random(btn, use_safe_move=True, safe_move_box=box, right_extend=0.1, after_sleep=0.2)
             if self.wait_until(condition=lambda: self.find_start_btn() or self.find_letter_interface(), time_out=1):
                 break
