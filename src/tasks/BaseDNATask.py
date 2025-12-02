@@ -324,6 +324,7 @@ class BaseDNATask(BaseTask):
             self.sleep(random.uniform(0.08, post_sleep))
             if use_safe_move:
                 self.move_mouse_to_safe_position(box=safe_move_box)
+                down_time = 0.02
             self.click(x, y, down_time=down_time, interval=interval)
             if use_safe_move:
                 self.move_back_from_safe_position()
