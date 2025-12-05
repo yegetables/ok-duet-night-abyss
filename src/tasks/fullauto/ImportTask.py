@@ -216,6 +216,12 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         return png_files
 
     def walk_to_aim(self, former_index=None):
+        self.send_key_down("lalt")
+        ret = self._walk_to_aim(former_index)
+        self.send_key_up("lalt")
+        return ret
+
+    def _walk_to_aim(self, former_index=None):
         """
         尝试匹配下一个地图节点并执行宏。
         """
@@ -463,6 +469,8 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             key = self.get_combat_key()
         elif key == 'q':
             key = self.get_ultimate_key()
+        elif 'alt' in key:
+            return
 
         # 4. 执行实际按键操作
         if action_type == "key_down":
