@@ -8,6 +8,8 @@ from src.tasks.BaseDNATask import BaseDNATask, isolate_white_text_to_black
 from src.tasks.config.CommissionConfig import CommissionConfig
 from src.tasks.config.CommissionSkillConfig import CommissionSkillConfig
 
+from src.tasks.trigger.AutoMazeTask import AutoMazeTask
+from src.tasks.trigger.AutoRouletteTask import AutoRouletteTask
 
 class Mission(Enum):
     START = 1
@@ -25,6 +27,8 @@ class CommissionsTask(BaseDNATask):
         self.mission_status = None
         self.action_timeout = 15
         self.wave_future = None
+        self.roulette_task = self.get_task_by_class(AutoRouletteTask)
+        self.maze_task = self.get_task_by_class(AutoMazeTask)
 
     @cached_property
     def commission_config(self):
@@ -424,7 +428,6 @@ class CommissionsTask(BaseDNATask):
             return False
 
         self.check_for_monthly_card()
-
         if self.find_letter_reward_btn():
             self.log_info("处理任务界面: 选择密函奖励")
             self.choose_letter_reward()
@@ -456,6 +459,9 @@ class CommissionsTask(BaseDNATask):
             self.log_info("处理任务界面: 放弃任务")
             self.give_up_mission()
             return Mission.GIVE_UP
+        else:
+            self.roulette_task.run()
+            self.maze_task.run()
         return False
 
     def get_return_status(self):
