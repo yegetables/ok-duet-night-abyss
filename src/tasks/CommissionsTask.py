@@ -4,7 +4,8 @@ from enum import Enum
 
 from ok import find_boxes_by_name, TaskDisabledException
 from src.tasks.BaseDNATask import BaseDNATask, isolate_white_text_to_black
-
+from src.tasks.trigger.AutoMazeTask import AutoMazeTask
+from src.tasks.trigger.AutoRouletteTask import AutoRouletteTask
 
 class Mission(Enum):
     START = 1
@@ -412,7 +413,6 @@ class CommissionsTask(BaseDNATask):
             return False
 
         self.check_for_monthly_card()
-
         if self.find_letter_reward_btn():
             self.log_info("处理任务界面: 选择密函奖励")
             self.choose_letter_reward()
@@ -444,6 +444,22 @@ class CommissionsTask(BaseDNATask):
             self.log_info("处理任务界面: 放弃任务")
             self.give_up_mission()
             return Mission.GIVE_UP
+        elif self.ocr(
+            box=self.box_of_screen_scaled(2560, 1440, 1878, 736, 1963, 769, name="space_text", hcenter=True),
+                        match=re.compile("space", re.IGNORECASE)
+        ):
+
+            if not self.wait_until(
+            self.in_team, 
+            post_action = lambda: self.send_key(self.get_interact_key(), after_sleep=0.1),
+            time_out = 1.5
+        ):
+                roulette_task = self.get_task_by_class(AutoRouletteTask)
+                roulette_task.run()
+                if not self.wait_until(self.in_team, time_out=1.5):           
+                        self.log_info_notify("未成功处理解密，请求人工接管")
+                        self.soundBeep()
+                        return Mission.CONTINUE
         return False
 
     def get_return_status(self):
