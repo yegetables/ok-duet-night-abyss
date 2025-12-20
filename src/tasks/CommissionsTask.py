@@ -168,7 +168,8 @@ class CommissionsTask(BaseDNATask):
     def choose_drop_rate(self, timeout=0):
         def click_drop_rate_btn():
             if (box:=self.find_drop_rate_btn()):
-                self.click_box_random(box, right_extend=0.1, after_sleep=0.25)
+                safe_box = self.box_of_screen(0.507, 0.647, 0.677, 0.697, name="safe_box", hcenter=True)
+                self.click_box_random(box, right_extend=0.1, after_sleep=0.25, use_safe_move=True, safe_move_box=safe_box)
         action_timeout = self.action_timeout if timeout == 0 else timeout
         self.sleep(0.5)
         self.choose_drop_rate_item()
