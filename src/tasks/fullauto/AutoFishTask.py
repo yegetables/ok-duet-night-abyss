@@ -34,9 +34,6 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
             "MAX_END_SEC": 20.0,
         })
 
-        # ROI 配置（鱼条和鱼标搜索区域，基于 1920x1080）
-        self.roi_fish_bar_and_icon = [1620, 325, 1645, 725]
-
         # 配置描述（便于GUI显示）
         self.config_description.update({
             "MAX_ROUNDS": "最大轮数，鱼塘每天上限为100次",
@@ -77,7 +74,7 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
     def find_fish_cast(self) -> tuple[bool, tuple]:
         """查找 fish_cast 图标（抛竿/收杆），返回 (found, center)"""
         CAST_THRESHOLD = 0.8  # fish_cast 匹配阈值
-        fish_box = self.box_of_screen_scaled(3840, 2160, 3147, 1566, 3383, 1797, name="fish_bite")
+        fish_box = self.box_of_screen(0.854, 0.778, 0.910, 0.879, name="fish_bite")
         box = self.find_one("fish_cast", box=fish_box, threshold=CAST_THRESHOLD) or self.find_one("fish_ease",
                                                                                                   box=fish_box,
                                                                                                   threshold=CAST_THRESHOLD)
@@ -88,9 +85,7 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
     def find_fish_bite(self) -> tuple[bool, tuple]:
         """查找 fish_bite 图标（等待鱼上钩），返回 (found, center)"""
         BITE_THRESHOLD = 0.8  # fish_bite 匹配阈值
-        fish_box = self.box_of_screen_scaled(
-            3840, 2160, 3147, 1566, 3383, 1797, name="fish_bite"
-        )
+        fish_box = self.box_of_screen(0.854, 0.778, 0.910, 0.879, name="fish_bite")
         box = self.find_one("fish_bite", box=fish_box, threshold=BITE_THRESHOLD)
         if box:
             return True, (box.x + box.width // 2, box.y + box.height // 2)
@@ -113,7 +108,8 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
         """
 
         # 获取 ROI 区域
-        box = self.box_of_screen_scaled(1920, 1080, 1620, 325, 1645, 725, name="fish_roi")
+        box = self.box_of_screen(0.873, 0.302, 0.890, 0.674, name="fish_roi")
+        self.draw_boxes(box.name, box, "blue")
 
         try:
             # frame = self.frame
