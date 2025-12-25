@@ -72,6 +72,9 @@ msgstr ""
 msgid "HelixLeap Key"
 msgstr ""
 
+msgid "Forward Key"
+msgstr ""
+
 msgid "In Game Hotkey for Skills"
 msgstr ""
 
