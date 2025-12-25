@@ -1,6 +1,6 @@
 import time
 from typing import Any  # noqa
-from ok import Logger
+from ok import Logger, BaseTask
 
 class BaseChar:
     def __init__(self, task, char_name=None):
@@ -59,6 +59,31 @@ class BaseChar:
         """
         self._combat_available = False
         self.task.send_key(self.get_combat_key(), interval=interval, down_time=down_time, after_sleep=after_sleep)
+    
+    def send_saq_combat_key(self, after_sleep=0, interval=-1, down_time=0.01):
+        """发送赛琪战技按键（按下Ctrl键释放战技）。
+
+        Args:
+            after_sleep (float, optional): 发送后的休眠时间。默认为 0。
+            interval (float, optional): 按键按下和释放的间隔。默认为 -1 (使用默认值)。
+            down_time (float, optional): 按键按下的持续时间。默认为 0.01。
+        """
+        self._combat_available = False
+        
+        # 按下Ctrl键
+        self.task.send_key_down('lcontrol')
+        # 等待一小段时间确保按键生效
+        self.sleep(0.1, check_combat=False)
+        # 发送战技按键
+        self.task.send_key(self.get_combat_key(), interval=interval, down_time=down_time)
+        # 等待一小段时间确保战技释放完成
+        self.sleep(0.1, check_combat=False)
+        # 松开Ctrl键
+        self.task.send_key_up('lcontrol')
+        
+        if after_sleep > 0:
+            self.sleep(after_sleep, check_combat=False)
+        #self.task.executor.interaction.send_key_up('c')
 
     def send_ultimate_key(self, after_sleep=0, interval=-1, down_time=0.01):
         """发送终结技按键。
