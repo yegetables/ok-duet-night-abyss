@@ -132,9 +132,9 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.log_info("任务开始")
             if self.afk_config.get('开局立刻随机移动', False):
                 logger.debug(f"开局随机移动对抗挂机检测")
+                self.sleep(2)
                 self.random_move_ticker()
-                self.sleep(0.3)
-            self.external_movement(delay=2)
+            self.external_movement(delay=1)
             time_out = DEFAULT_ACTION_TIMEOUT + 10
             self.log_info(f"外部移动执行完毕，等待战斗开始，{time_out}秒后超时")
             if not self.wait_until(lambda: self.find_serum() or self.find_esc_menu(), time_out=time_out):

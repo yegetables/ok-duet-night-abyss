@@ -116,8 +116,9 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def move_on_begin(self):
         if self.afk_config.get('开局立刻随机移动', False):
             logger.debug(f"开局随机移动对抗挂机检测")
+            self.sleep(2)
             self.random_move_tick()
-            self.sleep(0.3)
+            self.sleep(1)
         if self.config.get("挂机模式") == "开局重置角色位置":
             # 复位方案
             self.reset_and_transport()

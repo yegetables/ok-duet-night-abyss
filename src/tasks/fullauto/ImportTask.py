@@ -254,8 +254,9 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.sleep(delay)
             if self.afk_config.get('开局立刻随机移动', False):
                 logger.debug(f"开局随机移动对抗挂机检测")
+                # self.sleep(2)
                 self.random_move_ticker()
-                self.sleep(0.3)
+                self.sleep(1)
             if self.config.get('自定义移动路径', '') != '':
                 cust_path = self.config.get('自定义移动路径', '')
                 logger.debug(f"使用自定义移动路径,{cust_path}")
