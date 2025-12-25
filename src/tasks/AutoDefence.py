@@ -33,7 +33,7 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self._external_config = None
         self._merged_config_cache = None
         self.skill_tick = self.create_skill_ticker()
-
+        self.random_move_ticker = self.create_random_move_ticker()
     @property
     def config(self):
         if self.external_movement == _default_movement:
@@ -128,6 +128,7 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             # 如果未超时，则使用技能
             if not self.runtime_state["wait_next_wave"]:
                 self.skill_tick()
+                self.random_move_ticker()
         else:
             if self.runtime_state["wave"] > 0:
                 self.init_runtime_state()
@@ -137,6 +138,10 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def handle_mission_start(self):
         """处理任务开始的逻辑"""
         if self.external_movement is not _default_movement:
+            if self.afk_config.get('开局立刻随机移动', False):
+                logger.debug(f"开局随机移动对抗挂机检测")
+                self.random_move_ticker()
+                self.sleep(0.3)
             self.log_info("任务开始，执行外部移动逻辑")
             self.external_movement(delay=2)
             time_out = DEFAULT_ACTION_TIMEOUT + 10
