@@ -13,7 +13,8 @@ key_config_option = ConfigOption('Game Hotkey Config', { #全局配置示例
     'Ultimate Key': 'q',
     'Geniemon Key': 'z',
     'Dodge Key': 'lshift',
-    'HelixLeap Key': '4'
+    'HelixLeap Key': '4',
+    'Forward Key': 'middle_click',
 }, description='In Game Hotkey for Skills', config_type={
     'Interact Key': {'type': 'drop_down', 'options': ['f', 'e']}
 })

@@ -37,6 +37,14 @@ class BaseCombatTask(CombatCheck):
         """
         return self.key_config['Ultimate Key']
 
+    def get_forward_key(self):
+        """获取锁定的按键。
+
+        Returns:
+            str: 锁定的按键字符串。
+        """
+        return self.key_config['Forward Key']
+
     def get_geniemon_key(self):
         """获取魔灵支援的按键。
 

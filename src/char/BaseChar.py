@@ -37,6 +37,10 @@ class BaseChar:
         """获取终结技按键 (代理到 task.get_ultimate_key)。"""
         return self.task.get_ultimate_key()
 
+    def get_forward_key(self):
+        """获取锁定按键 (代理到 task.get_)。"""
+        return self.task.get_forward_key()
+
     def get_geniemon_key(self):
         """获取魔灵支援按键 (代理到 task.get_geniemon_key)。"""
         return self.task.get_geniemon_key()
@@ -66,6 +70,17 @@ class BaseChar:
         """
         self._ultimate_available = False
         self.task.send_key(self.get_ultimate_key(), interval=interval, down_time=down_time, after_sleep=after_sleep)
+
+    def send_forward_key(self, after_sleep=0, interval=-1, down_time=0.01):
+        """发送锁定按键。
+
+        Args:
+            after_sleep (float, optional): 发送后的休眠时间。默认为 0。
+            interval (float, optional): 按键按下和释放的间隔。默认为 -1 (使用默认值)。
+            down_time (float, optional): 按键按下的持续时间。默认为 0.01。
+        """
+        self._ultimate_available = False
+        self.task.send_key(self.get_forward_key(), interval=interval, down_time=down_time, after_sleep=after_sleep)
 
     def send_geniemon_key(self, after_sleep=0, interval=-1, down_time=0.01):
         """发送魔灵支援按键。
