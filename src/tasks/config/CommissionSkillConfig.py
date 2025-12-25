@@ -20,11 +20,11 @@ for n in range(1, 5):
         f"技能{n}_释放后等待": "释放后等待几秒",
     })
     config_type.update({
-        f"技能{n}": {
-            "type": "drop_down",
-            "options": ["不使用", "战技", "终结技", "魔灵支援", "普攻"],
-        },
-    })
+            f"技能{n}": {
+                "type": "drop_down",
+                "options": ["不使用", "战技", "赛琪战技", "终结技", "魔灵支援", "普攻"],
+            },
+        })
 
 class CommissionSkillConfig(BaseDNATask):
 
