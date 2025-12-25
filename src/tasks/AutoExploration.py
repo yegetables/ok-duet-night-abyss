@@ -32,6 +32,7 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.external_movement = _default_movement
         self._external_config = None
         self.skill_tick = self.create_skill_ticker()
+        self.random_move_ticker = self.create_random_move_ticker()
         self._merged_config_cache = None
 
     @property
@@ -120,6 +121,7 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             
             if not self.runtime_state["wait_next_round"]:
                 self.skill_tick()
+                self.random_move_ticker()
         else:
             if self.runtime_state["start_time"] > 0:
                 self.init_runtime_state()
@@ -128,6 +130,10 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def handle_mission_start(self):
         if self.external_movement is not _default_movement:
             self.log_info("任务开始")
+            if self.afk_config.get('开局立刻随机移动', False):
+                logger.debug(f"开局随机移动对抗挂机检测")
+                self.random_move_ticker()
+                self.sleep(0.3)
             self.external_movement(delay=2)
             time_out = DEFAULT_ACTION_TIMEOUT + 10
             self.log_info(f"外部移动执行完毕，等待战斗开始，{time_out}秒后超时")

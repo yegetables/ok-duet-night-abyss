@@ -439,6 +439,67 @@ class BaseDNATask(BaseTask):
         win32api.SetCursorPos(abs_pos)
         return True
 
+    def exec_custom_move(self,move_list="",sleep_time=0.1):
+        if len(move_list)==0:        # move_list= 'w:0.3,a:0.2,s:0.4,d:0.1'
+            return
+        moves = move_list.split(',')
+        for move in moves:
+            key_duration = move.split(':')
+            if len(key_duration)!=2:
+                continue
+            key = key_duration[0]
+            try:
+                duration = float(key_duration[1])
+            except Exception:
+                continue
+            if key=='' or duration<=0:
+                continue
+            self.send_key(key, down_time=duration)
+            time.sleep(sleep_time)
+            
+    def create_random_move_ticker(self):
+        def get_ant_key(key):
+            if key == 'w' :
+                return 's'
+            elif key == 's' :
+                        return 'w'
+            elif key == 'a' :
+                return 'd'
+            elif key == 'd' :
+                return 'a'
+            else:
+                return ''
+
+        def create_random_move_list(key_list,duration)-> str:
+            move_list= '' # w:0.3,a:0.2,s:0.4,d:0.1
+            excluded_keys = []
+            for key in key_list:
+                if key in excluded_keys:
+                    continue
+                key = random.choice(key_list)
+                ant_key= get_ant_key(key)
+                excluded_keys.append(key)
+                excluded_keys.append(ant_key)
+
+                move_list += f'{key}:{duration},'
+                move_list += f'{ant_key}:{duration},'
+            logger.debug(move_list)
+            return move_list
+
+        def action():
+            if not self.afk_config.get("战斗时随机移动", False) and not self.afk_config.get("开局立刻随机移动", False) :
+                return
+
+            key_list = ['w', 's', 'a', 'd']
+            duration= round(random.uniform(0.01, 0.03),3)
+            move_list= create_random_move_list(key_list,duration)
+            move_list += f's:0.01,'
+            move_list += f'w:0.01,' # 调整最终方向
+            self.exec_custom_move(move_list,sleep_time=0.1)
+
+        return self.create_ticker(action, interval=random.uniform(5.0, 10.0), interval_random_range=(1.0, 1.0))
+
+
     def create_ticker(self, action: Callable, interval: Union[float, int, Callable] = 1.0, interval_random_range: tuple = (1.0, 1.0)) -> Ticker:
         last_time = 0
         armed = False

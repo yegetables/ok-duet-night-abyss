@@ -54,6 +54,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             '副本类型': "默认",
             '关闭抖动': False,
             '使用内建机关解锁': False,
+            '自定义移动路径': "",
         })
         self.config_type['外部文件夹'] = {
             "type": "drop_down",
@@ -70,9 +71,11 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             '外部文件夹': '选择mod目录下的外部逻辑',
             '关闭抖动': '使用飞枪等存在视角移动的外部逻辑时可以启用',
             '使用内建机关解锁': '使用ok内建解密功能',
+            "自定义移动路径": "填写简单自定义移动路径,格式如下:w:0.3,a:0.2,s:0.4,d:0.1",
         })
 
         self.skill_tick = self.create_skill_ticker()
+        self.random_move_ticker = self.create_random_move_ticker()
         self.action_timeout = 10
         self.quick_assist_task = QuickAssistTask(self)
 
@@ -141,6 +144,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     if self.current_wave != self.runtime_state["wave"]:
                         self.runtime_state["wave"] = self.current_wave
                 self.skill_tick()
+                self.random_move_ticker()
                 if time.time() - self.runtime_state["wave_start_time"] >= self.config.get('超时时间', 180):
                     self.log_info('任务超时')
                     self.give_up_mission()
@@ -248,6 +252,15 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         try:
             self.hold_lalt = True
             self.sleep(delay)
+            if self.afk_config.get('开局立刻随机移动', False):
+                logger.debug(f"开局随机移动对抗挂机检测")
+                self.random_move_ticker()
+                self.sleep(0.3)
+            if self.config.get('自定义移动路径', '') != '':
+                cust_path = self.config.get('自定义移动路径', '')
+                logger.debug(f"使用自定义移动路径,{cust_path}")
+                self.exec_custom_move(cust_path)
+                ret = True
             ret = self._walk_to_aim(former_index)
         finally:
             self.hold_lalt = False

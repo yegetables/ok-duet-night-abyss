@@ -28,21 +28,24 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.default_config.update({
             "随机游走": False,
             "挂机模式": "开局重置角色位置",
-            "开局向前走": 0.0
+            "开局向前走": 0.0,
+            "自定义路径": "w:10,w:1",
         })
         self.config_description.update({
             "随机游走": "是否在任务中随机移动",
-            "开局向前走": "开局向前走几秒"
+            "开局向前走": "开局向前走几秒",
+            "自定义路径": "类似'w:1.0,a:0.5,s:1.0,d:0.5'的格式表示按键和持续时间",
         })
         self.config_type["挂机模式"] = {
             "type": "drop_down",
-            "options": ["开局重置角色位置", "开局向前走"],
+            "options": ["开局重置角色位置", "开局向前走","自定义路径"],
         }
 
         self.action_timeout = 10
         
         self.skill_tick = self.create_skill_ticker()
         self.random_walk_tick = self.create_random_walk_ticker()
+        self.random_move_tick = self.create_random_move_ticker()
 
     def run(self):
         DNAOneTimeTask.run(self)
@@ -100,6 +103,7 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             return
 
         self.random_walk_tick()
+        self.random_move_tick()
         self.skill_tick()
 
     def handle_mission_start(self):
@@ -110,6 +114,10 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         pass
 
     def move_on_begin(self):
+        if self.afk_config.get('开局立刻随机移动', False):
+            logger.debug(f"开局随机移动对抗挂机检测")
+            self.random_move_tick()
+            self.sleep(0.3)
         if self.config.get("挂机模式") == "开局重置角色位置":
             # 复位方案
             self.reset_and_transport()
@@ -118,6 +126,10 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         elif self.config.get("挂机模式") == "开局向前走":
             if (walk_sec := self.config.get("开局向前走", 0)) > 0:
                 self.send_key("w", down_time=walk_sec)
+        elif self.config.get("挂机模式") == "自定义路径":
+            path_str = self.config.get("自定义路径", "")
+            if len(path_str) > 0:
+                self.exec_custom_move(path_str)
 
     def create_random_walk_ticker(self):
         """创建一个随机游走的计时器函数。"""
