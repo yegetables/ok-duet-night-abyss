@@ -22,9 +22,12 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.group_icon = FluentIcon.VIEW
 
         self.setup_commission_config()
-
+        self.default_config.update({
+            "自定义移动路径": "",
+        })
         self.config_description.update({
             '超时时间': '超时后将发出提示',
+            "自定义移动路径": "填写简单自定义移动路径,格式如下:w:0.3,a:0.2,s:0.4,d:0.1",
         })
 
         self.action_timeout = DEFAULT_ACTION_TIMEOUT
@@ -128,12 +131,12 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.quick_assist_task.run()
 
     def handle_mission_start(self):
+        if self.afk_config.get('开局立刻随机移动', False):
+            logger.debug(f"开局随机移动对抗挂机检测")
+            self.sleep(2)
+            self.random_move_ticker()
         if self.external_movement is not _default_movement:
             self.log_info("任务开始")
-            if self.afk_config.get('开局立刻随机移动', False):
-                logger.debug(f"开局随机移动对抗挂机检测")
-                self.sleep(2)
-                self.random_move_ticker()
             self.external_movement(delay=1)
             time_out = DEFAULT_ACTION_TIMEOUT + 10
             self.log_info(f"外部移动执行完毕，等待战斗开始，{time_out}秒后超时")
@@ -144,9 +147,14 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.log_info("战斗开始")
         else:
             self.sleep(2)
-            self.log_info_notify("任务开始")
-            self.soundBeep()
-        
+            path_str = self.config.get("自定义移动路径", "")
+            if len(path_str)>0:
+                logger.info("执行自定义移动路径")
+                self.exec_custom_move(path_str)
+            else:
+                self.log_info_notify("任务开始")
+                self.soundBeep()
+                        
     def stop_func(self):
         self.get_round_info()
         if self.current_round >= self.config.get("轮次", 3):
