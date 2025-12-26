@@ -536,7 +536,7 @@ class BaseDNATask(BaseTask):
             logger.debug(f"总时间: {total_duration:.3f}, 最大对数: {max_pairs}, 生成对数: {pairs_generated}, 移动序列: {move_list}")
             return move_list
         def action():
-            if not self.afk_config.get("战斗时随机移动", False) and not self.afk_config.get("开局立刻随机移动", False):
+            if not self.afk_config.get("开局立刻随机移动", False):
                 return
 
             # 总时间范围定义

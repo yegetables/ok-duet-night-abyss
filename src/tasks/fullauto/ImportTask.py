@@ -144,7 +144,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     if self.current_wave != self.runtime_state["wave"]:
                         self.runtime_state["wave"] = self.current_wave
                 self.skill_tick()
-                self.random_move_ticker()
+                # self.random_move_ticker()
                 if time.time() - self.runtime_state["wave_start_time"] >= self.config.get('超时时间', 180):
                     self.log_info('任务超时')
                     self.give_up_mission()

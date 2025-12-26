@@ -128,7 +128,7 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             # 如果未超时，则使用技能
             if not self.runtime_state["wait_next_wave"]:
                 self.skill_tick()
-                self.random_move_ticker()
+                # self.random_move_ticker()
         else:
             if self.runtime_state["wave"] > 0:
                 self.init_runtime_state()

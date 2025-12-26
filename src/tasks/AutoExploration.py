@@ -121,7 +121,7 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             
             if not self.runtime_state["wait_next_round"]:
                 self.skill_tick()
-                self.random_move_ticker()
+                # self.random_move_ticker()
         else:
             if self.runtime_state["start_time"] > 0:
                 self.init_runtime_state()
