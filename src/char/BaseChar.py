@@ -73,7 +73,7 @@ class BaseChar:
         # 按下Ctrl键
         self.task.send_key_down('lcontrol')
         # 等待一小段时间确保按键生效
-        self.sleep(0.1, check_combat=False)
+        self.sleep(0.2, check_combat=False)
         # 发送战技按键
         self.task.send_key(self.get_combat_key(), interval=interval, down_time=down_time)
         # 等待一小段时间确保战技释放完成

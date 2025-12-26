@@ -351,7 +351,7 @@ class CommissionsTask(BaseDNATask):
                 elif skill == "普攻":
                     self.get_current_char().click()
                 elif skill == "赛琪战技":
-                    self.get_current_char().send_special_combat_key()
+                    self.get_current_char().send_saq_combat_key()
                 if after_sleep > 10:
                     self.log_onetime_info(f"检测到长延时：释放技能 {local_n} 后将等待 {after_sleep} 秒，可能影响脚本运行，请确认是否符合预期")
                 self.sleep(after_sleep)
