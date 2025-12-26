@@ -72,6 +72,9 @@ msgstr "魔灵支援"
 msgid "HelixLeap Key"
 msgstr "螺旋飞跃按键"
 
+msgid "Forward Key"
+msgstr "锁定按键"
+
 msgid "In Game Hotkey for Skills"
 msgstr "游戏内技能快捷键"
 
