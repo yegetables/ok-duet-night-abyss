@@ -268,7 +268,7 @@ class AutoExploration_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.send_key_up("s")
         self.send_key(self.get_forward_key(), down_time=1.1)# self.middle_click()
         self.send_key("w", down_time=0.7, after_sleep=0.1)
-        self.send_key("d", down_time=1, after_sleep=0.1)
+        self.send_key("d", down_time=0.9, after_sleep=0.1)
         self.send_key_up("lalt")
         return True
             
