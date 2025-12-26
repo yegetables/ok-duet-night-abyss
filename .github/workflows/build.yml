@@ -76,8 +76,8 @@ jobs:
         uses: ok-oldking/pyappify-action@master #使用pyappify打包exe
         with:
           # 使用上一个稳定版本的 Release 来获取已打包的启动器，从而跳过耗时的打包过程
-          # use_release: https://api.github.com/repos/yegetables/ok-duet-night-abyss/releases/tag/v1.1.4-test-fix
           use_release: https://api.github.com/repos/yegetables/ok-duet-night-abyss/releases/tag/v1.1.4-test-fix
+          # use_release: https://api.github.com/repos/yegetables/ok-duet-night-abyss/releases/tag/v1.1.4-test-fix
 
       - name: Release
         uses: softprops/action-gh-release@v2
