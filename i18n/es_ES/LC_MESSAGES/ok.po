@@ -530,3 +530,9 @@ msgstr "Habilitar al usar lógica externa que implique movimiento de cámara, co
 
 msgid "关闭抖动"
 msgstr "Desactivar temblor"
+
+msgid "Ctrl+战技（赛琪专属）"
+msgstr "Ctrl+Habil. Combate (Solo Psyche)"
+
+msgid "任务设定"
+msgstr "Opc. Misión"

@@ -527,3 +527,9 @@ msgstr ""
 
 msgid "关闭抖动"
 msgstr ""
+
+msgid "Ctrl+战技（赛琪专属）"
+msgstr ""
+
+msgid "任务设定"
+msgstr ""

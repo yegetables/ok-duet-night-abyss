@@ -530,3 +530,9 @@ msgstr "使用飛槍等存在視角移動的外部邏輯時可以啟用"
 
 msgid "关闭抖动"
 msgstr "關閉抖動"
+
+msgid "Ctrl+战技（赛琪专属）"
+msgstr "Ctrl+戰技（賽琪專屬）"
+
+msgid "任务设定"
+msgstr "任務設定"

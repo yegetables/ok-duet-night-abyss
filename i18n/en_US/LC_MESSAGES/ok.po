@@ -108,8 +108,7 @@ msgstr ""
 msgid "Y-axis sensitivity"
 msgstr ""
 
-msgid ""
-"Your computer's local time when the monthly card will popup, hour in (1-24)"
+msgid "Your computer's local time when the monthly card will popup, hour in (1-24)"
 msgstr ""
 
 msgid "e"
@@ -182,9 +181,7 @@ msgid "右键释放后等待多久(秒)"
 msgstr "How long to wait after releasing the right mouse button (seconds)"
 
 msgid "启动任务时和特定场景下会将鼠标移动到安全位置"
-msgstr ""
-"Moves the mouse to a safe position when starting a task and in specific "
-"scenarios"
+msgstr "Moves the mouse to a safe position when starting a task and in specific scenarios"
 
 msgid "启动机关解锁"
 msgstr "Activate mechanism to unlock"
@@ -232,9 +229,7 @@ msgid "建议启用"
 msgstr "Recommended to enable"
 
 msgid "建议启用, 鼠标抖动时如果不在窗口范围则设置到窗口范围内"
-msgstr ""
-"Recommended to enable. If the mouse is outside the window during mouse "
-"shake, it will be moved within the window"
+msgstr "Recommended to enable. If the mouse is outside the window during mouse shake, it will be moved within the window"
 
 msgid "开始阶段超时(秒)"
 msgstr "Start phase timeout (seconds)"
@@ -324,9 +319,7 @@ msgid "挂机设置"
 msgstr "AFK Settings"
 
 msgid "指定优先选择的奖励类型，需开启「自动处理密函」"
-msgstr ""
-"Specify the preferred reward type, requires 'Auto-process Secret Letters' to"
-" be enabled"
+msgstr "Specify the preferred reward type, requires 'Auto-process Secret Letters' to be enabled"
 
 msgid "按下时间"
 msgstr "Press duration"
@@ -353,9 +346,7 @@ msgid "提示音次数"
 msgstr "Number of Alerts"
 
 msgid "无悠闲全自动钓鱼 (原作者: B站无敌大蜜瓜)"
-msgstr ""
-"No-leisure fully automatic fishing (Original author: Bilibili's "
-"InvincibleBigMelon)"
+msgstr "No-leisure fully automatic fishing (Original author: Bilibili's InvincibleBigMelon)"
 
 msgid "是否在任务中随机移动"
 msgstr "Randomly move during the task"
@@ -409,9 +400,7 @@ msgid "自动处理密函"
 msgstr "Auto-process Secret Letters"
 
 msgid "自动完成密函的对话交互与默认奖励领取"
-msgstr ""
-"Automatically complete secret letter dialogue interactions and claim default"
-" rewards"
+msgstr "Automatically complete secret letter dialogue interactions and claim default rewards"
 
 msgid "自动战斗"
 msgstr "Auto Battle"
@@ -459,9 +448,7 @@ msgid "自动钓鱼"
 msgstr "Auto Fishing"
 
 msgid "自动飞枪80护送（无需巧手）【需要游戏处于前台】"
-msgstr ""
-"Auto flying spear 80 escort (no skill required) [Game must be in the "
-"foreground]"
+msgstr "Auto flying spear 80 escort (no skill required) [Game must be in the foreground]"
 
 msgid "自动驱离"
 msgstr "Auto Repel"
@@ -509,10 +496,7 @@ msgid "防止鼠标干扰"
 msgstr "Prevent mouse interference"
 
 msgid "随便搞的，基于2k写的其他分辨率要是有问题就不管了，有bug也不用反馈因为拿到巧手后就不维护了(狗头)"
-msgstr ""
-"Just threw this together, it's based on 2k so if other resolutions have "
-"issues I'm not gonna deal with it. No need to report bugs either because I "
-"won't maintain it after getting the skill (kappa)"
+msgstr "Just threw this together, it's based on 2k so if other resolutions have issues I'm not gonna deal with it. No need to report bugs either because I won't maintain it after getting the skill (kappa)"
 
 msgid "随机游走"
 msgstr "Random Walk"
@@ -521,14 +505,10 @@ msgid "需主动激活"
 msgstr "Requires manual activation"
 
 msgid "需主动激活，运行中也可使用左键打断"
-msgstr ""
-"Requires manual activation, can be interrupted with the left mouse button "
-"during operation"
+msgstr "Requires manual activation, can be interrupted with the left mouse button during operation"
 
 msgid "需主动激活，运行中可使用右键或左键打断"
-msgstr ""
-"Requires manual activation, can be interrupted with the right or left mouse "
-"button during operation"
+msgstr "Requires manual activation, can be interrupted with the right or left mouse button during operation"
 
 msgid "魔灵支援"
 msgstr "Geniemon Support"
@@ -550,3 +530,9 @@ msgstr "Enable when using external logic involving camera movement, such as the 
 
 msgid "关闭抖动"
 msgstr "Disable Shake"
+
+msgid "Ctrl+战技（赛琪专属）"
+msgstr "Ctrl+Combat Skill (Psyche Only)"
+
+msgid "任务设定"
+msgstr "Quest Setup"

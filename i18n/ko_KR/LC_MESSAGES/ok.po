@@ -530,3 +530,9 @@ msgstr "플라잉 건 등 시점 이동이 포함된 외부 로직 사용 시 �
 
 msgid "关闭抖动"
 msgstr "흔들림 끄기"
+
+msgid "Ctrl+战技（赛琪专属）"
+msgstr "Ctrl+전투 스킬 (프시케 전용)"
+
+msgid "任务设定"
+msgstr "임무 설정"
