@@ -8,8 +8,6 @@ from src.tasks.DNAOneTimeTask import DNAOneTimeTask
 
 logger = Logger.get_logger(__name__)
 
-DEFAULT_ACTION_TIMEOUT = 10
-
 
 class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
@@ -27,7 +25,6 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             '超时时间': '超时后将发出提示',
         })
 
-        self.action_timeout = DEFAULT_ACTION_TIMEOUT
         self.quick_assist_task = QuickAssistTask(self)
         self.external_movement = _default_movement
         self._external_config = None
@@ -87,7 +84,7 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             elif _status == Mission.CONTINUE:
                 self.log_info("任务继续")
                 self.init_for_next_round()
-                self.wait_until(self.in_team, time_out=DEFAULT_ACTION_TIMEOUT)
+                self.wait_until(self.in_team, time_out=self.action_timeout)
 
             self.sleep(0.1)
 
@@ -129,7 +126,7 @@ class AutoExploration(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         if self.external_movement is not _default_movement:
             self.log_info("任务开始")
             self.external_movement(delay=2)
-            time_out = DEFAULT_ACTION_TIMEOUT + 10
+            time_out = self.action_timeout + 10
             self.log_info(f"外部移动执行完毕，等待战斗开始，{time_out}秒后超时")
             if not self.wait_until(lambda: self.find_serum() or self.find_esc_menu(), time_out=time_out):
                 self.log_info("超时重开")

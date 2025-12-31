@@ -363,6 +363,21 @@ class BaseDNATask(BaseTask):
             self.pydirect_interaction.click(down_time=_down_time)
 
         self.sleep(_after_sleep)
+
+    def click_btn_random(self, box: Box, down_time=0.0, post_sleep=0.0, after_sleep=0.0):
+        safe_move_box = box.copy(x_offset=-box.width*0.20, width_offset=box.width * 8.1,
+                                 y_offset=-box.height*0.30, height_offset=box.height * 0.7, name='safe_move_box')
+        random_x = random.uniform(box.x + box.width, box.x + self.width * 0.12)
+        random_y = random.uniform(box.y, box.y + box.height)
+
+        self._perform_random_click(
+            random_x, random_y, 
+            use_safe_move=True,
+            safe_move_box=safe_move_box, 
+            down_time=down_time,
+            post_sleep=post_sleep,
+            after_sleep=after_sleep
+        )
     
     def click_box_random(self, box: Box, down_time=0.0, post_sleep=0.0, after_sleep=0.0, use_safe_move=False, safe_move_box=None, left_extend=0.0, right_extend=0.0, up_extend=0.0, down_extend=0.0):
         le_px = left_extend * self.width
@@ -432,6 +447,8 @@ class BaseDNATask(BaseTask):
             x (float): 相对 x 坐标 (0.0 到 1.0)。
             y (float): 相对 y 坐标 (0.0 到 1.0)。
         """
+        if box is not None:
+            self.draw_boxes(box.name, box, "blue")
         if not self.is_mouse_in_window() or not self.is_mouse_in_box(box=box):
             return False
         abs_pos = self.executor.device_manager.hwnd_window.get_abs_cords(self.width_of_screen(x),

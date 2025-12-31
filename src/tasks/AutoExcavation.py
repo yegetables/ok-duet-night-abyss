@@ -8,9 +8,6 @@ from src.tasks.CommissionsTask import CommissionsTask, QuickAssistTask, Mission
 
 logger = Logger.get_logger(__name__)
 
-DEFAULT_ACTION_TIMEOUT = 10
-
-
 class AutoExcavation(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
     def __init__(self, *args, **kwargs):
@@ -26,7 +23,6 @@ class AutoExcavation(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         for key in keys_to_remove:
             self.default_config.pop(key, None)
 
-        self.action_timeout = DEFAULT_ACTION_TIMEOUT
         self.quick_assist_task = QuickAssistTask(self)
         self.skill_tick = self.create_skill_ticker()
 
@@ -52,7 +48,7 @@ class AutoExcavation(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
             _status = self.handle_mission_interface(stop_func=self.stop_func)
             if _status == Mission.START:
-                self.wait_until(self.in_team, time_out=DEFAULT_ACTION_TIMEOUT)
+                self.wait_until(self.in_team, time_out=self.action_timeout)
                 self.sleep(2)
                 self.init_all()
                 self.handle_mission_start()
@@ -62,7 +58,7 @@ class AutoExcavation(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             elif _status == Mission.CONTINUE:
                 self.log_info("任务继续")
                 self.init_for_next_round()
-                self.wait_until(self.in_team, time_out=DEFAULT_ACTION_TIMEOUT)
+                self.wait_until(self.in_team, time_out=self.action_timeout)
 
                 self.sleep(2)
                 if not self.find_target_health_bar():

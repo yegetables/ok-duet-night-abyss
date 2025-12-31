@@ -209,7 +209,7 @@ class CommissionsTask(BaseDNATask):
             return
         action_timeout = self.action_timeout if timeout == 0 else timeout
         if self.commission_config.get("自动处理密函", False):
-            if (letter_btn:=self.find_letter_interface()):
+            if self.find_letter_interface():
                 box = self.box_of_screen_scaled(2560, 1440, 1190, 610, 2450, 820, name="letter_drag_area", hcenter=True)
                 letter_roi = self.box_of_screen_scaled(2560, 1440, 565, 651, 732, 805, name="letter_roi", hcenter=True)
                 letter_snapshot = letter_roi.crop_frame(self.frame)
@@ -223,13 +223,24 @@ class CommissionsTask(BaseDNATask):
                     self.log_info_notify("密函已耗尽")
                     self.soundBeep()
                     raise TaskDisabledException
+                
+                deadline = time.time() + action_timeout
+                while time.time() < deadline:
+                    letter_btn = self.find_letter_btn()
+                    if letter_btn:
+                        self.move_back_from_safe_position()
+                        break
+                    else:
+                        self.move_mouse_to_safe_position()
+                        self.next_frame()
+                else:
+                    self.log_info_notify("未找到密函确认按钮")
+                    self.soundBeep()
+                    raise TaskDisabledException
 
                 self.wait_until(
                     condition=lambda: not self.find_letter_interface(),
-                    post_action=lambda: (
-                        self.click_box_random(letter_btn, use_safe_move=True, safe_move_box=box, right_extend=0.1),
-                        self.sleep(1),
-                    ),
+                    post_action=lambda: self.click_btn_random(letter_btn, after_sleep=1),
                     time_out=action_timeout,
                     raise_if_not_found=True,
                 )
