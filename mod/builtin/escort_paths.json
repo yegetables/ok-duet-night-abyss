@@ -407,17 +407,17 @@
         },
         {
           "type": "key_down",
-          "delay": 0.4674,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.097,
+          "delay": 0.027,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.2987,
+          "delay": 1.5987,
           "angle": 57,
           "direction": "right",
           "sensitivity": 10
@@ -498,17 +498,17 @@
         },
         {
           "type": "key_down",
-          "delay": 1.4303,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.131,
+          "delay": 0.021,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.4947,
+          "delay": 1.5347,
           "angle": 64,
           "direction": "left",
           "sensitivity": 10
@@ -637,17 +637,17 @@
         },
         {
           "type": "key_down",
-          "delay": 1.4355,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.106,
+          "delay": 0.026,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.4807,
+          "delay": 1.5807,
           "angle": 108,
           "direction": "left",
           "sensitivity": 10
@@ -776,17 +776,17 @@
         },
         {
           "type": "key_down",
-          "delay": 1.4866,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.134,
+          "delay": 0.024,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.7597,
+          "delay": 1.5597,
           "angle": 21,
           "direction": "down",
           "sensitivity": 10
@@ -958,7 +958,7 @@
         {
           "type": "mouse_rotation",
           "delay": 0.3661,
-          "angle": 1,
+          "angle": 0.5,
           "direction": "left",
           "sensitivity": 10
         },
@@ -1325,17 +1325,17 @@
         },
         {
           "type": "key_down",
-          "delay": 0.6684,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.121,
+          "delay": 0.021,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.7737,
+          "delay": 1.5737,
           "angle": 57,
           "direction": "right",
           "sensitivity": 10
@@ -1416,17 +1416,17 @@
         },
         {
           "type": "key_down",
-          "delay": 1.4303,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.131,
+          "delay": 0.021,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.6947,
+          "delay": 1.5947,
           "angle": 64,
           "direction": "left",
           "sensitivity": 10
@@ -1555,17 +1555,17 @@
         },
         {
           "type": "key_down",
-          "delay": 1.4355,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.106,
+          "delay": 0.26,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.5807,
+          "delay": 1.5807,
           "angle": 108,
           "direction": "left",
           "sensitivity": 10
@@ -1694,17 +1694,17 @@
         },
         {
           "type": "key_down",
-          "delay": 1.4866,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.134,
+          "delay": 0.024,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.7597,
+          "delay": 1.5597,
           "angle": 21,
           "direction": "down",
           "sensitivity": 10
@@ -2327,17 +2327,17 @@
         },
         {
           "type": "key_down",
-          "delay": 0.6684,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.121,
+          "delay": 0.021,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.9207,
+          "delay": 1.5207,
           "angle": 57,
           "direction": "right",
           "sensitivity": 10
@@ -2418,17 +2418,17 @@
         },
         {
           "type": "key_down",
-          "delay": 1.4303,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.131,
+          "delay": 0.21,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.6477,
+          "delay": 1.5477,
           "angle": 64,
           "direction": "left",
           "sensitivity": 10
@@ -2557,17 +2557,17 @@
         },
         {
           "type": "key_down",
-          "delay": 1.4355,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.106,
+          "delay": 0.026,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.6997,
+          "delay": 1.5997,
           "angle": 108,
           "direction": "left",
           "sensitivity": 10
@@ -2696,17 +2696,17 @@
         },
         {
           "type": "key_down",
-          "delay": 1.4866,
+          "delay": 0.25,
           "key": "f"
         },
         {
           "type": "key_up",
-          "delay": 0.134,
+          "delay": 0.024,
           "key": "f"
         },
         {
           "type": "mouse_rotation",
-          "delay": 6.8987,
+          "delay": 1.5987,
           "angle": 21,
           "direction": "down",
           "sensitivity": 10
@@ -2736,7 +2736,7 @@
         {
           "type": "mouse_rotation",
           "delay": 0.4883,
-          "angle": 38,
+          "angle": 35,
           "direction": "left",
           "sensitivity": 10
         },
@@ -2753,7 +2753,7 @@
         {
           "type": "mouse_rotation",
           "delay": 0.3383,
-          "angle": 12,
+          "angle": 11,
           "direction": "up",
           "sensitivity": 10
         },
@@ -2770,7 +2770,7 @@
         {
           "type": "mouse_rotation",
           "delay": 0.4783,
-          "angle": 11,
+          "angle": 15,
           "direction": "left",
           "sensitivity": 10
         },
@@ -2845,14 +2845,14 @@
         {
           "type": "mouse_rotation",
           "delay": 0.3413,
-          "angle": 15,
+          "angle": 16,
           "direction": "left",
           "sensitivity": 10
         },
         {
           "type": "mouse_rotation",
           "delay": 0.04,
-          "angle": 10,
+          "angle": 9,
           "direction": "down",
           "sensitivity": 10
         },
@@ -2869,14 +2869,14 @@
         {
           "type": "mouse_rotation",
           "delay": 0.2979,
-          "angle": 18,
+          "angle": 20.5,
           "direction": "right",
           "sensitivity": 10
         },
         {
           "type": "mouse_rotation",
           "delay": 0.01,
-          "angle": 5,
+          "angle": 7,
           "direction": "up",
           "sensitivity": 10
         },
@@ -2913,7 +2913,7 @@
         {
           "type": "mouse_rotation",
           "delay": 0.3955,
-          "angle": 35,
+          "angle": 30,
           "direction": "down",
           "sensitivity": 10
         },
@@ -2949,918 +2949,918 @@
       }
     },
     "ESCORT_PATH_A_4": {
-      "data": [
-        {
-          "type": "mouse_rotation",
-          "delay": 0.2,
-          "angle": 21,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1913,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.3554,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.159,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.4243,
-          "angle": 33,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.1397,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.0922,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5024,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1276,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.3882,
-          "angle": 20,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.2843,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1276,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5724,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.5157,
-          "angle": 15,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.05,
-          "angle": 18,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "key_down",
-          "delay": 0.0661,
-          "key": "s"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.24,
-          "key": "d"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.0105,
-          "key": "s"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.6325,
-          "key": "d"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.4571,
-          "key": "w"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 1.4299,
-          "button": "left"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.0505,
-          "key": "w"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.3395,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1429,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.3611,
-          "angle": 16,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.2625,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1279,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.5096,
-          "angle": 7,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.1071,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1142,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.1418,
-          "angle": 2,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.0059,
-          "angle": 9,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.4031,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1526,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.1443,
-          "angle": 3,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.0006,
-          "angle": 68,
-          "direction": "left",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.455,
-          "button": "left"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.1,
-          "key": "d"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.14,
-          "key": "w"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.2638,
-          "key": "d"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.0062,
-          "key": "a"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.3,
-          "key": "a"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.09,
-          "key": "w"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.0344,
-          "angle": 1,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.07,
-          "angle": 69.5,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1147,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.6328,
-          "button": "left"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.6684,
-          "key": "f"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.121,
-          "key": "f"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 6.7997,
-          "angle": 56.5,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.04,
-          "angle": 3,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.0358,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.6318,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1082,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.4242,
-          "angle": 3,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.1677,
-          "button": "left"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.1996,
-          "key": "w"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.24,
-          "key": "d"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.1217,
-          "key": "d"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.03,
-          "key": "w"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.0083,
-          "key": "s"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.5017,
-          "key": "s"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.0428,
-          "key": "d"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.3922,
-          "key": "d"
-        },
-        {
-          "type": "key_down",
-          "delay": 1.4303,
-          "key": "f"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.131,
-          "key": "f"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 6.6997,
-          "angle": 64,
-          "direction": "left",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.04,
-          "angle": 34,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.7758,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5918,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1205,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.1018,
-          "angle": 2,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.02,
-          "angle": 34,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.57,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1106,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.4194,
-          "angle": 51,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.04,
-          "angle": 34,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.5,
-          "angle": 10,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.1324,
-          "button": "left"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.0965,
-          "key": "d"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.32,
-          "key": "w"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.18,
-          "key": "d"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.0298,
-          "key": "a"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.279,
-          "key": "a"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.5416,
-          "key": "w"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.0495,
-          "key": "s"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.3398,
-          "key": "a"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.1406,
-          "key": "s"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.5784,
-          "key": "a"
-        },
-        {
-          "type": "key_down",
-          "delay": 1.4355,
-          "key": "f"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.106,
-          "key": "f"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 6.6997,
-          "angle": 108,
-          "direction": "left",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.06,
-          "angle": 72,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.0782,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5795,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1205,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.3618,
-          "angle": 18,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.03,
-          "angle": 28,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.1877,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.0915,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.3208,
-          "angle": 11,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.2877,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1205,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.3618,
-          "angle": 12,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.06,
-          "angle": 12,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.1577,
-          "button": "left"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.8847,
-          "key": "s"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.0035,
-          "key": "d"
-        },
-        {
-          "type": "key_up",
-          "delay": 1.3373,
-          "key": "s"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.0195,
-          "key": "d"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.234,
-          "key": "a"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.0307,
-          "key": "s"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.2902,
-          "key": "a"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.0021,
-          "key": "s"
-        },
-        {
-          "type": "key_down",
-          "delay": 1.4866,
-          "key": "f"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.134,
-          "key": "f"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 6.8987,
-          "angle": 21,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.01,
-          "angle": 90,
-          "direction": "right",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.0817,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.617,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.113,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.4883,
-          "angle": 37,
-          "direction": "left",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.1286,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.133,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.3383,
-          "angle": 12,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.2786,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.103,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.4783,
-          "angle": 16.2,
-          "direction": "left",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.0,
-          "angle": 15,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.1386,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1125,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.1289,
-          "angle": 15,
-          "direction": "up",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.2799,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.3569,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5438,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1867,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5137,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1238,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.6366,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.0855,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5408,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1404,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.3919,
-          "angle": 12,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.1608,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1454,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5521,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1238,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5497,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1276,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.3315,
-          "angle": 0.4,
-          "direction": "left",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.2588,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1064,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5634,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1131,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5721,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.0797,
-          "button": "left"
-        },
-        {
-          "type": "mouse_rotation",
-          "delay": 0.3955,
-          "angle": 30,
-          "direction": "down",
-          "sensitivity": 10
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.4415,
-          "button": "left"
-        },
-        {
-          "type": "mouse_down",
-          "delay": 0.1113,
-          "button": "left"
-        },
-        {
-          "type": "mouse_up",
-          "delay": 0.5721,
-          "button": "left"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.3284,
-          "key": "s"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.07,
-          "key": "a"
-        },
-        {
-          "type": "key_down",
-          "delay": 0.1324,
-          "key": "lshift"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.1617,
-          "key": "s"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.01,
-          "key": "a"
-        },
-        {
-          "type": "key_up",
-          "delay": 0.0082,
-          "key": "lshift"
-        }
-      ],
+  "data": [
+    {
+      "type": "mouse_rotation",
+      "delay": 0.20,
+      "angle": 21,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.19,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.36,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.16,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.42,
+      "angle": 33,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.14,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.09,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.50,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.13,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.39,
+      "angle": 20,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.28,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.13,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.57,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.52,
+      "angle": 15,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.05,
+      "angle": 18,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "key_down",
+      "delay": 0.07,
+      "key": "s"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.24,
+      "key": "d"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.01,
+      "key": "s"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.63,
+      "key": "d"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.46,
+      "key": "w"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 1.43,
+      "button": "left"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.05,
+      "key": "w"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.34,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.14,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.36,
+      "angle": 16,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.26,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.13,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.51,
+      "angle": 7,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.14,
+      "angle": 2,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.01,
+      "angle": 9,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.40,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.15,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.14,
+      "angle": 3,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.01,
+      "angle": 68,
+      "direction": "left",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.46,
+      "button": "left"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.10,
+      "key": "d"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.14,
+      "key": "w"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.26,
+      "key": "d"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.01,
+      "key": "a"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.30,
+      "key": "a"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.09,
+      "key": "w"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.03,
+      "angle": 1,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.07,
+      "angle": 69.5,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.63,
+      "button": "left"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.25,
+      "key": "f"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.02,
+      "key": "f"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 1.60,
+      "angle": 56.5,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.04,
+      "angle": 3,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.04,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.63,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.42,
+      "angle": 3,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.17,
+      "button": "left"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.20,
+      "key": "w"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.24,
+      "key": "d"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.12,
+      "key": "d"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.03,
+      "key": "w"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.01,
+      "key": "s"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.50,
+      "key": "s"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.04,
+      "key": "d"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.39,
+      "key": "d"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.25,
+      "key": "f"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.02,
+      "key": "f"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 1.60,
+      "angle": 64,
+      "direction": "left",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.04,
+      "angle": 34,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.78,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.59,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.12,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.10,
+      "angle": 2,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.02,
+      "angle": 34,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.57,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.42,
+      "angle": 51,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.04,
+      "angle": 34,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.50,
+      "angle": 10,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.13,
+      "button": "left"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.10,
+      "key": "d"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.32,
+      "key": "w"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.18,
+      "key": "d"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.03,
+      "key": "a"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.28,
+      "key": "a"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.54,
+      "key": "w"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.05,
+      "key": "s"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.34,
+      "key": "a"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.14,
+      "key": "s"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.58,
+      "key": "a"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.25,
+      "key": "f"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.03,
+      "key": "f"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 1.60,
+      "angle": 108,
+      "direction": "left",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.06,
+      "angle": 72,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.08,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.58,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.12,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.36,
+      "angle": 18,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.03,
+      "angle": 28,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.19,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.09,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.32,
+      "angle": 11,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.29,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.12,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.36,
+      "angle": 12,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.06,
+      "angle": 12,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.16,
+      "button": "left"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.88,
+      "key": "s"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.01,
+      "key": "d"
+    },
+    {
+      "type": "key_up",
+      "delay": 1.34,
+      "key": "s"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.02,
+      "key": "d"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.23,
+      "key": "a"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.03,
+      "key": "s"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.29,
+      "key": "a"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.01,
+      "key": "s"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.25,
+      "key": "f"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.02,
+      "key": "f"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 1.60,
+      "angle": 22,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.01,
+      "angle": 91,
+      "direction": "right",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.08,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.62,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.49,
+      "angle": 34,
+      "direction": "left",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.13,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.13,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.34,
+      "angle": 13,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.28,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.10,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.48,
+      "angle": 20,
+      "direction": "left",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.01,
+      "angle": 15,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.14,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.13,
+      "angle": 15,
+      "direction": "up",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.28,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.36,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.54,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.19,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.51,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.12,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.64,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.09,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.54,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.14,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.39,
+      "angle": 13,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.16,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.15,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.55,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.12,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.55,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.13,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.33,
+      "angle": 2,
+      "direction": "left",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.26,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.56,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.57,
+      "button": "left"
+    },
+    {
+      "type": "mouse_rotation",
+      "delay": 0.1,
+      "angle": 30,
+      "direction": "down",
+      "sensitivity": 10
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.57,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "delay": 0.11,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "delay": 0.57,
+      "button": "left"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.33,
+      "key": "s"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.07,
+      "key": "d"
+    },
+    {
+      "type": "key_down",
+      "delay": 0.13,
+      "key": "lshift"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.16,
+      "key": "s"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.01,
+      "key": "d"
+    },
+    {
+      "type": "key_up",
+      "delay": 0.01,
+      "key": "lshift"
+    }
+  ],
       "metadata": {
         "duration": 71.55,
         "action_count": 165

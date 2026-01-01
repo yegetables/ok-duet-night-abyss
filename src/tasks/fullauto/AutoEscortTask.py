@@ -208,6 +208,8 @@ class AutoEscortTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                             "路径执行完成5秒后仍未进入结算，任务超时，重新开始..."
                         )
                         self.give_up_mission()
+                        self.stats["failed_attempts"] += 1
+                        self.info_set("失败次数", self.stats["failed_attempts"])
                         self.wait_until(
                             lambda: not self.in_team(), time_out=30, settle_time=1
                         )
@@ -510,6 +512,8 @@ class AutoEscortTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 return True
         logger.warning(f"❌ 等待解密完成超时（{timeout}秒），重新开始任务...")
         self.give_up_mission()
+        self.stats["failed_attempts"] += 1
+        self.info_set("失败次数", self.stats["failed_attempts"])
         return False
 
     def execute_mouse_rotation(self, action):
