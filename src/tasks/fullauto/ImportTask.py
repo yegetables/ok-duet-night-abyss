@@ -484,8 +484,18 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
     def _handle_mouse_click(self, action_type, button):
         if action_type == "mouse_down":
+            if button == 'middle_click' or button == 'middle':
+                button = self.get_forward_key()
+                is_double_middle_click = (button == 'middle_click') or (button == 'middle') # 检查是否是默认鼠标中键 middle_click
+                if is_double_middle_click: # 默认未改键 
+                        self.middle_click()
+                else: 
+                    self.send_key_down(button)
+                return  # 中键特殊处理完毕返回 不处理key_up            
             self.mouse_down(key=button)
         else:
+            if button == 'middle_click' or button == 'middle':
+                return  # 中键特殊处理完毕返回 不处理key_up
             self.mouse_up(key=button)
 
     def _handle_keyboard(self, action_type, key):
@@ -507,6 +517,13 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             key = self.get_combat_key()
         elif key == 'q':
             key = self.get_ultimate_key()
+        elif key == 'middle_click' or key == 'middle':
+            key = self.get_forward_key()
+            is_double_middle_click = (key == 'middle_click') or (key == 'middle') # 检查是否是默认鼠标中键 middle_click
+            if is_double_middle_click: # 默认未改键 
+                if action_type == "key_down":
+                    self.middle_click()
+                return  # 中键特殊处理完毕返回 不处理key_up
         elif 'alt' in key:
             return
 
