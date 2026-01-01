@@ -1,7 +1,5 @@
 from qfluentwidgets import FluentIcon
 import time
-import json
-import os
 
 from ok import Logger, TaskDisabledException
 from src.tasks.DNAOneTimeTask import DNAOneTimeTask
@@ -15,25 +13,30 @@ DEFAULT_PA_DELAY = 0.160
 
 
 
-class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
+class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     """自动护送任务"""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.icon = FluentIcon.FLAG
-        self.name = "黎瑟：超级飞枪80护送（需黎瑟+巧手+协战）【需要游戏处于前台】"
-        self.description = "注：请在OK设置里配置螺旋飞跃键位 "
-        self.description += "游戏内设置四项灵敏度0.2 OK已强制0.2灵敏度无需设置\n"
-        self.description += "装备：黎瑟 + 0精春玦戟。设置：镜头距离1.3，帧率120，最低画质，垂直同步关。\n"
-        self.description += "魔之楔：金色迅捷+10 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）。"
+        self.name = "黎瑟：超级飞枪80护送（需120帧+黎瑟+巧手+协战+远程双枪）【需要游戏处于前台】"
+        self.description = "注：需求120帧 帧数敏感 掉帧会坠机。\n"
+        self.description += "请在OK设置里配置螺旋飞跃键位 游戏内设置四项灵敏度0.2 OK已强制0.2灵敏度无需设置\n"
+        self.description += "展开查看具体配置\n"
         self.group_name = "全自动"
         self.group_icon = FluentIcon.CAFE
         
         self.mapping_pn = {"-": -1, "+": 1}
 
         self.default_config.update({
-            "我已阅读注意事项并确认配置": False,
             "快速继续挑战": True,
+            "帧数敏感，如果不能稳120帧，大概率坠机": False,
+            "我已在OK设置里配置螺旋飞跃键位": False,
+            "我已在游戏内设置四项灵敏度为0.2": False,
+            "装备：黎瑟 + 0精春玦戟 迅捷+10 + 远程任意双枪": False,
+            "设置：镜头距离1.3，120帧，最低画质，垂直同步关， 插帧关": False,
+            "魔之楔：金色迅捷+10 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）": False,
+            "如果路线2撤离撞墙 请设置路线2结算超级跳延迟为-1": False,
             "路线1结算超级跳延迟Offset": 0,
             "路线1结算超级跳延迟+-": "-",
             "路线1结算超级跳角度Offset": 0,
@@ -52,7 +55,13 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             "路线4结算超级跳角度+-": "-",
         })
         self.config_description.update({
-            "我已阅读注意事项并确认配置": "必须勾选才能执行任务！",
+            "帧数敏感，如果不能稳120帧，大概率坠机": "必须勾选才能执行任务！",
+            "我已在OK设置里配置螺旋飞跃键位": "必须勾选才能执行任务！",
+            "我已在游戏内设置四项灵敏度为0.2": "必须勾选才能执行任务！",
+            "装备：黎瑟 + 0精春玦戟 迅捷+10 + 远程任意双枪": "必须勾选才能执行任务！",
+            "设置：镜头距离1.3，120帧，最低画质，垂直同步关， 插帧关": "必须勾选才能执行任务！",
+            "魔之楔：金色迅捷+10 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）": "必须勾选才能执行任务！",
+            "如果路线2撤离撞墙 请设置路线2结算超级跳延迟为-1": "必须勾选才能执行任务！",
             "路线1结算超级跳延迟Offset": "-+ 1",
             "路线1结算超级跳角度Offset": "-+ 5",
             "路线2结算超级跳延迟Offset": "-+ 1",
@@ -108,6 +117,10 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             "current_phase": "准备中",  # 当前阶段
             "failed_attempts": 0,  # 失败次数（重新开始）
             "selected_path": None,  # 当前选择的路径
+            "previous_path": None,  # 上一次选择的路径
+            "path_select_fail": 0, # 路径选择失败次数
+            "path_count": [0, 0, 0, 0],
+            "path_fail": [0, 0, 0, 0],
         }
 
         # self.maze_task = None
@@ -129,7 +142,7 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         except TaskDisabledException:
             pass
         except Exception as e:
-            logger.error("AutoEscortTask2 error", e)
+            logger.error("AutoEscortTask_Fast error", e)
             raise
         finally:
             self.afk_config.update({"鼠标抖动": mouse_jitter_setting})
@@ -139,7 +152,11 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
     def do_run(self):
         # 检查是否已阅读注意事项
-        if not self.config.get("我已阅读注意事项并确认配置", False):
+        if not self.config.get("帧数敏感，如果不能稳120帧，大概率坠机", False) or not self.config.get("我已在OK设置里配置螺旋飞跃键位", False) or not self.config.get("我已在游戏内设置四项灵敏度为0.2", False) \
+                or not self.config.get("装备：黎瑟 + 0精春玦戟 迅捷+10 + 远程任意双枪", False) \
+                or not self.config.get("设置：镜头距离1.3，120帧，最低画质，垂直同步关， 插帧关", False) \
+                or not self.config.get("魔之楔：金色迅捷+10 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）", False) \
+                or not self.config.get("如果路线2撤离撞墙 请设置路线2结算超级跳延迟为-1", False):
             logger.error("⚠️ 请先阅读注意事项并确认配置！")
 
             # 使用 info_set 显示详细配置要求
@@ -165,12 +182,16 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.stats["start_time"] = time.time()
         self.stats["failed_attempts"] = 0
         self.stats["current_phase"] = "准备中"
+        self.stats["path_select_fail"] = 0
+        self.stats["path_count"] = [0, 0, 0, 0]
+        self.stats["path_fail"] = [0, 0, 0, 0]
 
         # 初始化 UI 显示
-        self.info_set("完成轮数", 0)
-        self.info_set("失败次数", 0)
+        self.info_set("完成轮数", "")
         self.info_set("总耗时", "00:00:00")
         self.info_set("当前阶段", "准备中")
+        self.update_escort_stats()
+        self.info_set("上轮路径", "?")
 
         while True:
             if self.in_team():
@@ -185,19 +206,33 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     # 先执行初始路径
                     self.execute_escort_path_init()
 
-                    self.sleep(0.800)
+                    self.sleep(0.300)
                     # 基于 track_point 位置选择后续路径
                     self.stats["current_phase"] = "检测路径"
                     self.info_set("当前阶段", "检测路径")
                     logger.info("检测 track_point 位置，选择护送路径...")
-                    selected_path = self.get_escort_path_by_position()
+                    for i in range(1, 5):
+                        selected_path = self.get_escort_path_by_position()
+                        if selected_path is not None:
+                            break
+                        self.sleep(0.100)
+                    if selected_path is None:
+                        for i in range(1, 5):
+                            self.sleep(0.200*i)
+                            selected_path = self.get_escort_path_by_position()
+                            if selected_path is not None:
+                                break
+                    self.stats["selected_path"] = selected_path
                     logger.info(f"选择的护送路径: {selected_path}")
                     
                     if selected_path is None:
+                        self.give_up_mission()
                         logger.warning("路径选择失败，等待退出队伍...")
                         self.stats["failed_attempts"] += 1
-                        self.info_set("失败次数", self.stats["failed_attempts"])
+                        self.stats["path_select_fail"] += 1
                         self.stats["current_phase"] = "重新开始"
+                        self.stats["previous_path"] = None
+                        self.info_set("上轮路径", f"路径选择失败")
                         self.info_set("当前阶段", "重新开始")
                         self.wait_until(
                             lambda: not self.in_team(), time_out=30, settle_time=1
@@ -207,9 +242,8 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                         continue
                     
                     self.stats["current_phase"] = "执行护送路径"
-                    self.info_set(
-                        "当前阶段", f"执行路径{self.stats.get('selected_path', '?')}"
-                    )
+                    self.info_set("当前阶段", f"执行路径{self.stats.get('selected_path', '?')}")
+                    self.stats["path_count"][selected_path-1] += 1
                     
                     self.execute_escort_path_cont()
                     
@@ -232,6 +266,8 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     _path_end_time = time.time()
                     self.stats["current_phase"] = "等待结算"
                     self.info_set("当前阶段", "等待结算")
+                    self.stats["previous_path"] = selected_path
+                    self.info_set("上轮路径", f"路径{selected_path}")
                     logger.info("护送路径执行完毕，等待结算...")
 
                 # 路径执行完成后，检查是否超时（5秒内应该进入结算）
@@ -242,7 +278,13 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                         )
                         self.give_up_mission()
                         self.stats["failed_attempts"] += 1
-                        self.info_set("失败次数", self.stats["failed_attempts"])
+                        self.stats["current_phase"] = "重新开始"
+                        if self.stats.get("selected_path", 1) is not None:
+                            self.stats["path_fail"][self.stats.get("selected_path", 1)-1] += 1
+                        self.info_set("当前阶段", "重新开始")
+                        self.wait_until(
+                            lambda: not self.in_team(), time_out=30, settle_time=1
+                        )
                         self.wait_until(
                             lambda: not self.in_team(), time_out=30, settle_time=1
                         )
@@ -260,7 +302,7 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 # 完成一轮，更新统计
                 if _count > 0:
                     self.stats["rounds_completed"] += 1
-                    self.info_set("完成轮数", self.stats["rounds_completed"])
+                    self.update_escort_stats()
 
                     # 计算总耗时
                     elapsed_time = time.time() - self.stats["start_time"]
@@ -301,6 +343,7 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     self.sleep(1)
             elif _status == Mission.CONTINUE:
                 self.wait_until(self.in_team, time_out=30)
+                self.update_escort_stats()
                 self.log_info("任务继续")
                 self.stats["current_phase"] = "任务继续"
                 self.info_set("当前阶段", "任务继续")
@@ -309,6 +352,14 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
             self.sleep(0.2)
     
+    def update_escort_stats(self):
+        self.info_set("完成轮数", f"{self.stats['rounds_completed']-self.stats['failed_attempts']}/{self.stats['rounds_completed']}")
+        self.info_set("路径数据", f"路径1: {self.stats['path_count'][0]-self.stats['path_fail'][0]}/{self.stats['path_count'][0]}, \
+            路径2: {self.stats['path_count'][1]-self.stats['path_fail'][1]}/{self.stats['path_count'][1]}, \
+            路径3: {self.stats['path_count'][2]-self.stats['path_fail'][2]}/{self.stats['path_count'][2]}, \
+            路径4: {self.stats['path_count'][3]-self.stats['path_fail'][3]}/{self.stats['path_count'][3]}"
+        )
+
     def execute_escort_path_init(self):
         """执行护送路径中的初始动作"""
         self.execute_mouse_rot_deg(deg_y=-90)
@@ -340,13 +391,15 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.sleep(0.200)
                 self.execute_pa()
                 self.sleep(DEFAULT_PA_DELAY)
-                self.execute_pa(deg_y=15)
+                self.execute_pa(deg_y=18)
                 self.sleep(DEFAULT_PA_DELAY)
                 self.execute_pa()
                 self.sleep(DEFAULT_PA_DELAY)
-                self.execute_pa(deg_y=-5)
-                self.sleep(DEFAULT_PA_DELAY)
                 self.execute_pa(deg_y=-10)
+                self.sleep(DEFAULT_PA_DELAY)
+                self.execute_pa(deg_y=-8)
+                self.sleep(DEFAULT_PA_DELAY)
+                self.sleep(0.100)
                 self.sleep(DEFAULT_PA_DELAY)
                 self.execute_pa(deg_x=-0.5)
                 self.sleep(DEFAULT_PA_DELAY)
@@ -684,7 +737,7 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.execute_pa()
         self.sleep(DEFAULT_PA_DELAY)
     
-    def get_escort_path_by_position(self):
+    def get_escort_path_by_position(self, distance_threshold=50):
         """根据 track_point 的位置选择护送路径
 
         使用 AutoExcavation 的 find_track_point 方法检测当前位置，
@@ -730,8 +783,7 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             track_point = self.find_track_point()
 
             if track_point is None:
-                logger.warning("❌ 未检测到 track_point，无法确定路径，重新开始任务...")
-                self.give_up_mission()
+                logger.warning("❌ 未检测到 track_point，无法确定路径")
                 return None
 
             # 获取检测到的坐标（使用中心点）
@@ -757,6 +809,10 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             logger.info(
                 f"✅ 选择路径{selected_path}，距离最近参考点 {min_distance:.2f} 像素"
             )
+            
+            if min_distance > distance_threshold:
+                logger.warning(f"❌ 距离超过阈值 {distance_threshold} 像素，路径选择失败")
+                return None
 
             # 记录选择的路径
             self.stats["selected_path"] = selected_path
@@ -764,8 +820,7 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             return selected_path
 
         except Exception as e:
-            logger.error("❌ 检测 track_point 时出错，重新开始任务...", e)
-            self.give_up_mission()
+            logger.error("❌ 检测 track_point 时出错", e)
             return None
     
     def wait_for_interaction(self):
@@ -775,7 +830,7 @@ class AutoEscortTask2(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             while not ally_interaction and ally_interaction_check_count < 3:
                 self.sleep(0.500)
                 try:
-                    box = self.box_of_screen_scaled(2560, 1440, 754, 265, 1710, 1094, name="find_track_point", hcenter=True)
+                    box = self.box_of_screen_scaled(2560, 1440, 850, 360, 1710, 1080, name="find_track_point", hcenter=True)
                     track_point = self.find_track_point(box=box, filter_track_color=True)
                     if track_point is None:
                         logger.info("未检测到 track_point，协战已打开当前门")
