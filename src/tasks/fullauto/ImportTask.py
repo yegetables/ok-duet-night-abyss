@@ -494,6 +494,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             raise
 
     def _handle_mouse_click(self, action_type, button):
+        self.try_bring_to_front()
         if action_type == "mouse_down":
             if button == 'middle_click' or button == 'middle':
                 button = self.get_forward_key()
