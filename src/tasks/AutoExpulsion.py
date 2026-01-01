@@ -28,15 +28,15 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.default_config.update({
             "随机游走": False,
             "挂机模式": "开局重置角色位置",
-            "开局向前走": 0.0
+            "自定义移动路径": "w:10",
         })
         self.config_description.update({
             "随机游走": "是否在任务中随机移动",
-            "开局向前走": "开局向前走几秒"
+            "自定义移动路径": "类似'w:1.0,a:0.5,s:1.0,d:0.5'的格式表示按键和持续时间",
         })
         self.config_type["挂机模式"] = {
             "type": "drop_down",
-            "options": ["开局重置角色位置", "开局向前走"],
+            "options": ["开局重置角色位置", "自定义移动路径"],
         }
 
         self.action_timeout = 10
@@ -115,9 +115,10 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.reset_and_transport()
             # 防卡墙
             self.send_key("w", down_time=0.5)
-        elif self.config.get("挂机模式") == "开局向前走":
-            if (walk_sec := self.config.get("开局向前走", 0)) > 0:
-                self.send_key("w", down_time=walk_sec)
+        elif self.config.get("挂机模式") == "自定义移动路径":
+            path_str = self.config.get("自定义移动路径", "")
+            if len(path_str) > 0:
+                self.exec_custom_move(path_str)
 
     def create_random_walk_ticker(self):
         """创建一个随机游走的计时器函数。"""
