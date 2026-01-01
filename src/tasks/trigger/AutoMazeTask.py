@@ -30,7 +30,13 @@ class AutoMazeTask(BaseDNATask, TriggerTask):
         self._unlocked = False
         if self.scene.in_team(self.in_team_and_world):
             return
-        
+
+        # if self.find_one("pick_up_f", box=self.box_of_screen_scaled(2560, 1440, 2103,1228,2259,1267, name="f_search", hcenter=True)) :
+        #     self.sleep(0.3)
+        #     self.send_key("f", after_sleep=0.3)
+        #     self._unlocked = True
+        #     return
+
         self.scan_puzzles()
 
     def scan_puzzles(self):
@@ -39,8 +45,8 @@ class AutoMazeTask(BaseDNATask, TriggerTask):
         if self.find_one("mech_retry",
                          box=self.box_of_screen_scaled(2560, 1440, 2287, 1006, 2414, 1132, name="mech_retry",
                                                        hcenter=True), threshold=0.65):
-            self.sleep_random(0.5, random_range=(1, 1.2))
-            self.send_key("f", after_sleep=1)
+            self.sleep_random(0.3, random_range=(1, 1.2))
+            self.send_key("f", after_sleep=0.3)
             self._unlocked = True
             return
         if not self.find_one("mech_retry",

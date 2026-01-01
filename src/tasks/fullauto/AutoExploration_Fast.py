@@ -276,16 +276,8 @@ class AutoExploration_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         return result
         
     def try_solving_puzzle(self):
-        maze_task = self.get_task_by_class(AutoMazeTask)
-        roulette_task = self.get_task_by_class(AutoRouletteTask)
-        if not self.wait_until(
-            self.in_team, 
-            post_action = lambda: self.send_key(self.get_interact_key(), after_sleep=0.1),
-            time_out = 1.5
-        ):
-            maze_task.run()
-            roulette_task.run()
-            if not self.wait_until(self.in_team, time_out=1.5):           
+            self.handle_mission_interface()
+            if not self.wait_until(self.in_team, time_out=1.5):     
                 if self.config.get("解密失败自动重开", True):                    
                     self.log_info("未成功处理解密，等待重开")
                     self.open_in_mission_menu()
@@ -294,6 +286,6 @@ class AutoExploration_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     self.soundBeep()
                     self.wait_until(self.in_team, time_out = 60)
                 return False               
-        return True
+            return True
         
     

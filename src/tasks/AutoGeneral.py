@@ -85,10 +85,6 @@ class AutoGeneral(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         while True:
             if self.in_team():
                 self.handle_in_mission()
-            else:
-                if self.config.get("启动机关解锁", False):
-                    self.maze_task.run()
-                    self.roulette_task.run()
 
             _status = self.handle_mission_interface(stop_func=self.stop_func)
             if _status == Mission.START:

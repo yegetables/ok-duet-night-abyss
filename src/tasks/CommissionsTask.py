@@ -8,6 +8,8 @@ from src.tasks.BaseDNATask import BaseDNATask, isolate_white_text_to_black
 from src.tasks.config.CommissionConfig import CommissionConfig
 from src.tasks.config.CommissionSkillConfig import CommissionSkillConfig
 
+from src.tasks.trigger.AutoMazeTask import AutoMazeTask
+from src.tasks.trigger.AutoRouletteTask import AutoRouletteTask
 
 class Mission(Enum):
     START = 1
@@ -25,6 +27,8 @@ class CommissionsTask(BaseDNATask):
         self.mission_status = None
         self.action_timeout = 15
         self.wave_future = None
+        self.roulette_task = self.get_task_by_class(AutoRouletteTask)
+        self.maze_task = self.get_task_by_class(AutoMazeTask)
 
     @cached_property
     def commission_config(self):
@@ -215,7 +219,7 @@ class CommissionsTask(BaseDNATask):
                 box = self.box_of_screen_scaled(2560, 1440, 1170, 610, 2450, 820, name="letter_drag_area", hcenter=True)
                 letter_roi = self.box_of_screen_scaled(2560, 1440, 565, 651, 732, 805, name="letter_roi", hcenter=True)
                 letter_snapshot = letter_roi.crop_frame(self.frame)
-                self.sleep(0.1)
+                self.sleep(0.3)
 
                 for _ in range(2):
                     self.click_relative_random(0.533, 0.444, 0.575, 0.547, use_safe_move=True, safe_move_box=box, down_time=0.02, after_sleep=0.1)
@@ -471,6 +475,9 @@ class CommissionsTask(BaseDNATask):
             self.log_info("处理任务界面: 放弃任务")
             self.give_up_mission()
             return Mission.GIVE_UP
+        else:
+            self.roulette_task.run()
+            self.maze_task.run()
         return False
 
     def get_return_status(self):

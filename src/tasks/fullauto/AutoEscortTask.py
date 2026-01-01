@@ -503,7 +503,7 @@ class AutoEscortTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         # 等待直到屏幕上没有 puzzle 为止
         start_time = time.time()
         while time.time() - start_time < timeout:
-            self.maze_task.run()
+            self.handle_mission_interface()
             self.sleep(0.5)
             if self.maze_task.unlocked:
                 logger.info("✅ 解密完成，puzzle 已消失")

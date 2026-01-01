@@ -330,12 +330,12 @@ class AutoRouletteTask(BaseDNATask, TriggerTask):
         if not self.ocr(box=self.box_of_screen_scaled(2560, 1440, 1878, 736, 1963, 769, name="space_text", hcenter=True),
                     match=re.compile("space", re.IGNORECASE)):
             return
-        else:
-            self.sleep(0.1)
+        # if not self.wait_ocr(box=self.box_of_screen_scaled(2560, 1440, 1878, 736, 1963, 769, name="space_text", hcenter=True),
+        #             match=re.compile("space", re.IGNORECASE), time_out=1):
+        #     return
 
         if self.find_one("pick_up_f", box=self.box_of_screen_scaled(2560, 1440, 2275, 1235, 2365, 1315, name="f_search", hcenter=True)) :
-            self.sleep(0.5)
-            self.send_key("f", after_sleep=1)
+            self.send_key("f", after_sleep=0.3)
             self._unlocked = True
             return
         
