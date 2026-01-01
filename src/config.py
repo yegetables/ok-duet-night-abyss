@@ -163,6 +163,7 @@ config = {
         ["src.tasks.fullauto.AutoFishTask", "AutoFishTask"],
         ["src.tasks.fullauto.AutoExploration_Fast", "AutoExploration_Fast"],
         ["src.tasks.fullauto.AutoEscortTask", "AutoEscortTask"],
+        ["src.tasks.fullauto.AutoEscortTask2", "AutoEscortTask2"],
         ["src.tasks.fullauto.Auto65ArtifactTask_Fast", "Auto65ArtifactTask_Fast"],
         ["src.tasks.fullauto.Auto70jjbTask", "Auto70jjbTask"],
         ["src.tasks.fullauto.Auto50jjbTask", "Auto50jjbTask"],
