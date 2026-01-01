@@ -32,6 +32,7 @@ afk_config_option = ConfigOption('挂机设置', { #全局配置示例
     '防止鼠标干扰': True,
     '鼠标抖动': True,
     '鼠标抖动锁定在窗口范围': True,
+    '开局立刻随机移动': False,
 }, description='挂机相关设置', config_description={
     "提示音": "在需要时发出声音提醒",
     '提示音次数': '单次提示响几次',
@@ -39,6 +40,7 @@ afk_config_option = ConfigOption('挂机设置', { #全局配置示例
     '防止鼠标干扰': '启动任务时和特定场景下会将鼠标移动到安全位置',
     '鼠标抖动': '建议启用',
     '鼠标抖动锁定在窗口范围': '建议启用, 鼠标抖动时如果不在窗口范围则设置到窗口范围内',
+    '开局立刻随机移动': '开局后立刻随机移动对抗挂机检测,位置几乎不变',
 })
 
 monthly_card_config_option = ConfigOption('Monthly Card Config', {

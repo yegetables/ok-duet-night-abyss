@@ -487,6 +487,106 @@ class BaseDNATask(BaseTask):
                 continue
             self.send_key(key, down_time=duration)
             time.sleep(sleep_time)
+            
+    def create_random_move_ticker(self):
+        def get_ant_key(key):
+            if key == 'w':
+                return 's'
+            elif key == 's':
+                return 'w'
+            elif key == 'a':
+                return 'd'
+            elif key == 'd':
+                return 'a'
+            else:
+                return ''
+
+        def create_random_move_list(total_duration, max_pairs=10) -> str:
+            """
+            创建随机移动序列，总时间为total_duration
+            倒着生成，确保最后一对是s:w（以w结尾且位置不变）
+            
+            参数:
+                total_duration: 移动序列的总时间
+                max_pairs: 最大按键对数（包括结尾的s:w），默认10
+            """
+            # 常量定义
+            MIN_KEY_TIME = 0.025  # 每个按键的最小持续时间
+            MAX_KEY_TIME = 0.05  # 每个按键的最大持续时间
+            
+            # 倒着构建按键序列
+            sequence_parts = []
+            remaining_time = total_duration
+            pairs_generated = 0
+            
+            # 第一步：先添加最后一对 s:w
+            # 为最后一对随机生成时间
+            last_key_time = round(random.uniform(MIN_KEY_TIME, MAX_KEY_TIME), 3)
+            last_pair_time = last_key_time * 2  # 一对按键包含两个按键
+            
+            # 如果最后一对需要的时间超过剩余时间，调整时间
+            if last_pair_time > remaining_time:
+                last_key_time = round(remaining_time / 2, 3)
+                last_pair_time = remaining_time
+            
+            # 添加最后一对（因为是倒着构建，所以先添加w后添加s）
+            sequence_parts.append(f'w:{last_key_time:.3f},')
+            sequence_parts.append(f's:{last_key_time:.3f},')
+            
+            remaining_time -= last_pair_time
+            pairs_generated += 1
+            
+            # 第二步：向前添加其他随机按键对
+            while remaining_time > 0 and pairs_generated < max_pairs:
+                # 随机选择任意按键
+                key = random.choice(['w', 's', 'a', 'd'])
+                ant_key = get_ant_key(key)
+                
+                # 计算这对按键可用的最大时间
+                max_available_time = min(MAX_KEY_TIME, remaining_time / 2)
+                
+                # 如果可用时间小于最小按键时间，则不再添加新按键对
+                if max_available_time < MIN_KEY_TIME:
+                    break
+                    
+                # 为这对按键随机分配时间
+                key_time = round(random.uniform(MIN_KEY_TIME, max_available_time), 3)
+                pair_time = key_time * 2  # 这对按键的总时间
+                
+                # 添加这对按键（先相反按键，后原按键）
+                sequence_parts.append(f'{ant_key}:{key_time:.3f},')
+                sequence_parts.append(f'{key}:{key_time:.3f},')
+                
+                remaining_time -= pair_time
+                pairs_generated += 1
+            
+            # 第三步：反转序列得到正确的时间顺序
+            sequence_parts.reverse()
+            move_list = ''.join(sequence_parts)
+            
+            logger.debug(f"总时间: {total_duration:.3f}, 最大对数: {max_pairs}, 生成对数: {pairs_generated}, 移动序列: {move_list}")
+            return move_list
+        def action():
+            if not self.afk_config.get("开局立刻随机移动", False):
+                return
+
+            # 总时间范围定义
+            MIN_TOTAL_DURATION = 0.5  # 最小总时间
+            MAX_TOTAL_DURATION = 2.0  # 最大总时间
+            MAX_PAIRS = 5  # 最大按键对数（包括结尾的s:w）
+            
+            # 随机生成总时间
+            total_duration = round(random.uniform(MIN_TOTAL_DURATION, MAX_TOTAL_DURATION), 3)
+            
+            # 创建移动序列
+            move_list = create_random_move_list(total_duration, MAX_PAIRS)
+            
+            # 执行移动
+            self.exec_custom_move(move_list, sleep_time=0.1)
+
+        return self.create_ticker(action, interval=random.uniform(5.0, 10.0), interval_random_range=(1.0, 1.0))
+
+
     def create_ticker(self, action: Callable, interval: Union[float, int, Callable] = 1.0, interval_random_range: tuple = (1.0, 1.0)) -> Ticker:
         last_time = 0
         armed = False

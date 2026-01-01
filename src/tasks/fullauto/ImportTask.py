@@ -64,6 +64,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         })
 
         self.skill_tick = self.create_skill_ticker()
+        self.random_move_ticker = self.create_random_move_ticker()
         self.action_timeout = 10
         self.quick_assist_task = QuickAssistTask(self)
 
@@ -225,6 +226,11 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         try:
             self.hold_lalt = True
             self.sleep(delay)
+            if self.afk_config.get('开局立刻随机移动', False):
+                logger.debug(f"开局随机移动对抗挂机检测")
+                # self.sleep(2)
+                self.random_move_ticker()
+                self.sleep(1)
             if self.config.get('自定义移动路径', '') != '':
                 cust_path = self.config.get('自定义移动路径', '')
                 logger.debug(f"使用自定义移动路径,{cust_path}")
