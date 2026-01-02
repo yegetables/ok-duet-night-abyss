@@ -1,0 +1,19 @@
+{
+  "name": "防卡死",
+  "version": "2.0",
+  "created_time": "2025-12-31 23:56:24",
+  "total_time": 1.1,
+  "action_count": 2,
+  "actions": [
+    {
+      "type": "key_down",
+      "time": 1.0,
+      "key": "esc"
+    },
+    {
+      "type": "key_up",
+      "time": 1.1,
+      "key": "esc"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "name": "50探险-B-1",
+  "version": "2.0",
+  "created_time": "2025-12-31 23:00:33",
+  "total_time": 11.5,
+  "action_count": 27,
+  "actions": [
+    {
+      "type": "key_down",
+      "time": 1.0,
+      "key": "d"
+    },
+    {
+      "type": "key_up",
+      "time": 1.7000000000000028,
+      "key": "d"
+    },
+    {
+      "type": "mouse_down",
+      "time": 3.0,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "time": 3.0,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "time": 3.299999999999997,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "time": 3.299999999999997,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "time": 3.6000000000000014,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "time": 3.6000000000000014,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "time": 3.8999999999999986,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "time": 3.8999999999999986,
+      "button": "left"
+    },
+    {
+      "type": "mouse_move",
+      "time": 5.0,
+      "dx": 700,
+      "dy": 50,
+      "source": "hotkey_offset"
+    },
+    {
+      "type": "mouse_move",
+      "time": 5.009999999999998,
+      "dx": 9,
+      "dy": 0,
+      "source": "arrow_key"
+    },
+    {
+      "type": "mouse_down",
+      "time": 6.0,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "time": 6.0,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "time": 6.299999999999997,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "time": 6.299999999999997,
+      "button": "left"
+    },
+    {
+      "type": "mouse_move",
+      "time": 7.0,
+      "dx": 450,
+      "dy": -400,
+      "source": "hotkey_offset"
+    },
+    {
+      "type": "mouse_move",
+      "time": 7.009999999999998,
+      "dx": 9,
+      "dy": 0,
+      "source": "arrow_key"
+    },
+    {
+      "type": "mouse_down",
+      "time": 7.5,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
+      "time": 7.5,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "time": 7.799999999999997,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "time": 7.799999999999997,
+      "button": "left"
+    },
+    {
+      "type": "key_down",
+      "time": 8.0,
+      "key": "w"
+    },
+    {
+      "type": "key_up",
+      "time": 9.0,
+      "key": "w"
+    },
+    {
+      "type": "mouse_move",
+      "time": 10.0,
+      "dx": 0,
+      "dy": 450,
+      "source": "arrow_key"
+    },
+    {
+      "type": "key_down",
+      "time": 11.0,
+      "key": "q"
+    },
+    {
+      "type": "key_up",
+      "time": 11.5,
+      "key": "q"
+    },
+    {
+      // 双枪自动射击
+      "type": "mouse_move",
+      "time": 13.0,
+      "dx": -670,
+      "dy": 0,
+      "source": "arrow_key"
+    }
+  ]
+}
