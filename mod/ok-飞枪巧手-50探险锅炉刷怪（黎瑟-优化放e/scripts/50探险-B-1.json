@@ -21,16 +21,6 @@
       "button": "left"
     },
     {
-      "type": "mouse_down",
-      "time": 3.0,
-      "button": "left"
-    },
-    {
-      "type": "mouse_up",
-      "time": 3.299999999999997,
-      "button": "left"
-    },
-    {
       "type": "mouse_up",
       "time": 3.299999999999997,
       "button": "left"
@@ -38,16 +28,6 @@
     {
       "type": "mouse_down",
       "time": 3.6000000000000014,
-      "button": "left"
-    },
-    {
-      "type": "mouse_down",
-      "time": 3.6000000000000014,
-      "button": "left"
-    },
-    {
-      "type": "mouse_up",
-      "time": 3.8999999999999986,
       "button": "left"
     },
     {
@@ -75,16 +55,6 @@
       "button": "left"
     },
     {
-      "type": "mouse_down",
-      "time": 6.0,
-      "button": "left"
-    },
-    {
-      "type": "mouse_up",
-      "time": 6.299999999999997,
-      "button": "left"
-    },
-    {
       "type": "mouse_up",
       "time": 6.299999999999997,
       "button": "left"
@@ -104,24 +74,14 @@
       "source": "arrow_key"
     },
     {
-      "type": "mouse_down",
+      "type": "key_down",
       "time": 7.5,
-      "button": "left"
+      "key": "4"
     },
     {
-      "type": "mouse_down",
-      "time": 7.5,
-      "button": "left"
-    },
-    {
-      "type": "mouse_up",
+      "type": "key_up",
       "time": 7.799999999999997,
-      "button": "left"
-    },
-    {
-      "type": "mouse_up",
-      "time": 7.799999999999997,
-      "button": "left"
+      "key": "4"
     },
     {
       "type": "key_down",
