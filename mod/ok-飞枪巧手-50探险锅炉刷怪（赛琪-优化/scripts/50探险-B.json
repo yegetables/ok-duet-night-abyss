@@ -21,73 +21,53 @@
     },
     {
       "type": "key_down",
-      "time": 1.1,
-      "key": "w"
+      "time": 1.3,
+      "key": "space"
     },
     {
       "type": "key_up",
-      "time": 2.16,
-      "key": "w"
+      "time": 1.4,
+      "key": "space"
     },
     {
       "type": "key_down",
+      "time": 1.65,
+      "key": "space"
+    },
+    {
+      "type": "key_up",
+      "time": 1.68,
+      "key": "space"
+    },
+    {
+      "type": "mouse_down",
+      "time": 1.7,
+      "button": "left"
+    },
+    {
+      "type": "mouse_up",
+      "time": 2.0,
+      "button": "left"
+    },
+    {
+      "type": "mouse_down",
       "time": 2.3,
-      "key": "space"
+      "button": "left"
     },
     {
-      "type": "key_up",
-      "time": 2.4,
-      "key": "space"
+      "type": "mouse_up",
+      "time": 2.6,
+      "button": "left"
     },
     {
       "type": "key_down",
-      "time": 2.65,
-      "key": "space"
+      "time": 3.0,
+      "key": "w"
     },
     {
       "type": "key_up",
-      "time": 2.68,
-      "key": "space"
-    },
-    {
-      "type": "mouse_down",
-      "time": 2.7,
-      "button": "left"
-    },
-    {
-      "type": "mouse_down",
-      "time": 2.7,
-      "button": "left"
-    },
-    {
-      "type": "mouse_up",
-      "time": 3.0,
-      "button": "left"
-    },
-    {
-      "type": "mouse_up",
-      "time": 3.0,
-      "button": "left"
-    },
-    {
-      "type": "mouse_down",
-      "time": 3.3,
-      "button": "left"
-    },
-    {
-      "type": "mouse_down",
-      "time": 3.3,
-      "button": "left"
-    },
-    {
-      "type": "mouse_up",
-      "time": 3.6,
-      "button": "left"
-    },
-    {
-      "type": "mouse_up",
-      "time": 3.6,
-      "button": "left"
+      "time": 4.46,
+      "key": "w"
     },
     {
       "type": "key_down",

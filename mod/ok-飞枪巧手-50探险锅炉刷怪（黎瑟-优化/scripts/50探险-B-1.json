@@ -151,11 +151,10 @@
       "key": "q"
     },
     {
-      // 双枪自动射击
       "type": "mouse_move",
       "time": 13.0,
       "dx": -670,
-      "dy": 0,
+      "dy": 300,
       "source": "arrow_key"
     }
   ]
