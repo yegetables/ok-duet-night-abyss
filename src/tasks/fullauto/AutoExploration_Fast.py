@@ -261,11 +261,17 @@ class AutoExploration_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.send_key_down("a")
         self.sleep(0.3)
         self.send_key_up("a")
-        # self.send_key_down("s")
-        # self.sleep(0.1)
-        # self.send_key_up("s")
         self.sleep(0.1)
+        self.send_key_down("s")
+        self.sleep(0.1)
+        self.send_key_up("s")
+        self.sleep(0.3)
         self.send_forward_key(down_time=1.1)
+        self.sleep(0.2)
+        self.send_key("space", down_time=0.1,after_sleep=0.1)
+        self.send_key("space", down_time=0.1,after_sleep=0.1)
+        # self.send_key("w",down_time=1.5)
+        self.send_key_down(self.get_dodge_key())
         return True
 
     def find_track_point(self, x1, y1, x2, y2) -> bool:
