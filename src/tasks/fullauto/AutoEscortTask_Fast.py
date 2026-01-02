@@ -39,6 +39,8 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             "近战魔之楔：金色迅捷+10 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）": False,
             "远程魔之楔：任意迅捷": False,
             "如果路线2撤离撞墙 请设置路线2结算超级跳延迟为-1": False,
+            "路线1·4撤离撞门超级跳延迟Offset": 0,
+            "路线1·4撤离撞门超级跳延迟-/+": "-",
             "路线1结算超级跳延迟Offset": 0,
             "路线1结算超级跳延迟-/+": "-",
             "路线1结算超级跳角度Offset": 0,
@@ -67,6 +69,8 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             "近战魔之楔：金色迅捷+10 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）": "必须勾选才能执行任务！",
             "远程魔之楔：任意迅捷": "必须勾选才能执行任务！",
             "如果路线2撤离撞墙 请设置路线2结算超级跳延迟为-1": "必须勾选才能执行任务！",
+            "路线1·4撤离撞门超级跳延迟Offset": "-/+ 1",
+            "路线1·4撤离撞门超级跳延迟-/+": "撞墙-不开门+",
             "路线1结算超级跳延迟Offset": "-/+ 1",
             "路线1结算超级跳延迟-/+": "撤离点在落点后-前+",
             "路线1结算超级跳角度Offset": "-/+ 5",
@@ -84,6 +88,10 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             "路线4结算超级跳角度Offset": "-/+ 5",
             "路线4结算超级跳角度-/+": "撤离点在落点左-右+",
         })
+        self.config_type["路线1·4撤离撞门超级跳延迟-/+"] = {
+            "type": "drop_down",
+            "options": ["-", "+"],
+        }
         self.config_type["路线1结算超级跳延迟-/+"] = {
             "type": "drop_down",
             "options": ["-", "+"],
@@ -641,12 +649,12 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.wait_for_interaction(deg_x=-36, deg_y=7)
         
     def execute_escort_path_door_C_exit(self):
-        self.execute_mouse_rot_deg(deg_x=-21.5)
+        self.execute_mouse_rot_deg(deg_x=-20)
         self.execute_pa()
         self.sleep(DEFAULT_PA_DELAY)
         self.execute_pa()
         self.sleep(DEFAULT_PA_DELAY)
-        self.execute_pa(deg_x=10)
+        self.execute_pa(deg_x=8.5)
         self.sleep(DEFAULT_PA_DELAY)
         self.execute_pa()
         self.sleep(DEFAULT_PA_DELAY)
@@ -721,7 +729,10 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.send_key_down(self.get_spiral_dive_key())
                 self.sleep(0.050)
                 self.send_key_up(self.get_spiral_dive_key())
-                self.execute_rhythm_super_jump(deg_x=0.5, deg_y=25, slide_delay=0.450)
+                self.execute_rhythm_super_jump(
+                    deg_x=0.5, deg_y=25, 
+                    slide_delay=0.500 + self.config.get("路线1·4撤离撞门超级跳延迟Offset",0.000)*0.010*self.mapping_pn.get(self.config.get("路线1·4撤离撞门超级跳延迟-/+","-"))
+                )
                 self.sleep(0.050)
                 self.mouse_down(key="left")
                 self.sleep(0.050)
@@ -757,11 +768,11 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 )
                 self.sleep(0.100)
             case 3:
-                self.execute_pa(deg_x=20, deg_y=-5)
+                self.execute_pa(deg_x=20, deg_y=-5.5)
                 self.sleep(DEFAULT_PA_DELAY)
                 self.execute_pa()
                 self.sleep(DEFAULT_PA_DELAY)
-                self.execute_rhythm_super_jump(deg_x=-40, deg_y=15, slide_delay=0.200)
+                self.execute_rhythm_super_jump(deg_x=-40, deg_y=15.5, slide_delay=0.200)
                 self.sleep(0.200)
                 self.send_key_down(self.get_dodge_key())
                 self.sleep(0.050)
@@ -787,7 +798,10 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.send_key_down(self.get_spiral_dive_key())
                 self.sleep(0.050)
                 self.send_key_up(self.get_spiral_dive_key())
-                self.execute_rhythm_super_jump(deg_x=0.5, deg_y=25, slide_delay=0.450)
+                self.execute_rhythm_super_jump(
+                    deg_x=0.5, deg_y=25, 
+                    slide_delay=0.500 + self.config.get("路线1·4撤离撞门超级跳延迟Offset",0.000)*0.010*self.mapping_pn.get(self.config.get("路线1·4撤离撞门超级跳延迟-/+","-"))
+                )
                 self.sleep(0.050)
                 self.mouse_down(key="left")
                 self.sleep(0.050)
