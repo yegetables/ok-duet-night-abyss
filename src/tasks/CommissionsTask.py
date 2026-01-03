@@ -491,6 +491,19 @@ class CommissionsTask(BaseDNATask):
         target_text = find_boxes_by_name(texts, re.compile(s, re.IGNORECASE))
         if target_text:
             return True
+    def send_forward_key(self, after_sleep=0, interval=-1, down_time=0.01):
+        """发送锁定按键。
+
+        Args:
+            after_sleep (float, optional): 发送后的休眠时间。默认为 0。
+            interval (float, optional): 按键按下和释放的间隔。默认为 -1 (使用默认值)。
+            down_time (float, optional): 按键按下的持续时间。默认为 0.01。
+        """
+        key= self.get_forward_key()
+        if key == "middle_click" or key == "middle":
+            self.middle_click()
+        else:
+            self.send_key(key, interval=interval, down_time=down_time, after_sleep=after_sleep)
 
     def reset_and_transport(self):
         self.open_in_mission_menu()

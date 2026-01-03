@@ -181,8 +181,7 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         """路径逻辑：70皎皎币-电梯右"""
         self.reset_and_transport()
         self.send_key('s', down_time=0.2, after_sleep=0.2)
-        self.middle_click(after_sleep=0.2)
-        
+        self.send_forward_key(after_sleep=0.2)
         # 重新按住奔跑，防止传送后松开
         self.send_key_down("lalt") 
         self.sleep(0.05)

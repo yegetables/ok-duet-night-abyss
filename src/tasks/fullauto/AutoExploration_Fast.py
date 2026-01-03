@@ -218,7 +218,7 @@ class AutoExploration_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.send_key("space", down_time=0.7,after_sleep=0.7)
         self.sleep(0.5)
         self.send_key_up("w")
-        self.middle_click()
+        self.send_forward_key()
         return True
     
     def execute_ground_map(self):
@@ -258,7 +258,7 @@ class AutoExploration_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.sleep(0.1)
         self.send_key_up("s")
         self.sleep(0.1)
-        self.middle_click()
+        self.send_forward_key()
         return True
 
     def find_track_point(self, x1, y1, x2, y2) -> bool:
