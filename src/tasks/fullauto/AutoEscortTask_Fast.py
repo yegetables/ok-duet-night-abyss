@@ -11,19 +11,18 @@ logger = Logger.get_logger(__name__)
 
 DEFAULT_PA_DELAY = 0.160
 MOUSE_DEG_TO_PIXELS = 10
-TARGET_WHITE_PIXIELS_1920_1080 = 1200
-
+TARGET_WHITE_PIXELS_1920_1080 = 1200
 
 
 class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
-    """自动护送任务"""
+    """自动快速护送任务"""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.icon = FluentIcon.FLAG
-        self.name = "黎瑟：超级飞枪80护送（需120帧+黎瑟+春玦戟+弧光百劫+巧手+协战）【需要游戏处于前台】"
-        self.description = "注：需求120帧 帧数敏感 掉帧会坠机。\n"
-        self.description += "请在OK设置里配置螺旋飞跃键位 游戏内设置四项灵敏度0.2 OK已强制0.2灵敏度无需设置\n"
+        self.name = "黎瑟：超级飞枪80护送（需120帧+黎瑟+春玦戟+弧光百劫/裂魂+巧手+协战）【需要游戏处于前台】"
+        self.description = "注：需求120帧 帧数敏感 掉帧会坠机\n"
+        self.description += "请确保游戏内【射击时灵敏度】与正常灵敏度相同 请在OK-DNA里设置【灵敏度】和【螺旋飞跃键位】\n"
         self.description += "展开查看具体配置\n"
         self.group_name = "全自动"
         self.group_icon = FluentIcon.CAFE
@@ -33,13 +32,13 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.default_config.update({
             "快速继续挑战": True,
             "失误截图": True,
+            "我已在游戏内设置【射击时灵敏度】与正常灵敏度相同（推荐4项相同）": False,
+            "我已在OK-DNA里设置【灵敏度】和【螺旋飞跃键位】": False,
             "帧数敏感，如果不能稳120帧，大概率坠机": False,
-            "我已在OK设置里配置螺旋飞跃键位": False,
-            "我已在游戏内设置四项灵敏度为0.2": False,
-            "装备：黎瑟 + 0精春玦戟 迅捷+10 + 弧光百劫 迅捷（任意）": False,
             "设置：镜头距离1.3，120帧，最低画质，垂直同步关， 插帧关": False,
-            "近战魔之楔：金色迅捷+10 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）": False,
-            "远程魔之楔：任意迅捷": False,
+            "阵容：黎瑟 + 0精春玦戟 + 弧光百劫/裂魂 + 任意协战": False,
+            "近战魔之楔：【金色迅捷+10】 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）": False,
+            "远程魔之楔：【请勿携带“专注·厚重”】推荐装备金色迅捷+10或任意迅捷": False,
             "路线1·4撤离撞门超级跳延迟Offset": 0,
             "路线1·4撤离撞门超级跳延迟-/+": "-",
             "路线1结算超级跳延迟Offset": 0,
@@ -62,17 +61,17 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             "DEBUG_GATE": 0,
         })
         self.config_description.update({
-            "快速继续挑战": "R键快速继续挑战，跳过结算动画",
-            "失误截图": "ok-duet-night-abyss\screenshots 文件夹下保存，重启OK后清空",
+            "快速继续挑战": "R键快速继续挑战，跳过结算动画。",
+            "失误截图": "ok-duet-night-abyss\screenshots 文件夹下保存，重启OK后清空。如成功率较低，长时间使用可以考虑关闭（截图文件可能会过度占用空间）。",
+            "我已在游戏内设置【射击时灵敏度】与正常灵敏度相同（推荐4项相同）": "必须勾选才能执行任务！",
+            "我已在OK-DNA里设置【灵敏度】和【螺旋飞跃键位】": "必须勾选才能执行任务！",
             "帧数敏感，如果不能稳120帧，大概率坠机": "必须勾选才能执行任务！",
-            "我已在OK设置里配置螺旋飞跃键位": "必须勾选才能执行任务！",
-            "我已在游戏内设置四项灵敏度为0.2": "必须勾选才能执行任务！",
-            "装备：黎瑟 + 0精春玦戟 迅捷+10 + 弧光百劫 迅捷（任意）": "必须勾选才能执行任务！",
             "设置：镜头距离1.3，120帧，最低画质，垂直同步关， 插帧关": "必须勾选才能执行任务！",
-            "近战魔之楔：金色迅捷+10 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）": "必须勾选才能执行任务！",
-            "远程魔之楔：任意迅捷": "必须勾选才能执行任务！",
+            "阵容：黎瑟 + 0精春玦戟 + 弧光百劫/裂魂 + 任意协战": "必须勾选才能执行任务！",
+            "近战魔之楔：【金色迅捷+10】 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）":"必须勾选才能执行任务！",
+            "远程魔之楔：【请勿携带“专注·厚重”】推荐装备金色迅捷+10或任意迅捷": "必须勾选才能执行任务！",
             "路线1·4撤离撞门超级跳延迟Offset": "-/+ 1",
-            "路线1·4撤离撞门超级跳延迟-/+": "撞墙-不开门+",
+            "路线1·4撤离撞门超级跳延迟-/+": "撤离点自动门前撞墙-不开门+",
             "路线1结算超级跳延迟Offset": "-/+ 1",
             "路线1结算超级跳延迟-/+": "撤离点在落点后-前+",
             "路线1结算超级跳角度Offset": "-/+ 5",
@@ -156,12 +155,6 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def run(self):
         mouse_jitter_setting = self.afk_config.get("鼠标抖动")
         self.afk_config.update({"鼠标抖动": False})
-        sensitivity_switch = self.sensitivity_config.get("Game Sensitivity Switch")
-        self.sensitivity_config.update({"Game Sensitivity Switch": True})
-        sensitivity_x = self.sensitivity_config.get("X-axis sensitivity")
-        self.sensitivity_config.update({"X-axis sensitivity": 0.2})
-        sensitivity_y = self.sensitivity_config.get("Y-axis sensitivity")
-        self.sensitivity_config.update({"Y-axis sensitivity": 0.2})
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position(save_current_pos=False)
         self.set_check_monthly_card()
@@ -170,30 +163,27 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         except TaskDisabledException:
             pass
         except Exception as e:
-            logger.error("AutoEscortTask_Fast error", e)
+            logger.error("AutoEscortTask error", e)
             raise
         finally:
             self.afk_config.update({"鼠标抖动": mouse_jitter_setting})
-            self.sensitivity_config.update({"Game Sensitivity Switch": sensitivity_switch})
-            self.sensitivity_config.update({"X-axis sensitivity": sensitivity_x})
-            self.sensitivity_config.update({"Y-axis sensitivity": sensitivity_y})
 
     def do_run(self):
         # 检查是否已阅读注意事项
-        if (not self.config.get("帧数敏感，如果不能稳120帧，大概率坠机", False)
-            or not self.config.get("我已在OK设置里配置螺旋飞跃键位", False)
-            or not self.config.get("我已在游戏内设置四项灵敏度为0.2", False)
-            or not self.config.get("装备：黎瑟 + 0精春玦戟 迅捷+10 + 弧光百劫 迅捷（任意）", False)
+        if (not self.config.get("我已在游戏内设置【射击时灵敏度】与正常灵敏度相同（推荐4项相同）", False)
+            or not self.config.get("我已在OK-DNA里设置【灵敏度】和【螺旋飞跃键位】", False)
+            or not self.config.get("帧数敏感，如果不能稳120帧，大概率坠机", False)
             or not self.config.get("设置：镜头距离1.3，120帧，最低画质，垂直同步关， 插帧关", False)
-            or not self.config.get("近战魔之楔：金色迅捷+10 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）", False)
-            or not self.config.get("远程魔之楔：任意迅捷", False)
+            or not self.config.get("阵容：黎瑟 + 0精春玦戟 + 弧光百劫/裂魂 + 任意协战", False)
+            or not self.config.get("近战魔之楔：【金色迅捷+10】 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速2.0）", False)
+            or not self.config.get("远程魔之楔：【请勿携带“专注·厚重”】推荐装备金色迅捷+10或任意迅捷", False)
         ):
             logger.error("⚠️ 请先阅读注意事项并确认配置！")
 
             # 使用 info_set 显示详细配置要求
             self.info_set("错误", "未勾选配置确认")
             self.log_error("请先阅读并勾选注意事项")
-            return
+            raise TaskDisabledException
 
         self.load_char()
         _start_time = 0
@@ -455,6 +445,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.sleep(0.2)
     
     def update_escort_stats(self):
+        """更新 UI 数据显示"""
         self.info_set("完成轮数", f"{self.get_success_frac(self.stats['rounds_completed'], self.stats['failed_attempts'])}")
         self.info_set("路径数据", f"路径1: {self.get_success_frac(self.stats['path_count'][0], self.stats['path_fail'][0])}, \
             路径2: {self.get_success_frac(self.stats['path_count'][1], self.stats['path_fail'][1])}, \
@@ -896,7 +887,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.sleep(DEFAULT_PA_DELAY)
 
     def calc_escort_path_by_position_scaled_reference(self):
-        # 根据 track_point 的位置选择护送路径
+        """计算缩放后的 track point 参考点"""
         # 1920x1080 分辨率下的参考点
         reference_points = {
             1: (957, 589) ,
@@ -929,6 +920,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         logger.info(f"缩放后的距离阈值: {self.scaled_path_threshold} 像素")
         
     def get_escort_path_by_position(self, delay=0.100) -> bool:
+        """根据 track_point 的位置选择护送路径"""
         # 使用 find_track_point 检测位置
         try:
             self.sleep(delay)
@@ -976,6 +968,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             return False
     
     def wait_for_interaction(self):
+        """等待协战与机关交互 超时尝试主控交互"""
         if not self.target_found:
             ally_interaction = False
             ally_interaction_check_count = 0
@@ -1006,6 +999,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.sleep(2.200)
     
     def check_target_found(self, delay=0.000) -> bool:
+        """检测是否已找到目标"""
         # 检查是否找到目标，通过检测目标血条区域的白色像素数量判断
         if not self.target_found:
             self.sleep(delay)
@@ -1014,12 +1008,12 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.draw_boxes("target_health_bar", [target_health_bar_box], color="blue")
             
             logger.debug(f"目标血条检测区域: {target_health_bar_box}")
-            target_health_bar_pixels  = self.next_frame() [
+            target_health_bar_pixels  = self.next_frame()[
                 target_health_bar_box.y:target_health_bar_box.y + target_health_bar_box.height,
                 target_health_bar_box.x:target_health_bar_box.x + target_health_bar_box.width
             ]
             
-            target_white_pixel_count = int(TARGET_WHITE_PIXIELS_1920_1080 * self.width / 1920 * self.height / 1080)
+            target_white_pixel_count = int(TARGET_WHITE_PIXELS_1920_1080 * self.width / 1920 * self.height / 1080)
             box_white_pixel_count = np.sum(np.all(target_health_bar_pixels >= [250, 250, 250], axis=2))
             logger.debug(f"目标血条区域白色像素阈值: {target_white_pixel_count}")
             logger.debug(f"目标血条区域白色像素数量: {box_white_pixel_count}")
@@ -1066,11 +1060,13 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.mouse_up(key="right")
         
     def save_frame(self, name = None):
+        """失误截图: 缓存当前帧"""
         if self.config.get("失误截图", True):
-            name=f"T{self.stats['rounds_completed']+1}P{self.path_str}G{self.door_count}_{time.strftime("%H.%M.%S", time.localtime(time.time()))}_{name}"
+            name=f"T{self.stats['rounds_completed']+1}P{self.path_str}G{self.door_count}_{time.strftime('%H.%M.%S', time.localtime(time.time()))}_{name}"
             self.screenshot_frames.append((name, self.next_frame().copy()))
 
     def dump_screenshots(self):
+        """失误截图: 提取缓存帧生成截图"""
         if self.config.get("失误截图", True):
             for (name, frame) in self.screenshot_frames:
                 self.screenshot(name=name, frame=frame)
