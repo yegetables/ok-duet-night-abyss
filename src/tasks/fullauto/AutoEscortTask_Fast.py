@@ -163,7 +163,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         except TaskDisabledException:
             pass
         except Exception as e:
-            logger.error("AutoEscortTask error", e)
+            logger.error("AutoEscortTask_Fast error", e)
             raise
         finally:
             self.afk_config.update({"鼠标抖动": mouse_jitter_setting})
