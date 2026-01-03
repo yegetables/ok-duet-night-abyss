@@ -44,7 +44,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             '外部文件夹': "",
             '副本类型': "默认",
             '关闭抖动': False,
-            # '使用内建机关解锁': False,
+            '自定义移动路径': "",
         })
         self.config_type['外部文件夹'] = {
             "type": "drop_down",
@@ -60,7 +60,7 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             '轮次': '如果是无尽关卡，选择打几个轮次',
             '外部文件夹': '选择mod目录下的外部逻辑',
             '关闭抖动': '使用飞枪等存在视角移动的外部逻辑时可以启用',
-            # '使用内建解密': '使用ok内建解密功能',
+            "自定义移动路径": "填写简单自定义移动路径,格式如下:w:0.3,a:0.2,s:0.4,d:0.1",
         })
 
         self.skill_tick = self.create_skill_ticker()
@@ -229,6 +229,11 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.sleep(0.5)
             self.fidget_params.update({"skip_jitter": False})
             self.sleep(delay-1.5)
+            if self.config.get('自定义移动路径', '') != '':
+                cust_path = self.config.get('自定义移动路径', '')
+                logger.debug(f"使用自定义移动路径,{cust_path}")
+                self.exec_custom_move(cust_path)
+                ret = True
             ret = self._walk_to_aim(former_index)
         finally:
             self.fidget_params.update({"hold_lalt": False})
