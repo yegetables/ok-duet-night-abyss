@@ -43,6 +43,7 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         
         self.skill_tick = self.create_skill_ticker()
         self.random_walk_tick = self.create_random_walk_ticker()
+        self.random_move_tick = self.create_random_move_ticker()
 
     def run(self):
         DNAOneTimeTask.run(self)
@@ -110,6 +111,11 @@ class AutoExpulsion(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         pass
 
     def move_on_begin(self):
+        if self.afk_config.get('开局立刻随机移动', False):
+            logger.debug(f"开局随机移动对抗挂机检测")
+            self.sleep(2)
+            self.random_move_tick()
+            self.sleep(1)
         if self.config.get("挂机模式") == "开局重置角色位置":
             # 复位方案
             self.reset_and_transport()

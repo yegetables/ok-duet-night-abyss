@@ -24,7 +24,7 @@ class AutoEscortTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.description += "魔之楔：金色迅捷+5 / 紫色穿引共鸣 / 紫色迅捷蓄势+5 / 紫色迅捷坠击+5（面板攻速1.67）。"
         self.group_name = "全自动"
         self.group_icon = FluentIcon.CAFE
-
+        self.random_move_ticker = self.create_random_move_ticker()
         self.default_config.update({
             "我已阅读注意事项并确认配置": False,
         })
@@ -256,6 +256,10 @@ class AutoEscortTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.sleep(2)
                 _start_time = 0
                 _path_end_time = 0
+                if self.afk_config.get('开局立刻随机移动', False):
+                    logger.debug(f"开局随机移动对抗挂机检测")
+                    self.random_move_ticker()
+                    self.sleep(1)
             elif _status == Mission.CONTINUE:
                 self.wait_until(self.in_team, time_out=30)
                 self.log_info("任务继续")
