@@ -131,7 +131,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         }
 
         self.action_timeout = 10
-
+        self.random_move_ticker = self.create_random_move_ticker()
         # 缓存 GenshinInteraction 实例，避免重复创建
         self._genshin_interaction = None
 
@@ -152,7 +152,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             "door_fail": [0, 0, 0, 0],
         }
 
-        self.maze_task = None
+        # self.maze_task = None
 
     def run(self):
         mouse_jitter_setting = self.afk_config.get("鼠标抖动")
@@ -432,6 +432,10 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.sleep(2)
                 _start_time = 0
                 _path_end_time = 0
+                if self.afk_config.get('开局立刻随机移动', False):
+                    logger.debug(f"开局随机移动对抗挂机检测")
+                    self.random_move_ticker()
+                    self.sleep(1)
             elif _status == Mission.CONTINUE:
                 self.wait_until(self.in_team, time_out=30)
                 self.update_escort_stats()
