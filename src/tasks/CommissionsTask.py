@@ -222,7 +222,7 @@ class CommissionsTask(BaseDNATask):
                 box = self.box_of_screen_scaled(2560, 1440, 1170, 610, 2450, 820, name="letter_drag_area", hcenter=True)
                 letter_roi = self.box_of_screen_scaled(2560, 1440, 565, 651, 732, 805, name="letter_roi", hcenter=True)
                 letter_snapshot = letter_roi.crop_frame(self.frame)
-                self.sleep(0.1)
+                self.sleep(0.3)
 
                 for _ in range(2):
                     self.click_relative_random(0.533, 0.444, 0.575, 0.547, use_safe_move=True, safe_move_box=box, down_time=0.02, after_sleep=0.1)
