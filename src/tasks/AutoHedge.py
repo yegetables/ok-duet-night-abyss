@@ -90,9 +90,6 @@ class AutoHedge(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         while True:
             if self.in_team():
                 self.handle_in_mission()
-            else:
-                self.roulette_task.run()
-                self.maze_task.run()
 
             _status = self.handle_mission_interface(stop_func=self.stop_func)
             if _status == Mission.START:
