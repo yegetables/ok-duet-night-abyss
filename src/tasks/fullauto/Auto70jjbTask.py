@@ -16,8 +16,8 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.icon = FluentIcon.FLAG
-        self.name = "自动70级皎皎币本"
-        self.description = "全自动"
+        self.name = "自动50/70/80级皎皎币本"
+        self.description = "全自动-龙猫添加50/80级皎皎币"
         self.group_name = "全自动"
         self.group_icon = FluentIcon.CAFE
 
@@ -304,6 +304,221 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self._release_all_move_keys()
         self.reset_and_transport()
 
+    def _path_50_default(self):
+        """路径逻辑：50皎皎币-华胥"""
+        self.send_key_down("lalt")
+        self.sleep(0.05)
+        self.send_key_down('w')
+        self.sleep(0.32)
+        self.send_key_down(self.get_dodge_key())
+        self.sleep(0.57)
+        self.send_key("a", down_time=0.19)
+        self.sleep(0.65)
+        self.send_key(self.get_dodge_key(), down_time=0.21)
+        self.sleep(0.56)
+        self.send_key("d", down_time=0.17)
+        self.sleep(0.61)
+        self.send_key(self.get_dodge_key(), down_time=0.17)
+        self.sleep(0.53)
+        self.send_key("a", down_time=0.13)
+        self.sleep(0.62)
+        self.send_key(self.get_dodge_key(), down_time=0.25)
+        self.sleep(0.67)
+        self.send_key("d", down_time=0.24)
+        self.sleep(0.59)
+        self.send_key_up('w')
+        self.sleep(0.21)
+        self.send_key_up(self.get_dodge_key())
+
+        self._release_all_move_keys()
+
+    def _path_80_center(self):
+        self.send_key_down("lalt")
+        self.sleep(0.05)
+        self.send_key_down("w")
+        self.sleep(0.1)
+        self.send_key(self.get_dodge_key(), down_time=0.8)
+        self.sleep(0.3)
+        self.send_key(self.get_dodge_key(), down_time=0.3)
+        self.sleep(0.3)
+        self.send_key(self.get_dodge_key(), down_time=0.2)
+        self.sleep(0.2)
+        self.send_key_down("d")
+        self.sleep(0.7)
+        self.send_key_up("w")
+        self.sleep(0.7)
+        self.send_key("w", down_time=0.6)
+        self.sleep(1.1)
+        if self.find_track_point(0.79, 0.51, 0.82, 0.55):
+            # 检测柱子房
+            self.sleep(0.3)
+            self.send_key_down("s")
+            self.sleep(0.1)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(0.2)
+            self.send_key_up("s")
+            self.sleep(0.9)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(0.3)
+            self.send_key("w", down_time=1.1)
+            self.sleep(1.1)
+            self.send_key(self.get_dodge_key(), down_time=0.5)
+            self.sleep(0.9)
+            self.send_key(self.get_dodge_key(), down_time=0.3)
+            self.sleep(0.5)
+            self.send_key("w", down_time=0.2)
+            self.sleep(0.9)
+            self.send_key(self.get_dodge_key(), down_time=0.5)
+            self.sleep(0.7)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(0.3)
+            self.send_key_up("d")
+        else:
+            # 检测空房
+            self.send_key("w", down_time=0.2)
+            self.sleep(0.9)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(0.5)
+            self.send_key("w", down_time=0.1)
+            self.sleep(0.8)
+            self.send_key(self.get_dodge_key(), down_time=0.5)
+            self.sleep(0.9)
+            self.send_key(self.get_dodge_key(), down_time=0.3)
+            self.sleep(0.3)
+            self.send_key_up("d")
+            
+        self.middle_click()
+        self._release_all_move_keys()
+
+
+    def _path_80_up(self):
+        self.send_key_down("lalt")
+        self.sleep(0.05)
+        self.send_key_down("w")
+        self.sleep(0.1)
+        self.send_key(self.get_dodge_key(), down_time=0.7)
+        self.sleep(0.7)
+        self.send_key(self.get_dodge_key(), down_time=0.3)
+        self.sleep(0.9)
+        self.send_key_down("space")
+        self.sleep(0.1)
+        self.send_key_up("space")
+        self.sleep(0.3)
+        self.send_key_down("space")
+        self.sleep(0.1)
+        self.send_key_up("space")
+        self.sleep(0.3)
+        self.send_key_down(self.get_dodge_key())
+        self.sleep(0.5)
+        self.send_key_down("d")
+        self.sleep(0.05)
+        self.send_key_up("w")
+        self.sleep(0.5)
+        self.send_key(self.get_dodge_key(), down_time=0.3)
+        self.sleep(0.2)
+        self.send_key_up("d")
+        self.send_key_down("w")
+        self.sleep(0.9)
+        self.send_key_down("a")
+        self.sleep(0.5)
+        self.send_key(self.get_dodge_key(), down_time=0.3)
+        self.sleep(1.8)
+        self.send_key_up("a")
+        self.sleep(1.2)
+        if self.find_track_point(0.46, 0.33, 0.49, 0.38):
+            # 检测蛇房
+            self.sleep(1.2)
+            self.send_key_down("d")
+            self.sleep(0.2)
+            self.send_key(self.get_dodge_key(), down_time=0.3)
+            self.sleep(0.1)
+            self.send_key_up("d")
+            self.sleep(0.2)
+            self.send_key("a", down_time=0.06)
+            self.sleep(0.4)
+            self.send_key(self.get_dodge_key(), down_time=0.5)
+            self.sleep(0.6)
+            self.send_key("a", down_time=1.1)
+            self.sleep(0.1)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(1.7)
+            self.send_key(self.get_dodge_key(), down_time=0.8)
+            self.sleep(0.3)
+            self.send_key_up("w")
+        else:
+            # 检测柱子房
+            self.send_key_down("d")
+            self.sleep(0.1)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(0.2)
+            self.send_key_up("d")
+            self.sleep(0.2)
+            self.send_key(self.get_dodge_key(), down_time=0.5)
+            self.sleep(1.0)
+            self.send_key("a", down_time=1.0)
+            self.sleep(0.7)
+            self.send_key(self.get_dodge_key(), down_time=0.3)
+            self.sleep(1.1)
+            self.send_key(self.get_dodge_key(), down_time=0.3)
+            self.sleep(0.7)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(1.7)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(0.3)
+            self.send_key_up("w")
+
+        self._release_all_move_keys()
+
+
+    def _path_80_down(self):
+        self.send_key_down("lalt")
+        self.sleep(0.05)
+        self.send_key_down("w")
+        self.sleep(0.1)
+        self.send_key(self.get_dodge_key(), down_time=0.7)
+        self.sleep(0.5)
+        self.send_key(self.get_dodge_key(), down_time=0.5)
+        self.sleep(0.1)
+        if self.find_track_point(0.48, 0.33, 0.51, 0.38):
+            # 检测蛇房
+            self.sleep(1.0)
+            self.send_key_down("d")
+            self.sleep(0.2)
+            self.send_key(self.get_dodge_key(), down_time=0.3)
+            self.sleep(0.3)
+            self.send_key_up("d")
+            self.sleep(0.6)
+            self.send_key(self.get_dodge_key(), down_time=0.5)
+            self.sleep(0.6)
+            self.send_key("a", down_time=1.1)
+            self.sleep(0.1)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(1.9)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(0.3)
+            self.send_key("d", down_time=0.3)
+            self.sleep(2.1)
+            self.send_key(self.get_dodge_key(), down_time=0.3)
+            self.sleep(0.6)
+            self.send_key_up("w")
+        else:
+            # 检测空房
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(0.9)
+            self.send_key(self.get_dodge_key(), down_time=0.5)
+            self.sleep(2.1)
+            self.send_key(self.get_dodge_key(), down_time=0.3)
+            self.sleep(0.7)
+            self.send_key("a", down_time=0.4)
+            self.sleep(1.1)
+            self.send_key(self.get_dodge_key(), down_time=0.3)
+            self.sleep(0.7)
+            self.send_key(self.get_dodge_key(), down_time=0.2)
+            self.sleep(0.5)
+            self.send_key_up("w")
+
+        self._release_all_move_keys()
+
     def walk_to_aim(self, delay=0):
         """
         主寻路函数：根据识别到的坐标选择路径
@@ -328,6 +543,22 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             elif self.find_track_point(0.50, 0.71, 0.53, 0.76):
                 # 分支4：电梯中
                 self._path_elevator_center()
+
+            elif self.find_track_point(0.48, 0.25, 0.52, 0.30):
+                # 分支5：50级华胥
+                self._path_50_default()
+                
+            elif self.find_track_point(0.74, 0.60, 0.77, 0.64):
+                # 分支2：80中平台
+                self._path_80_center()
+                
+            elif self.find_track_point(0.45, 0.26, 0.49, 0.31):
+                # 分支3：80上神像
+                self._path_80_up()
+                
+            elif self.find_track_point(0.48, 0.28, 0.51, 0.32):
+                # 分支4：80下黑房
+                self._path_80_down()
 
         except Exception as e:
             logger.error("Error in walk_to_aim", e)
