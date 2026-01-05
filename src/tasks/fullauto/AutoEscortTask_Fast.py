@@ -23,7 +23,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.name = "黎瑟：超级飞枪80护送（需120帧+黎瑟+春玦戟+弧光百劫/裂魂+巧手+协战）【需要游戏处于前台】"
         self.description = "注：需求120帧 帧数敏感 掉帧会坠机\n"
         self.description += "请确保游戏内【射击时灵敏度】与正常灵敏度相同 请在OK-DNA里设置【灵敏度】和【螺旋飞跃键位】\n"
-        self.description += "展开查看具体配置\n"
+        self.description += "展开查看具体配置"
         self.group_name = "全自动"
         self.group_icon = FluentIcon.CAFE
         
@@ -926,9 +926,7 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 logger.warning("❌ 未检测到 track_point，无法确定路径")
                 return False
 
-            # 获取检测到的坐标（使用中心点）
-            detected_x = track_point.x + track_point.width // 2
-            detected_y = track_point.y + track_point.height // 2
+            detected_x, detected_y = track_point.center()
 
             logger.info(f"检测到 track_point 位置: ({detected_x}, {detected_y})")
 
@@ -958,7 +956,8 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             self.stats["selected_path"] = selected_path
             
             return True
-
+        except TaskDisabledException:
+            raise
         except Exception as e:
             logger.error("❌ 检测 track_point 时出错", e)
             return False
@@ -979,6 +978,8 @@ class AutoEscortTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                         break
                     else:
                         logger.info(f"检测到 track_point 位置: ({track_point.x}, {track_point.y}), 继续等待协战")
+                except TaskDisabledException:
+                    raise
                 except Exception as e:
                         logger.error("检测 track_point 时出错，忽略目标检测", e)
                 ally_interaction_check_count += 1
