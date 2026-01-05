@@ -473,7 +473,10 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             elif self.find_track_point(0.48, 0.28, 0.51, 0.32):
                 # 分支4：50下黑房
                 self._path_50_down()
-
+            else:
+                self.log_debug("not found any track point,default exec 30_65mod path")
+                self._path_30_65_mod()
+                
         except Exception as e:
             logger.error("Error in walk_to_aim", e)
             # 可以在这里添加日志记录
