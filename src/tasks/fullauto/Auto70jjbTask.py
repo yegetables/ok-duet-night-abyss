@@ -560,8 +560,8 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 # 分支4：80下黑房
                 self._path_80_down()
 
-        except Exception as e:
-            logger.error("Error in walk_to_aim", e)
-            # 可以在这里添加日志记录
+        # except Exception as e:
+        #     logger.error("Error in walk_to_aim", e)
+        #     # 可以在这里添加日志记录
         finally:
             self._release_all_move_keys()

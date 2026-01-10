@@ -477,8 +477,8 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.log_debug("not found any track point,default exec 30_65mod path")
                 self._path_30_65_mod()
                 
-        except Exception as e:
-            logger.error("Error in walk_to_aim", e)
-            # 可以在这里添加日志记录
+        # except Exception as e:
+        #     logger.error("Error in walk_to_aim", e)
+        #     # 可以在这里添加日志记录
         finally:
             self._release_all_move_keys()
