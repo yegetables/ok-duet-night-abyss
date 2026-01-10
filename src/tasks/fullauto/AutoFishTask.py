@@ -465,7 +465,7 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
                     logger.info("确认已回到挥杆界面")
                 return True
             self.send_key("space", down_time=0.06)
-            self.sleep(1.0)
+            self.sleep(0.5)
         logger.info("结束阶段确认失败")
         return False
 
@@ -522,13 +522,13 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
                         break
 
                 if not self.phase_start():
-                    self.sleep(1.0)
+                    self.sleep(0.5)
                     continue
                 if not self.phase_fight():
-                    self.sleep(1.0)
+                    self.sleep(0.5)
                     continue
                 if not self.phase_end():
-                    self.sleep(1.0)
+                    self.sleep(0.5)
                     continue
 
                 # 完成一轮
@@ -554,8 +554,7 @@ class AutoFishTask(DNAOneTimeTask, BaseDNATask):
                 logger.info("=" * 50)
 
                 # 继续下一轮
-                self.sleep(1.0)
-                self.sleep(1.0)
+                self.sleep(0.5)
             except TaskDisabledException:
                 raise
             except Exception as e:
