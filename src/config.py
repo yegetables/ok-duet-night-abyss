@@ -172,6 +172,7 @@ config = {
         ["src.tasks.AutoSkill", "AutoSkill"],
         ["src.tasks.AutoGeneral", "AutoGeneral"],
         ["src.tasks.AutoExpulsion", "AutoExpulsion"],
+        ["src.tasks.AutoExpulsion_Custom", "AutoExpulsion_Custom"],
         ["src.tasks.AutoDefence", "AutoDefence"],
         ["src.tasks.AutoExploration", "AutoExploration"],
         ["src.tasks.AutoExcavation", "AutoExcavation"],
