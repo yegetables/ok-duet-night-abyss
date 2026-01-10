@@ -241,13 +241,13 @@ class Auto65ArtifactTask_Fast(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             if not self.reset_and_transport():
                 raise Exception("复位失败")
 
-            # 回身
-            self.sleep(0.44)
-            self.send_key("s", down_time=0.09)
+            # # 回身
+            # self.sleep(0.44)
+            # self.send_key("s", down_time=0.09)
 
-            # 重置视角
-            self.sleep(0.48)
-            self.send_forward_key()
+            # # 重置视角
+            # self.sleep(0.48)
+            # self.send_forward_key()
 
             # ===== 路径编写结束 =====
 
