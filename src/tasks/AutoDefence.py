@@ -21,11 +21,9 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.group_icon = FluentIcon.VIEW
 
         self.setup_commission_config()
-        self.default_config.update({
-            "自定义移动路径": "",
-        })
+
         self.config_description.update({
-            "自定义移动路径": "填写简单自定义移动路径,格式如下:w:0.3,a:0.2,s:0.4,d:0.1",
+            "超时时间": "波次超时后将发出提示",
         })
 
         self.quick_assist_task = QuickAssistTask(self)
@@ -152,13 +150,8 @@ class AutoDefence(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 self.log_info("战斗开始")
         else:
             self.sleep(2)
-            path_str = self.config.get("自定义移动路径", "")
-            if len(path_str)>0:
-                logger.info("执行自定义移动路径")
-                self.exec_custom_move(path_str)
-            else:
-                self.log_info_notify("任务开始")
-                self.soundBeep()
+            self.log_info_notify("任务开始")
+            self.soundBeep()
 
     def stop_func(self):
         self.get_round_info()
