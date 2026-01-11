@@ -89,6 +89,26 @@ class BaseChar:
         if after_sleep > 0:
             self.sleep(after_sleep)
 
+    def send_combat_key_with_space(self, after_sleep=0, interval=-1, down_time=0.01):        
+        """发送 战技+ space 组合键 (E+space)。
+
+        Args:
+            after_sleep (float, optional): 发送后的休眠时间。默认为 0。
+            interval (float, optional): 不适用没保留参数
+            down_time (float, optional): 不适用没保留参数
+        """
+
+        self._combat_available = False
+
+        self.task.send_key(self.get_combat_key(), interval=interval, down_time=down_time)
+
+        self.sleep(0.2, check_combat=False)
+        self.task.send_key("SPACE",down_time=0.1)
+        
+        # 6. 模拟ok-script，处理后续休眠 
+        if after_sleep > 0:
+            self.sleep(after_sleep)
+
     def send_ultimate_key(self, after_sleep=0, interval=-1, down_time=0.01):
         """发送终结技按键。
 

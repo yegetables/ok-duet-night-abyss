@@ -360,10 +360,9 @@ class CommissionsTask(BaseDNATask):
                 if skill == "战技":
                     self.get_current_char().send_combat_key()
                 elif skill == "Ctrl+战技（赛琪专属）":
-                    self.mouse_down()
                     self.get_current_char().send_combat_key_with_ctrl()
-                    self.sleep(interval_val)
-                    self.mouse_up()
+                elif skill == "战技+空格打断(黎瑟专属)":
+                    self.get_current_char().send_combat_key_with_space()
                 elif skill == "终结技":
                     self.get_current_char().send_ultimate_key()
                 elif skill == "魔灵支援":
