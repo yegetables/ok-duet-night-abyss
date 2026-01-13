@@ -79,13 +79,14 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         
         self.skill_tick = self.create_skill_ticker()
         self.random_walk_tick = self.create_random_walk_ticker()
+        self.random_move_ticker = self.create_random_move_ticker()
 
     def run(self):
         if self.config.get("关闭抖动", False):
             mouse_jitter_setting = self.afk_config.get("鼠标抖动")
             self.afk_config.update({"鼠标抖动": False}) 
+        mouse_jitter_lock_setting = self.afk_config.get("鼠标抖动锁定在窗口范围")
         if self.config.get("关闭抖动锁定在窗口范围", False):
-            mouse_jitter_lock_setting = self.afk_config.get("鼠标抖动锁定在窗口范围")
             self.afk_config.update({"鼠标抖动锁定在窗口范围": False}) 
         DNAOneTimeTask.run(self)
         self.move_mouse_to_safe_position(save_current_pos=False)
@@ -194,6 +195,9 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def handle_mission_start(self):
         self.sleep(2)
         self.log_info("任务开始")
+        if self.afk_config.get('开局立刻随机移动', False):
+            logger.debug(f"开局随机移动对抗挂机检测")
+            self.random_move_ticker()
         self.parse_custom_commands()
         self.execute_custom_commands()
         self.skill_tick()
