@@ -43,13 +43,7 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 + "前进5秒: w5 \n" 
                 + "前冲5秒: w>5 \n" 
                 + "飞枪(1.67~1.75): L0.3#0.4 \n" 
-                + "\n\n\n" 
-                + "星屑落ちて　華は散っても\n" 
-                + "キラめく舞台に　生まれて変わる\n" 
-                + "新たな私は　未知なる運命\n" 
-                + "新たな私は　まだ見ぬ戯曲\n" 
-                + "愛城華恋は　舞台に一人\n" 
-                + "愛城華恋は　次の舞台へ",
+                + "\n\n\n",
             "自定义指令随机波动": False,
             "随机游走": False,
             "随机游走幅度": 1.0,
@@ -305,7 +299,9 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                     case 'STOP': 
                         self.give_up_mission()
                         raise TaskDisabledException
-                    case 'EXIT': self.give_up_mission()
+                    case 'EXIT': 
+                        self.give_up_mission()
+                        return
                     case 'SKIP': return
                     case 'TICK': self.skill_tick()
                     case 'wait': self.sleep(act['dur'])
@@ -341,16 +337,16 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     
     def execute_cc_func(self, func) -> bool:
         op, arg = func[0], func[1:]
+        self.log_info(f"执行 cc_func: op - {op}, arg - {arg}")
         if arg: arg, param = str(arg).split(',', 1) if ',' in arg else (arg, None)
-        self.log_info(f"执行 cc_func: op - {op}, arg - {arg}, param - {param}")
         match(op):
             case 'R': # if round
                 round = self.try_parse_float(arg, default_val=0)
                 return round == self.count
             case 'M': # if match img
                 img_foler, target_id = arg[:-1], arg[-1]
-                min_threshold=self.try_parse_float(param, default_val=0.8)
-                if param: map_id = self.cc_func_match_img(map_foler=img_foler, min_threshold=min_threshold)
+                if param: map_id = self.cc_func_match_img(map_foler=img_foler, 
+                    min_threshold=self.try_parse_float(param, default_val=0.8))
                 else: map_id = self.cc_func_match_img(map_foler=img_foler)
                 return target_id == map_id
             case ':':
