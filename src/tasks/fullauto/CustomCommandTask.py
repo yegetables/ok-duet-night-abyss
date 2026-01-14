@@ -198,6 +198,7 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         if self.afk_config.get('开局立刻随机移动', False):
             logger.debug(f"开局随机移动对抗挂机检测")
             self.random_move_ticker()
+            self.sleep(1)
         self.parse_custom_commands()
         self.execute_custom_commands()
         self.skill_tick()
