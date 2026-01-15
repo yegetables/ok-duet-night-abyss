@@ -384,22 +384,9 @@ class CommissionsTask(BaseDNATask):
         box = self.box_of_screen(0.241, 0.361, 0.259, 0.394, name="green_mark", hcenter=True)
         self.wait_until(lambda: self.calculate_color_percentage(green_mark_color, box) > 0.135, time_out=1)
         round_info_box = self.box_of_screen_scaled(2560, 1440, 500, 500, 620, 620, name="round_info", hcenter=True)
-        self.draw_boxes("round_info", round_info_box, color="blue")
-        ocr_frame = self.frame.copy()
-        texts = "N"
-        try:
-            ocr_frame = ocr_frame[round_info_box.y:round_info_box.y+round_info_box.height, 
-                                  round_info_box.x:round_info_box.x+round_info_box.width]
-            ocr_frame = color_filter(ocr_frame, round_info_color)
-            _, ocr_frame = cv2.threshold(ocr_frame, 127, 255, cv2.THRESH_BINARY)
-            ocr_frame = cv2.resize(ocr_frame, None, fx=1, fy=0.75, interpolation=cv2.INTER_AREA)
-            ocr_frame = cv2.erode(ocr_frame, np.ones((2, 2), np.uint8) , iterations=1)
-            ocr_frame = cv2.bitwise_not(ocr_frame)
-            texts = self.ocr(frame=ocr_frame)
-        except Exception as e:
-            self.log_error("get_round_info ocr error", e)
-            pass
-        # self.screenshot(name=f"round_info_ocr_{texts}", frame=ocr_frame)
+        texts = self.ocr(box=round_info_box, frame_processor=ocr_normalize, name="round_info")
+        # img = ocr_normalize(round_info_box.crop_frame(self.frame))
+        # self.screenshot(name=f"round_info_ocr_{texts}", frame=img)
 
         prev_round = self.current_round
         new_round_from_ocr = None
@@ -575,6 +562,13 @@ class QuickAssistTask:
             self._aim_task.reset()
             self._aim_task.try_disconnect_listener()
 
+def ocr_normalize(cv_image):
+    cv_image = color_filter(cv_image, round_info_color)
+    _, cv_image = cv2.threshold(cv_image, 127, 255, cv2.THRESH_BINARY)
+    cv_image = cv2.resize(cv_image, None, fx=1, fy=0.75, interpolation=cv2.INTER_AREA)
+    cv_image = cv2.erode(cv_image, np.ones((2, 2), np.uint8) , iterations=1)
+    cv_image = cv2.bitwise_not(cv_image)
+    return cv_image
 
 setting_menu_selected_color = {
     'r': (220, 255),  # Red range
