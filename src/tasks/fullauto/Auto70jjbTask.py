@@ -16,7 +16,7 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.icon = FluentIcon.FLAG
-        self.name = "自动70级皎皎币本"
+        self.name = "自动50/70级皎皎币本"
         self.description = "全自动"
         self.group_name = "全自动"
         self.group_icon = FluentIcon.CAFE
@@ -305,6 +305,22 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self._release_all_move_keys()
         self.reset_and_transport()
 
+    def _path_50jjb(self):
+        """路径逻辑：50皎皎币-简单向前走"""
+        self.log_info("未识别到70级地图，执行50级皎皎币路径")
+        # 等待0.5秒后按下w
+        self.sleep(0.5)
+        self.send_key_down("w")
+        # 再等待1.0秒（总共1.5秒）后按下闪避键
+        self.sleep(1.0)
+        self.send_key_down(self.get_dodge_key())
+        # 再等待5.5秒（总共7.0秒）后松开闪避键
+        self.sleep(5.5)
+        self.send_key_up(self.get_dodge_key())
+        # 再等待1.0秒（总共8.0秒）后松开w
+        self.sleep(1.0)
+        self.send_key_up("w")
+
     def walk_to_aim(self, delay=0):
         """
         主寻路函数：根据识别到的坐标选择路径
@@ -329,6 +345,9 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
             elif self.find_track_point(0.50, 0.71, 0.53, 0.76):
                 # 分支4：电梯中
                 self._path_elevator_center()
+            else:
+                # 如果70级地图都没识别到，默认执行50级皎皎币路径
+                self._path_50jjb()
 
         except Exception as e:
             logger.error("Error in walk_to_aim", e)
