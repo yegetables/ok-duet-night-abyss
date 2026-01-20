@@ -23,11 +23,11 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.icon = FluentIcon.FLAG
+        self.icon = FluentIcon.COMMAND_PROMPT
         self.name = "使用自定义指令自动打本"
-        self.description = "全自动"
-        self.group_name = "全自动"
-        self.group_icon = FluentIcon.CAFE
+        self.description = "自定义指令"
+        self.group_name = "ADD-ONS"
+        self.group_icon = FluentIcon.TILES
 
         self.setup_commission_config()
 
@@ -122,6 +122,8 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.count = 0
         self.runtime_state = {}
         self.custom_commands = []
+        self.ref_width = 1920
+        self.ref_height = 1080
         self.init_all()
         self.load_char()
         while True:
@@ -152,13 +154,14 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         self.init_for_next_round()
         self.skill_tick.reset()
         self.current_round = 0
+        self.ref_width = 1920
+        self.ref_height = 1080
 
     def init_for_next_round(self):
         self.init_runtime_state()
 
     def init_runtime_state(self):
         self.info_set("完成轮次", self.count)
-        self.get_round_info()
         self.info_set("当前轮次", self.current_round)
         self.reset_wave_info()
         self.info_set("上轮耗时", f"{(time.time() - self.runtime_state.get("round_time", time.time())):.1f}秒")
@@ -267,6 +270,8 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                         case 'EXIT': actions.append({'type': 'EXIT'})
                         case 'SKIP': actions.append({'type': 'SKIP'})
                         case 'TICK': actions.append({'type': 'TICK'})
+                        case 'REFW': actions.append({'type': 'REF', 'axis': 'W', 'res': val})
+                        case 'REFH': actions.append({'type': 'REF', 'axis': 'H', 'res': val})
                         case 'L': actions.append({'type': 'mouse', 'key': 'left', 'dur': val})
                         case 'R': actions.append({'type': 'mouse', 'key': 'right', 'dur': val})
                         case 'A': actions.append({'type': 'move', 'direction': 'X', 'angel': -val})
@@ -309,6 +314,11 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                         return
                     case 'SKIP': return
                     case 'TICK': self.skill_tick()
+                    case 'REF':
+                        if act.get('axis') == 'W':
+                            self.ref_width = act['res']
+                        elif act.get('axis') == 'H':
+                            self.ref_height = act['res']
                     case 'wait': self.sleep(act['dur'])
                     case 'reset': self.reset_and_transport()
                     case 'mouse':
@@ -372,6 +382,13 @@ class CustomCommandTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
         best_threshold = min_threshold
         
         for name, template_gray in imgs.items():
+            if self.width is not self.ref_width or self.height is not self.ref_height:
+                resized = cv2.resize(template_gray, None, 
+                                     fx=self.width/self.ref_width, 
+                                     fy=self.height/self.ref_height, 
+                                     interpolation=cv2.INTER_AREA
+                )
+                template_gray = resized
             result = cv2.matchTemplate(screen_gray, template_gray, cv2.TM_CCOEFF_NORMED)
             _, threshold, _, _, = cv2.minMaxLoc(result)
             self.log_debug(f"MAP: {name} (conf={threshold:.4f})")

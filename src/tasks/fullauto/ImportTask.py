@@ -30,11 +30,11 @@ class ImportTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.icon = FluentIcon.FLAG
+        self.icon = FluentIcon.FOLDER_ADD
         self.name = "使用外部移动逻辑自动打本"
-        self.description = "全自动"
-        self.group_name = "全自动"
-        self.group_icon = FluentIcon.CAFE
+        self.description = "外部移动逻辑"
+        self.group_name = "ADD-ONS"
+        self.group_icon = FluentIcon.TILES
         self.last_f_time = 0
         self.last_f_was_interact = False
 
