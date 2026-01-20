@@ -327,7 +327,7 @@ class CommissionsTask(BaseDNATask):
 
     def choose_letter_reward(self, timeout=0):
         action_timeout = self.action_timeout if timeout == 0 else timeout
-        if self.commission_config.get("自动处理密函", False):
+        if self.commission_config.get("自动处理密函奖励", False):
             if self.commission_config.get("密函奖励偏好", "不使用") != "不使用":
                 self.choose_target_letter_reward()
             self.wait_until(
