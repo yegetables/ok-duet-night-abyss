@@ -108,6 +108,11 @@ config = {
         'check_hdr': False, #当用户开启AutoHDR时候提示用户, 但不禁止使用
         'force_no_hdr': False, #True=当用户开启AutoHDR时候禁止使用
     },
+    'browser': {
+        'url': 'https://dna.yingxiong.com/cloudgame/',
+        'resolution': (1600, 900),
+        'nick': '云游戏(需要Win11并安装Edge)',
+    },
     'start_timeout': 120,  # default 60
     'window_size': { #ok-script窗口大小
         'width': 1200,

@@ -12,7 +12,9 @@ from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor
 from functools import cached_property
 
-from ok import BaseTask, Box, Logger, color_range_to_bound, run_in_new_thread, og, GenshinInteraction, PyDirectInteraction
+from ok import BaseTask, Box, Logger, color_range_to_bound, og
+from ok.device.intercation import GenshinInteraction, PyDirectInteraction
+from ok.util.process import run_in_new_thread
 
 logger = Logger.get_logger(__name__)
 f_black_color = {
