@@ -560,6 +560,12 @@ class Auto70jjbTask(DNAOneTimeTask, CommissionsTask, BaseCombatTask):
                 # 分支4：80下黑房
                 self._path_80_down()
 
+            else:
+                # 如果70级地图都没识别到，默认执行50级皎皎币路径
+                # self._path_50jjb()
+                # 分支5：50级华胥
+                self._path_50_default()
+
         # except Exception as e:
         #     logger.error("Error in walk_to_aim", e)
         #     # 可以在这里添加日志记录
